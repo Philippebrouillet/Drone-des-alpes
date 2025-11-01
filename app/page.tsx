@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import HeroCarousel from "./components/HeroCarousel";
-import AboutSection from "./components/AboutSection";
-import AdvantagesSection from "./components/AdvantagesSection";
-import ServicesSection from "./components/ServicesSection";
-import OffersSection from "./components/OffersSection";
+import HeroCarousel from "../lib/components/HeroCarousel";
+import AboutSection from "../lib/components/AboutSection";
+import AdvantagesSection from "../lib/components/AdvantagesSection";
+import ServicesSection from "../lib/components/ServicesSection";
+import OffersSection from "../lib/components/OffersSection";
 import { Home as HomeIcon, Building2, Sun, Droplets } from "lucide-react";
 import facadeCleaning from "@/public/Nettoyage facade.jpg";
-import gutterCleaning from "@/public/Nettoyage gouttières.jpg";
+import gutterCleaning from "../public/Nettoyage gouttières.jpg";
 import solarPannelCleaning from "@/public/Nettoyage panneaux solaire.jpg";
 import roofCleaning from "@/public/Nettoyage toiture.jpg";
 import { Services } from "@/lib/constant";
