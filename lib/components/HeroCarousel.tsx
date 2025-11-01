@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { ArrowLeft, ArrowRightIcon } from "lucide-react";
 
 interface Slide {
-  image: StaticImageData;
+  image: string;
   title: string;
   subtitle: string;
   alt: string;

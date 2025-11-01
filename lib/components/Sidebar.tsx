@@ -1,7 +1,6 @@
 "use client";
 
 import { NextPage } from "next";
-import logo from "@/public/logoCrop.png";
 import Image from "next/image";
 import { APP_NAME, Services } from "../constant";
 import { ChevronDown, Phone } from "lucide-react";
@@ -43,7 +42,7 @@ const Sidebar: NextPage<Props> = ({}) => {
     >
       <div className="flex justify-between w-full customContainer ">
         <Link href="/">
-          <Image src={logo} height={110} width={110} alt="Logo" />
+          <Image src={"/logoCrop.png"} height={110} width={110} alt="Logo" />
         </Link>
 
         <ul className="flex gap-2 items-center justify-center px-4 uppercase font-semibold text-sm mr-40">

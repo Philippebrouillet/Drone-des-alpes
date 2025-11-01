@@ -1,12 +1,12 @@
 import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 interface Service {
   title: string;
   icon: React.ElementType;
   shortDescription: string;
   description: string;
-  image: StaticImageData;
+  image: string;
   href: string;
 }
 
