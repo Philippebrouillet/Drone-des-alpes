@@ -5,10 +5,6 @@ import AdvantagesSection from "../lib/components/AdvantagesSection";
 import ServicesSection from "../lib/components/ServicesSection";
 import OffersSection from "../lib/components/OffersSection";
 import { Home as HomeIcon, Building2, Sun, Droplets } from "lucide-react";
-import facadeCleaning from "@/public/Nettoyage facade.jpg";
-import gutterCleaning from "../public/Nettoyage gouttières.jpg";
-import solarPannelCleaning from "@/public/Nettoyage panneaux solaire.jpg";
-import roofCleaning from "@/public/Nettoyage toiture.jpg";
 import { Services } from "@/lib/constant";
 
 export const metadata: Metadata = {
@@ -40,14 +36,20 @@ export const metadata: Metadata = {
 };
 
 const mutualServicesData = {
-  roofCleaning: { image: roofCleaning, title: Services.NETTOYAGE_TOITURE },
-  facadeCleaning: { image: facadeCleaning, title: Services.NETTOYAGE_FACADE },
+  roofCleaning: {
+    image: "/Nettoyage toiture.jpg",
+    title: Services.NETTOYAGE_TOITURE,
+  },
+  facadeCleaning: {
+    image: "/Nettoyage facade.jpg",
+    title: Services.NETTOYAGE_FACADE,
+  },
   solarPannelCleaning: {
-    image: solarPannelCleaning,
+    image: "/Nettoyage panneaux solaire.jpg",
     title: Services.NETTOYAGE_PANNEAU_SOLAIRE,
   },
   gutterCleaning: {
-    image: gutterCleaning,
+    image: "/Nettoyage gouttières.jpg",
     title: Services.NETTOYAGE_GOUTTIERE,
   },
 };
