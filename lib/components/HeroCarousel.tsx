@@ -61,7 +61,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             src={slide.image}
             alt={slide.alt}
             fill
-            className="object-cover"
+            className=" object-cover"
             priority={index === 0}
             quality={90}
           />

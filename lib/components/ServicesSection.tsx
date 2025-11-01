@@ -95,14 +95,14 @@ export default function ServicesSection({ services }: ServicesProps) {
           </div>
 
           {/* CTA global */}
-          <div className="mt-16 text-center">
+          {/* <div className="mt-16 text-center">
             <Link
               href="/contact"
               className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               Demander un devis gratuit
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
