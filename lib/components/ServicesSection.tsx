@@ -17,7 +17,7 @@ interface ServicesProps {
 export default function ServicesSection({ services }: ServicesProps) {
   return (
     <section className="py-20 md:py-32 bg-white">
-      <div className="flex justify-center px-4">
+      <div className="flex justify-center">
         <div className="customContainer">
           {/* Titre de la section */}
           <div className="text-center mb-16">
