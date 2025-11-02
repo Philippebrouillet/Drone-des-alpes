@@ -35,11 +35,11 @@ export default function FoundersSection() {
                   {/* Photo de profil */}
                   <div className="w-32 h-32 rounded-full overflow-hidden mb-4 shadow-lg ring-4 ring-blue-100">
                     <Image
-                      src="https://randomuser.me/api/portraits/men/32.jpg"
+                      src="/jules.png"
                       alt="Jules Menguy - Co-fondateur Drone des Alpes"
                       width={128}
                       height={128}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover "
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-1">
@@ -72,11 +72,11 @@ export default function FoundersSection() {
                   {/* Photo de profil */}
                   <div className="w-32 h-32 rounded-full overflow-hidden mb-4 shadow-lg ring-4 ring-gray-100">
                     <Image
-                      src="https://randomuser.me/api/portraits/men/45.jpg"
+                      src="/samir.png"
                       alt="Samir Lasri - Co-fondateur Drone des Alpes"
                       width={128}
                       height={128}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover "
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-1">

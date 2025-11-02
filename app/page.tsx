@@ -124,18 +124,16 @@ const services = [
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <HeroCarousel slides={slides} />
-        <AboutSection />
-        <AdvantagesSection />
-        <ServicesSection services={services} />
-        <OffersSection />
-        <WhyChooseUs />
-        <FoundersSection />
-        <InterventionZone />
-        <ContactForm />
-      </main>
-    </>
+    <main>
+      <HeroCarousel slides={slides} />
+      <AboutSection />
+      <AdvantagesSection />
+      <ServicesSection services={services} />
+      <OffersSection />
+      <WhyChooseUs />
+      <FoundersSection />
+      <InterventionZone />
+      <ContactForm />
+    </main>
   );
 }
