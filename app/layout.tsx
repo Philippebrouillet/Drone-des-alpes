@@ -81,11 +81,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: prodUrl,
   },
-  // verification: {
-  //   google: "votre-code-google-search-console", // À remplacer
-  //   // yandex: 'votre-code-yandex',
-  //   // bing: 'votre-code-bing',
-  // },
+  verification: {
+    google: "f30T9EALMQEXLfIdCNEjg9HPiKqEH5LMmifSeI-Hy1g",
+    // yandex: 'votre-code-yandex',
+    // bing: 'votre-code-bing',
+  },
 };
 
 export default function RootLayout({
@@ -96,6 +96,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <meta
+          name="google-site-verification"
+          content="f30T9EALMQEXLfIdCNEjg9HPiKqEH5LMmifSeI-Hy1g"
+        />
         {/* Données structurées JSON-LD pour le SEO */}
         <Script
           id="organization-schema"
