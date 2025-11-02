@@ -18,7 +18,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       {/* Section principale */}
-      <div className="customContainer mx-auto  py-16">
+      <div className="md:max-w-5xl md:w-full md:mx-auto px-4 md:px-0   py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Colonne 1: Logo et description */}
           <div className="space-y-4">
@@ -161,7 +161,7 @@ export default function Footer() {
 
       {/* Barre du bas */}
       <div className="border-t border-gray-800">
-        <div className="customContainer mx-auto px-6 py-6">
+        <div className="md:max-w-5xl md:w-full md:mx-auto py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
               © {currentYear} Drone des Alpes. Tous droits réservés.
