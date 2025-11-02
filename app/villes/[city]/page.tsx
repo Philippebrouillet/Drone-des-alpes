@@ -8,6 +8,7 @@ import {
   formatCityUrl,
 } from "@/lib/services/interventionZone";
 import { notFound } from "next/navigation";
+import { prodUrl } from "@/lib/constant";
 
 // Fonction inverse pour retrouver le nom original
 function getCityFromUrl(url: string): string | null {
@@ -54,7 +55,7 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: `https://www.dronedesalpes.fr/villes/${city}`,
+      canonical: `${prodUrl}/villes/${city}`,
     },
   };
 }
