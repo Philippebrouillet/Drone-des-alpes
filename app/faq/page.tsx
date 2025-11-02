@@ -100,8 +100,8 @@ export default function FAQPage() {
       />
 
       {/* Header */}
-      <section className="bg-linear-to-br from-blue-600 to-blue-500 text-white py-20 pt-35">
-        <div className="customContainer mx-auto">
+      <section className="bg-linear-to-br from-blue-600 to-blue-500 text-white py-20 pt-35 flex justify-center">
+        <div className="customContainer ">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 mb-8"
@@ -122,8 +122,8 @@ export default function FAQPage() {
       </section>
 
       {/* Introduction */}
-      <section className="py-12 bg-gray-50">
-        <div className="customContainer mx-auto text-center">
+      <section className="py-12 bg-gray-50 flex justify-center">
+        <div className="customContainer  text-center">
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Vous avez des questions sur nos services de nettoyage par drone ?
             Consultez notre FAQ pour trouver rapidement des réponses. Si vous ne
@@ -140,8 +140,8 @@ export default function FAQPage() {
       </section>
 
       {/* Questions & Réponses */}
-      <section className="py-16 md:py-20">
-        <div className="customContainer mx-auto">
+      <section className="py-16 md:py-20 flex justify-center">
+        <div className="customContainer ">
           <div className="max-w-4xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
               <details
@@ -164,8 +164,8 @@ export default function FAQPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500">
-        <div className="customContainer mx-auto text-center">
+      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500 flex justify-center">
+        <div className="customContainer text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Vous avez d'autres questions ?
           </h2>
