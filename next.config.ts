@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
 
   images: {
     qualities: [70, 70, 70, 75, 90],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+        pathname: "/api/portraits/**",
+      },
+    ],
   },
 };
 
