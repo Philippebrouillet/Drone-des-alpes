@@ -18,7 +18,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       {/* Section principale */}
-      <div className="md:max-w-5xl md:w-full md:mx-auto px-4 md:px-0   py-16">
+      <div className="md:max-w-5xl md:w-full md:mx-auto px-4   py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Colonne 1: Logo et description */}
           <div className="space-y-4">

@@ -44,18 +44,22 @@ const mutualServicesData = {
   roofCleaning: {
     image: "/Nettoyage toiture.jpg",
     title: Services.NETTOYAGE_TOITURE,
+    href: formatHrefService(Services.NETTOYAGE_TOITURE),
   },
   facadeCleaning: {
     image: "/Nettoyage facade.jpg",
     title: Services.NETTOYAGE_FACADE,
+    href: formatHrefService(Services.NETTOYAGE_FACADE),
   },
   solarPannelCleaning: {
     image: "/Nettoyage panneaux solaire.jpg",
     title: Services.NETTOYAGE_PANNEAU_SOLAIRE,
+    href: formatHrefService(Services.NETTOYAGE_PANNEAU_SOLAIRE),
   },
   gutterCleaning: {
     image: "/Nettoyage gouttières.jpg",
     title: Services.NETTOYAGE_GOUTTIERE,
+    href: formatHrefService(Services.NETTOYAGE_GOUTTIERE),
   },
 };
 const slides = [
