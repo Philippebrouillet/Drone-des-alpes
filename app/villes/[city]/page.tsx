@@ -82,7 +82,7 @@ export default async function CityPage({
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px]">
+      <section className="relative h-[60vh] min-h-[600px] ">
         <Image
           src="/Nettoyage toiture.jpg"
           alt={`Nettoyage par drone à ${cityName}`}
@@ -93,8 +93,8 @@ export default async function CityPage({
         />
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/40" />
 
-        <div className="absolute inset-0 flex items-center">
-          <div className="customContainer mx-auto">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="customContainer ">
             <Link
               href="/"
               className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 mb-6"
@@ -134,8 +134,8 @@ export default async function CityPage({
       </section>
 
       {/* Services disponibles */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="customContainer mx-auto">
+      <section className="py-16 md:py-20 bg-gray-50 flex justify-center">
+        <div className="customContainer ">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Nos Services à {cityName}
           </h2>
@@ -181,8 +181,8 @@ export default async function CityPage({
       </section>
 
       {/* Pourquoi nous choisir à [Ville] */}
-      <section className="py-16 md:py-20">
-        <div className="customContainer mx-auto">
+      <section className="py-16 md:py-20 flex justify-center">
+        <div className="customContainer ">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Pourquoi Choisir Drone des Alpes à {cityName} ?
           </h2>
@@ -235,8 +235,8 @@ export default async function CityPage({
 
       {/* Villes à proximité */}
       {nearbyCities.length > 0 && (
-        <section className="py-16 md:py-20 bg-gray-50">
-          <div className="customContainer mx-auto">
+        <section className="py-16 md:py-20 bg-gray-50 flex justify-center">
+          <div className="customContainer">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
               Nous intervenons aussi près de {cityName}
             </h2>
@@ -270,8 +270,8 @@ export default async function CityPage({
       )}
 
       {/* CTA Final */}
-      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500">
-        <div className="customContainer mx-auto text-center">
+      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500 flex justify-center">
+        <div className="customContainer  text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Besoin d'un Nettoyage par Drone à {cityName} ?
           </h2>
