@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 interface Slide {
   image: string;
   title: string;
   subtitle: string;
   alt: string;
+  href: string;
 }
 
 interface HeroCarouselProps {
@@ -90,13 +92,15 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
               </p>
             </div>
 
-            {/* Bouton CTA fixe (ne bouge pas) */}
+            {/* Bouton CTA fixe  */}
             <div className="mb-12">
               <button className="group relative px-8 py-4 bg-white text-black font-semibold text-lg rounded-full overflow-hidden transition-all duration-300 hover:bg-blue-600 hover:text-white hover:scale-105 hover:shadow-2xl">
-                <span className="relative z-10 flex items-center gap-2">
-                  Demander un devis gratuit
-                  <ArrowRightIcon size={16} />
-                </span>
+                <Link href={slides[currentSlide].href}>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Consulter
+                    <ArrowRightIcon size={16} />
+                  </span>
+                </Link>
                 {/* Effet de hover animé */}
                 <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>

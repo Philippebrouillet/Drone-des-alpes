@@ -96,6 +96,7 @@ const GoogleMapComponent = () => {
         src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAYUmr1wSlV3zvO6t04LgcQH9dPXFKSc0o&libraries=places`}
         strategy="afterInteractive"
         onLoad={handleScriptLoad}
+        async={true}
       />
       <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-lg">
         <div ref={mapRef} className="w-full h-full" />
