@@ -6,3 +6,5 @@ export enum Services {
   NETTOYAGE_PANNEAU_SOLAIRE = "Nettoyage de Panneaux Solaires",
   NETTOYAGE_GOUTTIERE = "Nettoyage de Gouttières",
 }
+
+export const prodUrl = "https://drone-des-alpes.vercel.app";

@@ -9,34 +9,64 @@ import FoundersSection from "../lib/components/sections/FoundersSection";
 import InterventionZone from "../lib/components/sections/InterventionZone";
 import ContactForm from "../lib/components/sections/ContactForm";
 import { Home as HomeIcon, Building2, Sun, Droplets } from "lucide-react";
-import { Services } from "@/lib/constant";
+import { prodUrl, Services } from "@/lib/constant";
 import { formatHrefService } from "@/lib/services/services";
 
 export const metadata: Metadata = {
   title:
-    "Drone des Alpes | Nettoyage par drone - Toiture, Façade, Panneaux Solaires",
+    "Nettoyage par Drone Rhône-Alpes | Toiture, Façade, Panneaux Solaires - Devis Gratuit",
   description:
-    "Nettoyage professionnel par drone : toitures, façades, panneaux solaires et gouttières. Solution rapide, économique et écologique. Devis gratuit en Rhône-Alpes.",
-  keywords:
-    "nettoyage drone, toiture, façade, panneaux solaires, gouttières, démoussage, Rhône-Alpes, sans échafaudage, écologique",
+    "🚁 Expert nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy). Toiture, façade, panneaux solaires, gouttières. ✅ Sans échafaudage ✅ Écologique ✅ Rapide. Devis gratuit sous 24h.",
+  keywords: [
+    "nettoyage drone Rhône-Alpes",
+    "nettoyage toiture drone Lyon",
+    "nettoyage façade drone Grenoble",
+    "nettoyage panneaux solaires Annecy",
+    "démoussage toiture drone",
+    "nettoyage gouttières Chambéry",
+    "entreprise nettoyage drone",
+    "nettoyage sans échafaudage",
+    "nettoyage écologique drone",
+    "drone nettoyage professionnel",
+  ],
   authors: [{ name: "Drone des Alpes" }],
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Drone des Alpes - Nettoyage professionnel par drone",
+    title: "Drone des Alpes - Expert Nettoyage par Drone en Rhône-Alpes",
     description:
-      "Nettoyage de toitures, façades et panneaux solaires par drone. Solution innovante sans échafaudage en Rhône-Alpes.",
+      "Nettoyage professionnel de toitures, façades et panneaux solaires par drone. Solution innovante sans échafaudage en Rhône-Alpes. Devis gratuit.",
     type: "website",
     locale: "fr_FR",
+    url: prodUrl,
     siteName: "Drone des Alpes",
+    images: [
+      {
+        url: "/Nettoyage toiture.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nettoyage de toiture par drone - Drone des Alpes",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drone des Alpes - Nettoyage par drone",
+    title: "Drone des Alpes - Nettoyage par drone Rhône-Alpes",
     description:
-      "Nettoyage professionnel par drone en Rhône-Alpes. Devis gratuit.",
+      "Expert en nettoyage par drone. Toiture, façade, panneaux solaires. Devis gratuit.",
+    images: ["/Nettoyage toiture.jpg"],
   },
   alternates: {
-    canonical: "https://www.dronedesalpes.fr",
+    canonical: prodUrl,
   },
 };
 
