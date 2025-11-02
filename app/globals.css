@@ -23,8 +23,11 @@ button {
 }
 
 .customContainer {
-  width: 100%;
-  max-width: var(--container-5xl);
+  @apply max-w-5xl w-full;
+}
+
+.section {
+  @apply py-20 md:py-32;
 }
 @media (max-width: 1080px) {
   .customContainer {

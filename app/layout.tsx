@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/lib/components/Sidebar";
+import Navbar from "@/lib/components/Navbar";
+import Footer from "@/lib/components/Footer";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,11 +21,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Plausible Cloud script */}
+        <Script
+          strategy="afterInteractive"
+          async
+          src="https://plausible.io/js/pa-jjzjjkzlrC6g-cNxqEsZJ.js"
+        />
+
+        {/* Initialisation */}
+        <Script id="plausible-init" strategy="afterInteractive">
+          {`
+            window.plausible = window.plausible || function(){ (plausible.q = plausible.q || []).push(arguments) };
+            plausible.init = plausible.init || function(i){ plausible.o = i || {} };
+            plausible.init();
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Sidebar />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

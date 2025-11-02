@@ -1,11 +1,16 @@
 import { Metadata } from "next";
 import HeroCarousel from "../lib/components/HeroCarousel";
-import AboutSection from "../lib/components/AboutSection";
-import AdvantagesSection from "../lib/components/AdvantagesSection";
-import ServicesSection from "../lib/components/ServicesSection";
-import OffersSection from "../lib/components/OffersSection";
+import AboutSection from "../lib/components/sections/AboutSection";
+import AdvantagesSection from "../lib/components/sections/AdvantagesSection";
+import ServicesSection from "../lib/components/sections/ServicesSection";
+import OffersSection from "../lib/components/sections/OffersSection";
+import WhyChooseUs from "../lib/components/sections/WhyChooseUs";
+import FoundersSection from "../lib/components/sections/FoundersSection";
+import InterventionZone from "../lib/components/sections/InterventionZone";
+import ContactForm from "../lib/components/sections/ContactForm";
 import { Home as HomeIcon, Building2, Sun, Droplets } from "lucide-react";
 import { Services } from "@/lib/constant";
+import { formatHrefService } from "@/lib/services/services";
 
 export const metadata: Metadata = {
   title:
@@ -89,7 +94,7 @@ const services = [
     description:
       "Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Votre toiture protège votre maison des intempéries. Sans entretien, la mousse et les lichens favorisent les infiltrations d'eau et diminuent les performances énergétiques.",
 
-    href: "/nettoyage-de-toiture",
+    href: formatHrefService(Services.NETTOYAGE_TOITURE),
   },
   {
     ...mutualServicesData.facadeCleaning,
@@ -97,7 +102,7 @@ const services = [
     shortDescription: "Protégez et sublimez votre maison par la voie des airs",
     description:
       "Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs. Un nettoyage régulier permet de prévenir la dégradation des matériaux et de conserver une isolation optimale tout en valorisant votre bien immobilier.",
-    href: "/nettoyage-de-façade",
+    href: formatHrefService(Services.NETTOYAGE_FACADE),
   },
   {
     ...mutualServicesData.solarPannelCleaning,
@@ -105,7 +110,7 @@ const services = [
     shortDescription: "Optimisez votre rendement énergétique jusqu'à +20%",
     description:
       "Vos panneaux solaires sont un investissement important. La poussière, les feuilles et la pollution peuvent réduire leur rendement jusqu'à 20%. Entretenir régulièrement vos panneaux permet de maximiser votre production d'énergie et d'allonger leur durée de vie.",
-    href: "/nettoyage-de-panneaux-solaires",
+    href: formatHrefService(Services.NETTOYAGE_PANNEAU_SOLAIRE),
   },
   {
     ...mutualServicesData.gutterCleaning,
@@ -113,18 +118,24 @@ const services = [
     shortDescription: "Prévenez les infiltrations et protégez votre façade",
     description:
       "Des gouttières encrassées peuvent provoquer des infiltrations et des problèmes d'humidité. Nous intervenons avec un aspirateur professionnel pour éliminer complètement les débris, mousses et feuilles, sans risque pour vous.",
-    href: "/nettoyage-de-gouttières",
+    href: formatHrefService(Services.NETTOYAGE_GOUTTIERE),
   },
 ];
 
 export default function Home() {
   return (
-    <main>
-      <HeroCarousel slides={slides} />
-      <AboutSection />
-      <AdvantagesSection />
-      <ServicesSection services={services} />
-      <OffersSection />
-    </main>
+    <>
+      <main>
+        <HeroCarousel slides={slides} />
+        <AboutSection />
+        <AdvantagesSection />
+        <ServicesSection services={services} />
+        <OffersSection />
+        <WhyChooseUs />
+        <FoundersSection />
+        <InterventionZone />
+        <ContactForm />
+      </main>
+    </>
   );
 }
