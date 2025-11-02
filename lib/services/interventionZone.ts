@@ -1,3 +1,13 @@
+// Fonction pour formater le nom de la ville pour l'URL
+export function formatCityUrl(city: string): string {
+  return city
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/['']/g, "-")
+    .replace(/\s+/g, "-");
+}
+
 export const cityCoordinates: Record<
   string,
   { lat: number; lng: number; dept: string }

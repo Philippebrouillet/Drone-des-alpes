@@ -3,7 +3,12 @@
 import { useState, useEffect, useRef } from "react";
 import { MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import Script from "next/script";
-import { cityCoordinates, departments } from "@/lib/services/interventionZone";
+import {
+  cityCoordinates,
+  departments,
+  formatCityUrl,
+} from "@/lib/services/interventionZone";
+import Link from "next/link";
 
 // Composant de carte Google Maps
 const GoogleMapComponent = () => {
@@ -218,15 +223,29 @@ export default function InterventionZone() {
                 {expandedDept === dept.code && (
                   <div className="px-6 py-6 bg-gray-50 border-t border-gray-200">
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                      {dept.cities.map((city) => (
-                        <div
-                          key={city}
-                          className="flex items-center gap-2 text-gray-700 text-sm"
-                        >
-                          <MapPin className="w-3 h-3 text-blue-600 shrink-0" />
-                          <span>{city}</span>
-                        </div>
-                      ))}
+                      {dept.cities.map((city) => {
+                        const cityData = cityCoordinates[city];
+                        const hasPage = !!cityData; // Vérifier si la ville a une page dédiée
+
+                        return hasPage ? (
+                          <Link
+                            key={city}
+                            href={`/villes/${formatCityUrl(city)}`}
+                            className="flex items-center gap-2 text-gray-700 hover:text-blue-600 text-sm transition-colors duration-200 hover:underline"
+                          >
+                            <MapPin className="w-3 h-3 text-blue-600 shrink-0" />
+                            <span>{city}</span>
+                          </Link>
+                        ) : (
+                          <div
+                            key={city}
+                            className="flex items-center gap-2 text-gray-700 text-sm"
+                          >
+                            <MapPin className="w-3 h-3 text-blue-600 shrink-0" />
+                            <span>{city}</span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

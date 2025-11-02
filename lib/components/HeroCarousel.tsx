@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
 interface Slide {
@@ -124,31 +124,6 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
           </div>
         </div>
       </div>
-
-      {/* Boutons de navigation gauche/droite */}
-      <button
-        onClick={() =>
-          goToSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)
-        }
-        className="hidden absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full xl:flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-        aria-label="Slide précédente"
-      >
-        <ArrowLeft
-          size={24}
-          className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-        />
-      </button>
-
-      <button
-        onClick={() => goToSlide((currentSlide + 1) % slides.length)}
-        className="hidden absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full xl:flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-        aria-label="Slide suivante"
-      >
-        <ArrowRightIcon
-          size={24}
-          className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-        />
-      </button>
 
       {/* Badge décoratif en bas */}
       <div className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
