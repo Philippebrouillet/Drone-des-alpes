@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/lib/components/Navbar";
 import Footer from "@/lib/components/Footer";
+import ScrollToTop from "@/lib/components/ScrollToTop";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );
