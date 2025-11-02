@@ -1,10 +1,12 @@
+import { prodUrl } from "./constant";
+
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Drone des Alpes",
   description:
     "Entreprise spécialisée dans le nettoyage par drone : toitures, façades, panneaux solaires et gouttières en Rhône-Alpes.",
-  url: "https://www.dronedesalpes.fr",
+  url: prodUrl,
   telephone: "+33-XXX-XXX-XXX", // À remplacer par votre vrai numéro
   email: "contact@dronedesalpes.fr",
   address: {
@@ -43,8 +45,8 @@ export const organizationSchema = {
     // 'https://www.instagram.com/dronedesalpes',
     // 'https://www.linkedin.com/company/dronedesalpes',
   ],
-  image: "https://www.dronedesalpes.fr/logo.png",
-  logo: "https://www.dronedesalpes.fr/logo.png",
+  image: `${prodUrl}/logo.png`,
+  logo: `${prodUrl}/logo.png`,
 };
 
 export const servicesSchema = {
