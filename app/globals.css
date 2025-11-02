@@ -14,16 +14,18 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@layer components {
+  .customContainer {
+    @apply max-w-5xl w-full;
+  }
+}
+
 body {
   /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 button {
   cursor: pointer;
-}
-
-.customContainer {
-  @apply max-w-5xl w-full;
 }
 
 .section {
