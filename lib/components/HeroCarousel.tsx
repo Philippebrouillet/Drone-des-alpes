@@ -126,10 +126,15 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
       </div>
 
       {/* Badge décoratif en bas */}
-      <div className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-        <p className="text-white font-medium text-sm">
-          Expertise professionnelle
-        </p>
+      <div className="absolute bottom-8 left-0 flex justify-center items-center w-full">
+        <div className="customContainer flex justify-end items-center">
+          <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+            {" "}
+            <p className="text-white font-medium text-sm">
+              Expertise professionnelle
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
