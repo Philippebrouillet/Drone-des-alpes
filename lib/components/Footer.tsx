@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Colonne 1: Logo et description */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <div className="">
+              <div className="bg-red-200 relative ">
                 {" "}
                 <Logo />
               </div>

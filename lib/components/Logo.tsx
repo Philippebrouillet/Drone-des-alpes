@@ -10,7 +10,7 @@ export default function Logo({
   crop?: boolean;
 }) {
   return (
-    <Link href="/" className="relative ">
+    <Link href="/" className="relative bg-red-200">
       <Image
         src={crop ? "/logoCrop2.png" : "/logo.jpg"}
         alt={APP_NAME}
