@@ -1,6 +1,21 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, MapPin, Phone, Mail } from "lucide-react";
+import {
+  ArrowLeft,
+  MapPin,
+  Phone,
+  Mail,
+  Home,
+  Building2,
+  Sun,
+  Droplets,
+  Zap,
+  Target,
+  Ban,
+  Leaf,
+  Euro,
+  CheckCircle,
+} from "lucide-react";
 import Image from "next/image";
 import {
   cityCoordinates,
@@ -8,7 +23,7 @@ import {
   formatCityUrl,
 } from "@/lib/services/interventionZone";
 import { notFound } from "next/navigation";
-import { prodUrl } from "@/lib/constant";
+import { APP_NAME, prodUrl } from "@/lib/constant";
 
 // Fonction inverse pour retrouver le nom original
 function getCityFromUrl(url: string): string | null {
@@ -104,7 +119,7 @@ export default async function CityPage({
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
-              <MapPin className="w-10 h-10 text-blue-400" />
+              <MapPin className="w-10 h-10 text-primary-200" />
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
                 Nettoyage par Drone à {cityName}
               </h1>
@@ -117,13 +132,13 @@ export default async function CityPage({
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/#contact"
-                className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-400 transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 Devis gratuit
               </Link>
               <a
                 href="tel:+33XXXXXXXXX"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
               >
                 <Phone className="w-5 h-5" />
                 Appelez-nous
@@ -136,11 +151,11 @@ export default async function CityPage({
       {/* Services disponibles */}
       <section className="py-16 md:py-20 bg-gray-50 flex justify-center">
         <div className="customContainer ">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
             Nos Services à {cityName}
           </h2>
           <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-            Drone des Alpes intervient à {cityName} et dans tout le département{" "}
+            {APP_NAME} intervient à {cityName} et dans tout le département{" "}
             {dept?.name} pour tous vos besoins de nettoyage par drone.
           </p>
 
@@ -149,33 +164,38 @@ export default async function CityPage({
               {
                 title: "Nettoyage de Toiture",
                 description: `Démoussage et nettoyage professionnel de toiture à ${cityName}`,
-                icon: "🏠",
+                icon: Home,
               },
               {
                 title: "Nettoyage de Façade",
                 description: `Ravalement de façade par drone à ${cityName}`,
-                icon: "🏢",
+                icon: Building2,
               },
               {
                 title: "Panneaux Solaires",
                 description: `Optimisation du rendement de vos panneaux à ${cityName}`,
-                icon: "☀️",
+                icon: Sun,
               },
               {
                 title: "Nettoyage Gouttières",
                 description: `Débouchage et nettoyage de gouttières à ${cityName}`,
-                icon: "💧",
+                icon: Droplets,
               },
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-200"
-              >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            ))}
+            ].map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-200"
+                >
+                  <div className="mb-4">
+                    <IconComponent className="w-12 h-12 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -183,8 +203,8 @@ export default async function CityPage({
       {/* Pourquoi nous choisir à [Ville] */}
       <section className="py-16 md:py-20 flex justify-center">
         <div className="customContainer ">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Pourquoi Choisir Drone des Alpes à {cityName} ?
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
+            Pourquoi Choisir {APP_NAME} à {cityName} ?
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -192,43 +212,48 @@ export default async function CityPage({
               {
                 title: "Intervention Rapide",
                 description: `Nous intervenons rapidement à ${cityName} et ses environs. Devis sous 24h, intervention sous 72h.`,
-                icon: "⚡",
+                icon: Zap,
               },
               {
                 title: "Expertise Locale",
                 description: `Nous connaissons parfaitement ${cityName} et le climat du ${dept?.name}. Nos méthodes sont adaptées.`,
-                icon: "🎯",
+                icon: Target,
               },
               {
                 title: "Sans Échafaudage",
                 description: `Pas besoin d'échafaudage à ${cityName}. Solution économique et rapide par drone.`,
-                icon: "🚫",
+                icon: Ban,
               },
               {
                 title: "Écologique",
                 description: `Produits biodégradables et respectueux de l'environnement de ${cityName}.`,
-                icon: "🌱",
+                icon: Leaf,
               },
               {
                 title: "Prix Compétitifs",
                 description: `Tarifs transparents et compétitifs pour ${cityName}. 30-50% moins cher que les méthodes traditionnelles.`,
-                icon: "💰",
+                icon: Euro,
               },
               {
                 title: "Résultats Garantis",
                 description: `Satisfaction garantie pour tous nos clients de ${cityName} et alentours.`,
-                icon: "✅",
+                icon: CheckCircle,
               },
-            ].map((advantage, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg hover:bg-blue-50 transition-colors duration-200"
-              >
-                <div className="text-4xl mb-4">{advantage.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{advantage.title}</h3>
-                <p className="text-gray-600">{advantage.description}</p>
-              </div>
-            ))}
+            ].map((advantage, index) => {
+              const IconComponent = advantage.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-50 p-6 rounded-lg hover:bg-primary-50 transition-colors duration-200"
+                >
+                  <div className="mb-4">
+                    <IconComponent className="w-12 h-12 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{advantage.title}</h3>
+                  <p className="text-gray-600">{advantage.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -237,7 +262,7 @@ export default async function CityPage({
       {nearbyCities.length > 0 && (
         <section className="py-16 md:py-20 bg-gray-50 flex justify-center">
           <div className="customContainer">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
               Nous intervenons aussi près de {cityName}
             </h2>
             <p className="text-lg text-gray-600 text-center mb-12">
@@ -249,9 +274,9 @@ export default async function CityPage({
                 <Link
                   key={city}
                   href={`/villes/${formatCityUrl(city)}`}
-                  className="bg-white p-4 rounded-lg text-center hover:bg-blue-50 hover:shadow-md transition-all duration-200"
+                  className="bg-white p-4 rounded-lg text-center hover:bg-primary-50 hover:shadow-md transition-all duration-200"
                 >
-                  <MapPin className="w-6 h-6 mx-auto mb-2 text-blue-600" />
+                  <MapPin className="w-6 h-6 mx-auto mb-2 text-primary" />
                   <span className="font-semibold text-gray-800">{city}</span>
                 </Link>
               ))}
@@ -260,7 +285,7 @@ export default async function CityPage({
             <div className="text-center mt-8">
               <Link
                 href="/#intervention-zone"
-                className="text-blue-600 font-semibold hover:underline"
+                className="text-primary font-semibold hover:underline"
               >
                 Voir toutes nos zones d'intervention →
               </Link>
@@ -270,12 +295,12 @@ export default async function CityPage({
       )}
 
       {/* CTA Final */}
-      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500 flex justify-center">
+      <section className="py-16 md:py-20 bg-linear-to-br from-primary to-primary-400 flex justify-center">
         <div className="customContainer  text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Besoin d'un Nettoyage par Drone à {cityName} ?
           </h2>
-          <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-50 mb-8 max-w-2xl mx-auto">
             Contactez-nous dès maintenant pour un devis gratuit et personnalisé.
             Intervention rapide à {cityName} et dans tout le {dept?.name}.
           </p>
@@ -283,7 +308,7 @@ export default async function CityPage({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/#contact"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               <Mail className="w-5 h-5" />
               Demander un devis

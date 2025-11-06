@@ -61,7 +61,7 @@ const Navbar: NextPage<Props> = ({}) => {
       <header
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white shadow-lg text-gray-900"
+            ? "bg-white shadow-lg text-title"
             : "bg-transparent text-white"
         }`}
       >
@@ -76,7 +76,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 <li
                   className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
                     pathname === "/"
-                      ? "border-b-2 border-current"
+                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
                   }`}
                 >
@@ -88,7 +88,7 @@ const Navbar: NextPage<Props> = ({}) => {
                   <button
                     className={`flex gap-2 items-center px-5 py-2 uppercase font-semibold text-sm transition-all duration-150 hover:opacity-80 ${
                       pathname.includes("nettoyage")
-                        ? "border-b-2 border-current"
+                        ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                         : "border-b-0 border-transparent"
                     }`}
                     onMouseEnter={() => setIsOpenPrestations(true)}
@@ -99,7 +99,7 @@ const Navbar: NextPage<Props> = ({}) => {
 
                   {isOpenPrestations && (
                     <ul
-                      className="absolute left-0 bg-white shadow-lg border border-gray-200   overflow-hidden min-w-[280px] text-sm normal-case font-normal text-gray-900"
+                      className="absolute left-0 bg-white shadow-lg border border-gray-200   overflow-hidden min-w-[280px] text-sm normal-case font-normal text-title"
                       onMouseEnter={() => setIsOpenPrestations(true)}
                       onMouseLeave={() => setIsOpenPrestations(false)}
                     >
@@ -107,9 +107,9 @@ const Navbar: NextPage<Props> = ({}) => {
                         <li key={i}>
                           <Link
                             href={prestation.href}
-                            className={`block px-5 py-3.5 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap ${
+                            className={`block px-5 py-3.5 hover:bg-primary/4  font-medium hover:text-primary transition-colors whitespace-nowrap ${
                               pathname.includes(prestation.href)
-                                ? "bg-blue-50 text-blue-600 font-medium"
+                                ? "bg-primary/4 text-primary font-semibold"
                                 : ""
                             }`}
                           >
@@ -123,8 +123,18 @@ const Navbar: NextPage<Props> = ({}) => {
 
                 <li
                   className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
+                    pathname === "/offres"
+                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
+                      : "border-b-0 border-transparent"
+                  }`}
+                >
+                  <Link href="/#offres">Nos offres</Link>
+                </li>
+
+                <li
+                  className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
                     pathname === "/contact"
-                      ? "border-b-2 border-current"
+                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
                   }`}
                 >
@@ -173,8 +183,8 @@ const Navbar: NextPage<Props> = ({}) => {
         >
           <div className="flex flex-col h-full overflow-y-auto">
             {/* Header du menu mobile */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h2 className="text-xl font-bold text-gray-900">Menu</h2>
+            <div className="flex justify-between items-center p-6 py-0 border-b border-gray-200">
+              <Logo></Logo>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -191,7 +201,7 @@ const Navbar: NextPage<Props> = ({}) => {
                   href="/"
                   className={`block px-5 py-3 rounded-lg font-semibold transition-colors ${
                     pathname === "/"
-                      ? "bg-blue-50 text-blue-600"
+                      ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -207,7 +217,7 @@ const Navbar: NextPage<Props> = ({}) => {
                   }
                   className={`w-full flex justify-between items-center px-5 py-3 rounded-lg font-semibold transition-colors ${
                     pathname.includes("nettoyage")
-                      ? "bg-blue-50 text-blue-600"
+                      ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -235,7 +245,7 @@ const Navbar: NextPage<Props> = ({}) => {
                           href={prestation.href}
                           className={`block px-5 py-2.5 rounded-lg text-sm transition-colors ${
                             pathname.includes(prestation.href)
-                              ? "bg-blue-100 text-blue-700 font-medium"
+                              ? "bg-primary/5 text-primary font-medium"
                               : "text-gray-600 hover:bg-gray-50"
                           }`}
                         >
@@ -246,13 +256,27 @@ const Navbar: NextPage<Props> = ({}) => {
                   </ul>
                 </div>
               </li>
+              <li>
+                <Link
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  href="/#offres"
+                  className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-colors ${
+                    pathname === "/offres"
+                      ? "bg-primary/5 text-primary"
+                      : "text-gray-700 hover:bg-gray-100"
+                  }`}
+                >
+                  <span>Offres</span>
+                </Link>
+              </li>
 
               <li>
                 <Link
+                  onClick={() => setIsMobileMenuOpen(false)}
                   href="/#contact"
                   className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-colors ${
                     pathname === "/contact"
-                      ? "bg-blue-50 text-blue-600"
+                      ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -266,7 +290,8 @@ const Navbar: NextPage<Props> = ({}) => {
             <div className="mt-auto p-6 border-t border-gray-200 bg-gray-50">
               <Link
                 href="/#contact"
-                className="block w-full text-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition-colors shadow-lg"
               >
                 Demander un devis gratuit
               </Link>

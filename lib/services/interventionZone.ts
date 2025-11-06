@@ -70,8 +70,8 @@ export const departments = [
   {
     code: "74",
     name: "HAUTE-SAVOIE",
-    color: "bg-blue-600",
-    hoverColor: "hover:bg-blue-700",
+    color: "bg-primary",
+    hoverColor: "hover:bg-primary-50",
     cities: [
       "Abondance",
       "Allinges",
@@ -116,8 +116,8 @@ export const departments = [
   {
     code: "73",
     name: "SAVOIE",
-    color: "bg-blue-500",
-    hoverColor: "hover:bg-blue-600",
+    color: "bg-primary-400",
+    hoverColor: "hover:bg-primary-50",
     cities: [
       "Aix-les-Bains",
       "Albertville",
@@ -147,8 +147,8 @@ export const departments = [
   {
     code: "01",
     name: "AIN",
-    color: "bg-blue-400",
-    hoverColor: "hover:bg-blue-500",
+    color: "bg-primary-300",
+    hoverColor: "hover:bg-primary-50",
     cities: [
       "Ambérieu-en-Bugey",
       "Bellegarde-sur-Valserine",
@@ -171,8 +171,8 @@ export const departments = [
   {
     code: "38",
     name: "ISÈRE",
-    color: "bg-blue-500",
-    hoverColor: "hover:bg-blue-600",
+    color: "bg-primary-400",
+    hoverColor: "hover:bg-primary-50",
     cities: [
       "Allevard",
       "Bourgoin-Jallieu",
@@ -199,8 +199,8 @@ export const departments = [
   {
     code: "39",
     name: "JURA",
-    color: "bg-blue-400",
-    hoverColor: "hover:bg-blue-500",
+    color: "bg-primary-300",
+    hoverColor: "hover:bg-primary-50",
     cities: [
       "Arbois",
       "Champagnole",

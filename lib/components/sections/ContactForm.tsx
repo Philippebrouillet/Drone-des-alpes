@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Services } from "@/lib/constant";
+import { APP_NAME, Services } from "@/lib/constant";
 import { User, Building2, MapPin, Phone, Mail, Briefcase } from "lucide-react";
 
 type ClientType = "particulier" | "pro";
@@ -20,7 +20,7 @@ export default function ContactForm() {
           <div className="customContainer">
             {/* En-tête */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
                 Demander un devis gratuit
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -39,7 +39,7 @@ export default function ContactForm() {
                     onClick={() => setClientType("particulier")}
                     className={`flex-1 py-4 px-6 font-semibold transition-colors duration-200 ${
                       clientType === "particulier"
-                        ? "bg-blue-600 text-white"
+                        ? "bg-primary text-white"
                         : "bg-gray-50 text-gray-600 hover:bg-gray-100"
                     }`}
                   >
@@ -53,7 +53,7 @@ export default function ContactForm() {
                     onClick={() => setClientType("pro")}
                     className={`flex-1 py-4 px-6 font-semibold transition-colors duration-200 ${
                       clientType === "pro"
-                        ? "bg-blue-600 text-white"
+                        ? "bg-primary text-white"
                         : "bg-gray-50 text-gray-600 hover:bg-gray-100"
                     }`}
                   >
@@ -76,14 +76,14 @@ export default function ContactForm() {
                             htmlFor="nom"
                             className="block text-sm font-semibold text-gray-700 mb-2"
                           >
-                            Nom <span className="text-red-500">*</span>
+                            Nom <span className="text-secondary">*</span>
                           </label>
                           <input
                             type="text"
                             id="nom"
                             name="nom"
                             required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                             placeholder="Votre nom"
                           />
                         </div>
@@ -94,14 +94,14 @@ export default function ContactForm() {
                             htmlFor="prenom"
                             className="block text-sm font-semibold text-gray-700 mb-2"
                           >
-                            Prénom <span className="text-red-500">*</span>
+                            Prénom <span className="text-secondary">*</span>
                           </label>
                           <input
                             type="text"
                             id="prenom"
                             name="prenom"
                             required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                             placeholder="Votre prénom"
                           />
                         </div>
@@ -118,7 +118,7 @@ export default function ContactForm() {
                             className="block text-sm font-semibold text-gray-700 mb-2"
                           >
                             Nom de société{" "}
-                            <span className="text-red-500">*</span>
+                            <span className="text-secondary">*</span>
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -129,7 +129,7 @@ export default function ContactForm() {
                               id="societe"
                               name="societe"
                               required
-                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                               placeholder="Nom de votre société"
                             />
                           </div>
@@ -141,7 +141,7 @@ export default function ContactForm() {
                             htmlFor="contact"
                             className="block text-sm font-semibold text-gray-700 mb-2"
                           >
-                            Contact <span className="text-red-500">*</span>
+                            Contact <span className="text-secondary">*</span>
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -152,7 +152,7 @@ export default function ContactForm() {
                               id="contact"
                               name="contact"
                               required
-                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                               placeholder="Nom du contact"
                             />
                           </div>
@@ -166,7 +166,8 @@ export default function ContactForm() {
                         htmlFor="adresse"
                         className="block text-sm font-semibold text-gray-700 mb-2"
                       >
-                        Adresse postale <span className="text-red-500">*</span>
+                        Adresse postale{" "}
+                        <span className="text-secondary">*</span>
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -177,7 +178,7 @@ export default function ContactForm() {
                           id="adresse"
                           name="adresse"
                           required
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                           placeholder="Adresse complète"
                         />
                       </div>
@@ -190,7 +191,7 @@ export default function ContactForm() {
                         className="block text-sm font-semibold text-gray-700 mb-2"
                       >
                         Prestation souhaitée{" "}
-                        <span className="text-red-500">*</span>
+                        <span className="text-secondary">*</span>
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -200,7 +201,7 @@ export default function ContactForm() {
                           id="prestation"
                           name="prestation"
                           required
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none bg-white"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 appearance-none bg-white"
                         >
                           <option value="">Sélectionnez une prestation</option>
                           {services.map((service) => (
@@ -233,7 +234,7 @@ export default function ContactForm() {
                         htmlFor="telephone"
                         className="block text-sm font-semibold text-gray-700 mb-2"
                       >
-                        Téléphone <span className="text-red-500">*</span>
+                        Téléphone <span className="text-secondary">*</span>
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -244,7 +245,7 @@ export default function ContactForm() {
                           id="telephone"
                           name="telephone"
                           required
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                           placeholder="06 12 34 56 78"
                         />
                       </div>
@@ -256,7 +257,7 @@ export default function ContactForm() {
                         htmlFor="email"
                         className="block text-sm font-semibold text-gray-700 mb-2"
                       >
-                        Email <span className="text-red-500">*</span>
+                        Email <span className="text-secondary">*</span>
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -267,7 +268,7 @@ export default function ContactForm() {
                           id="email"
                           name="email"
                           required
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                           placeholder="votre@email.fr"
                         />
                       </div>
@@ -285,7 +286,7 @@ export default function ContactForm() {
                         id="message"
                         name="message"
                         rows={4}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
                         placeholder="Décrivez votre projet ou posez vos questions..."
                       ></textarea>
                     </div>
@@ -294,13 +295,13 @@ export default function ContactForm() {
                     <div className="pt-4">
                       <button
                         type="submit"
-                        className="w-full px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-sm hover:shadow-md"
+                        className="w-full px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/80 transition-colors duration-300 shadow-sm hover:shadow-md"
                       >
                         Envoyer ma demande
                       </button>
                       <p className="text-xs text-gray-500 text-center mt-4">
                         En soumettant ce formulaire, vous acceptez d&apos;être
-                        contacté par Drone des Alpes concernant votre demande.
+                        contacté par {APP_NAME} concernant votre demande.
                       </p>
                     </div>
                   </div>

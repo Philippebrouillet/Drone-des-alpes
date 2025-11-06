@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Building2, User, Scale, Shield } from "lucide-react";
+import { APP_NAME } from "@/lib/constant";
 
 export const metadata: Metadata = {
   title: "Mentions Légales | Drone des Alpes",
@@ -13,7 +14,7 @@ export default function MentionsLegales() {
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-linear-to-br from-blue-600 to-blue-500 text-white py-20 pt-35">
+      <section className="bg-primary text-white py-20 pt-35">
         <div className="customContainer mx-auto px-6">
           <Link
             href="/"
@@ -38,8 +39,8 @@ export default function MentionsLegales() {
             {/* 1. Éditeur du site */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <Building2 className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <Building2 className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -49,7 +50,7 @@ export default function MentionsLegales() {
               </div>
               <div className="space-y-3 text-gray-700">
                 <p>
-                  <strong>Raison sociale :</strong> Drone des Alpes
+                  <strong>Raison sociale :</strong> {APP_NAME}
                 </p>
                 <p>
                   <strong>Forme juridique :</strong> [À compléter - ex: SARL,
@@ -78,7 +79,7 @@ export default function MentionsLegales() {
                   <strong>Téléphone :</strong>{" "}
                   <a
                     href="tel:+33123456789"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     +33 1 23 45 67 89
                   </a>
@@ -87,7 +88,7 @@ export default function MentionsLegales() {
                   <strong>Email :</strong>{" "}
                   <a
                     href="mailto:contact@dronedesalpes.fr"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     contact@dronedesalpes.fr
                   </a>
@@ -98,8 +99,8 @@ export default function MentionsLegales() {
             {/* 2. Directeur de publication */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <User className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <User className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -119,7 +120,7 @@ export default function MentionsLegales() {
                   <strong>Contact :</strong>{" "}
                   <a
                     href="mailto:contact@dronedesalpes.fr"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     contact@dronedesalpes.fr
                   </a>
@@ -130,8 +131,8 @@ export default function MentionsLegales() {
             {/* 3. Hébergement */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <Shield className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <Shield className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -154,7 +155,7 @@ export default function MentionsLegales() {
                     href="https://vercel.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     [À compléter - URL de l'hébergeur]
                   </a>
@@ -165,8 +166,8 @@ export default function MentionsLegales() {
             {/* 4. Propriété intellectuelle */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <Scale className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <Scale className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -191,7 +192,7 @@ export default function MentionsLegales() {
                   Les marques et logos figurant sur le site sont des marques
                   déposées. Toute reproduction totale ou partielle de ces
                   marques ou de ces logos effectuée à partir des éléments du
-                  site sans l'autorisation expresse de Drone des Alpes est donc
+                  site sans l'autorisation expresse de {APP_NAME} est donc
                   prohibée.
                 </p>
               </div>
@@ -212,17 +213,17 @@ export default function MentionsLegales() {
                 </p>
                 <p>
                   Les informations recueillies sur ce site sont enregistrées
-                  dans un fichier informatisé par Drone des Alpes pour la
-                  gestion des demandes de devis et de contact. Elles sont
-                  conservées pendant [durée à définir] et sont destinées
-                  uniquement à l'usage interne de l'entreprise.
+                  dans un fichier informatisé par {APP_NAME} pour la gestion des
+                  demandes de devis et de contact. Elles sont conservées pendant
+                  [durée à définir] et sont destinées uniquement à l'usage
+                  interne de l'entreprise.
                 </p>
                 <p>
                   Pour exercer vos droits, vous pouvez nous contacter à
                   l'adresse suivante :{" "}
                   <a
                     href="mailto:contact@dronedesalpes.fr"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     contact@dronedesalpes.fr
                   </a>
@@ -231,7 +232,7 @@ export default function MentionsLegales() {
                   Pour plus d'informations, consultez notre{" "}
                   <Link
                     href="/politique-de-confidentialite"
-                    className="text-blue-600 hover:underline font-medium"
+                    className="text-primary hover:underline font-medium"
                   >
                     Politique de confidentialité
                   </Link>
@@ -274,7 +275,7 @@ export default function MentionsLegales() {
                   lacunes.
                 </p>
                 <p>
-                  Drone des Alpes ne pourra être tenu responsable des dommages
+                  {APP_NAME} ne pourra être tenu responsable des dommages
                   directs et indirects causés au matériel de l'utilisateur, lors
                   de l'accès au site, et résultant soit de l'utilisation d'un
                   matériel ne répondant pas aux spécifications techniques
@@ -284,7 +285,7 @@ export default function MentionsLegales() {
                 <p>
                   Les liens hypertextes mis en place dans le cadre du présent
                   site en direction d'autres ressources présentes sur Internet
-                  ne sauraient engager la responsabilité de Drone des Alpes.
+                  ne sauraient engager la responsabilité de {APP_NAME}.
                 </p>
               </div>
             </div>
@@ -315,7 +316,7 @@ export default function MentionsLegales() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-primary-50">
         <div className="customContainer mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Une question sur nos services ?
@@ -327,13 +328,13 @@ export default function MentionsLegales() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/#contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-400 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Nous contacter
             </Link>
             <Link
               href="/"
-              className="inline-block bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors duration-200"
+              className="inline-block bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-50 transition-colors duration-200"
             >
               Retour à l'accueil
             </Link>

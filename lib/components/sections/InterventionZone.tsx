@@ -10,6 +10,15 @@ import {
 } from "@/lib/services/interventionZone";
 import Link from "next/link";
 
+const colors = {
+  primary100: "#ced5e1",
+  primary200: "#9eaac3",
+  primary300: "#6d80a6",
+  primary400: "#3d5588",
+  primary500: "#0c2b6a",
+  primary600: "#0a2255",
+};
+
 // Composant de carte Google Maps
 const GoogleMapComponent = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -40,11 +49,11 @@ const GoogleMapComponent = () => {
 
     // Couleurs par département
     const deptColors: Record<string, string> = {
-      "74": "#2563eb", // bleu foncé
-      "73": "#3b82f6", // bleu moyen
-      "01": "#60a5fa", // bleu clair
-      "38": "#3b82f6", // bleu moyen
-      "39": "#60a5fa", // bleu clair
+      "74": colors.primary500, // bleu foncé
+      "73": colors.primary400, // bleu moyen
+      "01": colors.primary300, // bleu clair
+      "38": colors.primary400, // bleu moyen
+      "39": colors.primary300, // bleu clair
     };
 
     // Ajouter les marqueurs pour chaque ville
@@ -109,7 +118,7 @@ const GoogleMapComponent = () => {
         {!mapLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
               <p className="text-gray-600">Chargement de la carte...</p>
             </div>
           </div>
@@ -117,21 +126,21 @@ const GoogleMapComponent = () => {
 
         {/* Légende */}
         <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs">
-          <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2 text-sm">
-            <MapPin className="w-4 h-4 text-blue-600" />
+          <h4 className="font-bold text-primary mb-3 flex items-center gap-2 text-sm">
+            <MapPin className="w-4 h-4 text-primary" />
             Légende
           </h4>
           <ul className="text-xs text-gray-700 space-y-2">
             <li className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-blue-600 rounded-full border-2 border-white"></span>
+              <span className="w-3 h-3 bg-primary rounded-full border-2 border-white"></span>
               <span>Haute-Savoie (74)</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white"></span>
+              <span className="w-3 h-3 bg-primary-400 rounded-full border-2 border-white"></span>
               <span>Savoie (73) & Isère (38)</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-blue-400 rounded-full border-2 border-white"></span>
+              <span className="w-3 h-3 bg-primary-300 rounded-full border-2 border-white"></span>
               <span>Ain (01) & Jura (39)</span>
             </li>
           </ul>
@@ -157,18 +166,18 @@ export default function InterventionZone() {
         <div className="customContainer">
           {/* En-tête */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
               Zone d&apos;intervention
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-6">
               Nous intervenons en{" "}
-              <span className="font-semibold">
+              <span className="font-semibold text-primary">
                 Haute-Savoie, Ain, Jura, Isère et Savoie
               </span>{" "}
               pour le nettoyage par drone de : toiture, façade, terrasse,
               gouttières et panneaux solaires. Grâce à notre technologie, nous
               réalisons des interventions{" "}
-              <span className="font-semibold">
+              <span className="font-semibold text-primary">
                 rapides, sécurisées et écologiques
               </span>
               , sans échafaudage ni risque pour vos surfaces.
@@ -202,7 +211,7 @@ export default function InterventionZone() {
                       {dept.code}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 text-left">
+                      <h3 className="text-xl font-bold text-primary text-left">
                         {dept.name}
                       </h3>
                       <p className="text-sm text-gray-500">
@@ -231,9 +240,9 @@ export default function InterventionZone() {
                           <Link
                             key={city}
                             href={`/villes/${formatCityUrl(city)}`}
-                            className="flex items-center gap-2 text-gray-700 hover:text-blue-600 text-sm transition-colors duration-200 hover:underline"
+                            className="flex items-center gap-2 text-gray-700 hover:text-primary text-sm transition-colors duration-200 hover:underline"
                           >
-                            <MapPin className="w-3 h-3 text-blue-600 shrink-0" />
+                            <MapPin className="w-3 h-3 text-primary shrink-0" />
                             <span>{city}</span>
                           </Link>
                         ) : (
@@ -241,7 +250,7 @@ export default function InterventionZone() {
                             key={city}
                             className="flex items-center gap-2 text-gray-700 text-sm"
                           >
-                            <MapPin className="w-3 h-3 text-blue-600 shrink-0" />
+                            <MapPin className="w-3 h-3 text-primary shrink-0" />
                             <span>{city}</span>
                           </div>
                         );

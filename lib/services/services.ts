@@ -1,4 +1,4 @@
-import { Services } from "../constant";
+import { APP_NAME, Services } from "../constant";
 
 export const formatHrefService = (service: Services) => {
   return `/prestation/${service
@@ -31,8 +31,7 @@ export const prestationsData: Record<string, PrestationData> = {
   "nettoyage-de-toiture": {
     title: "Nettoyage de toiture par drone",
     subtitle: "Rapide, économique et écologique",
-    description:
-      "Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Avec Drone des Alpes, profitez d'un nettoyage par drone plus rapide, moins coûteux et respectueux de l'environnement, aussi bien pour les particuliers que pour les professionnels.",
+    description: `Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Avec ${APP_NAME}, profitez d'un nettoyage par drone plus rapide, moins coûteux et respectueux de l'environnement, aussi bien pour les particuliers que pour les professionnels.`,
     image: "/Nettoyage toiture.jpg",
     sections: [
       {
@@ -68,8 +67,7 @@ export const prestationsData: Record<string, PrestationData> = {
   "nettoyage-de-facade": {
     title: "Nettoyage de façade par drone",
     subtitle: "Protégez et sublimez votre maison par la voie des airs",
-    description:
-      "Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs et fragilisent vos revêtements. Grâce à la technologie drone, Drone des Alpes propose un nettoyage de façade rapide, précis et sans échafaudage, pour redonner à votre maison tout son éclat tout en la protégeant durablement.",
+    description: `Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs et fragilisent vos revêtements. Grâce à la technologie drone, ${APP_NAME} propose un nettoyage de façade rapide, précis et sans échafaudage, pour redonner à votre maison tout son éclat tout en la protégeant durablement.`,
     image: "/Nettoyage facade.jpg",
     sections: [
       {
@@ -103,8 +101,7 @@ export const prestationsData: Record<string, PrestationData> = {
   "nettoyage-de-panneaux-solaires": {
     title: "Nettoyage de panneaux solaires par drone",
     subtitle: "Optimisez le rendement de votre installation",
-    description:
-      "Vos panneaux solaires sont un investissement important et leur performance dépend directement de leur propreté. La poussière, les feuilles, la pollution ou les dépôts de pollen peuvent réduire leur rendement jusqu'à 20 %. Drone des Alpes propose un nettoyage par drone rapide, précis et sécurisé, même sur des installations difficiles d'accès ou en hauteur.",
+    description: `Vos panneaux solaires sont un investissement important et leur performance dépend directement de leur propreté. La poussière, les feuilles, la pollution ou les dépôts de pollen peuvent réduire leur rendement jusqu'à 20 %. ${APP_NAME} propose un nettoyage par drone rapide, précis et sécurisé, même sur des installations difficiles d'accès ou en hauteur.`,
     image: "/Nettoyage panneaux solaire.jpg",
     sections: [
       {
@@ -130,13 +127,11 @@ export const prestationsData: Record<string, PrestationData> = {
     sections: [
       {
         title: "Notre méthode professionnelle",
-        content:
-          "Drone des Alpes intervient avec un aspirateur à gouttière professionnel, vous évitant ainsi de monter sur votre toit et de prendre des risques inutiles. Cette méthode est rapide, sûre et efficace, adaptée à tous les types de gouttières, qu'elles soient hautes ou difficiles d'accès.",
+        content: `${APP_NAME} intervient avec un aspirateur à gouttière professionnel, vous évitant ainsi de monter sur votre toit et de prendre des risques inutiles. Cette méthode est rapide, sûre et efficace, adaptée à tous les types de gouttières, qu'elles soient hautes ou difficiles d'accès.`,
       },
       {
         title: "Protection durable",
-        content:
-          "Entretenir vos gouttières régulièrement permet de protéger votre toiture et vos façades, et d'éviter des réparations coûteuses. Faites confiance à Drone des Alpes pour un service fiable et efficace, sans effort de votre part.",
+        content: `Entretenir vos gouttières régulièrement permet de protéger votre toiture et vos façades, et d'éviter des réparations coûteuses. Faites confiance à ${APP_NAME} pour un service fiable et efficace, sans effort de votre part.`,
       },
     ],
     advantages: [
@@ -150,8 +145,7 @@ export const prestationsData: Record<string, PrestationData> = {
   "nettoyage-batiments": {
     title: "Nettoyage de bâtiments par drone",
     subtitle: "Solution professionnelle pour tous types de structures",
-    description:
-      "Chez Drone des Alpes, nous assurons le nettoyage professionnel de tous types de bâtiments : toitures, façades, bardages, terrasses et panneaux solaires, mais aussi sites complexes, monuments historiques, ponts ou statues. Notre technologie par drone permet d'accéder à toutes les surfaces, même les plus difficiles d'accès, rapidement et en toute sécurité.",
+    description: `Chez ${APP_NAME}, nous assurons le nettoyage professionnel de tous types de bâtiments : toitures, façades, bardages, terrasses et panneaux solaires, mais aussi sites complexes, monuments historiques, ponts ou statues. Notre technologie par drone permet d'accéder à toutes les surfaces, même les plus difficiles d'accès, rapidement et en toute sécurité.`,
     image: "/Nettoyage facade.jpg",
     sections: [
       {
@@ -161,8 +155,7 @@ export const prestationsData: Record<string, PrestationData> = {
       },
       {
         title: "Intervention professionnelle",
-        content:
-          "Pour un nettoyage sûr, rapide et performant de tous vos bâtiments, classiques ou exceptionnels, demandez dès maintenant votre devis gratuit avec Drone des Alpes.",
+        content: `Pour un nettoyage sûr, rapide et performant de tous vos bâtiments, classiques ou exceptionnels, demandez dès maintenant votre devis gratuit avec ${APP_NAME}.`,
       },
     ],
     advantages: [

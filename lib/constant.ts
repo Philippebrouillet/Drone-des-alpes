@@ -1,4 +1,4 @@
-export const APP_NAME = "DRONE DES ALPES";
+export const APP_NAME = "Drone des Alpes";
 
 export enum Services {
   NETTOYAGE_TOITURE = "Nettoyage de Toiture",

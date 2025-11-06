@@ -22,6 +22,11 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isAutoPlayActive, setIsAutoPlayActive] = useState(true);
 
+  // États pour le swipe/slide
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   useEffect(() => {
     if (!isAutoPlayActive) return;
 
@@ -31,7 +36,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
         setIsAnimating(false);
       }, 600);
-    }, 8000); // Change toutes les 8 secondes
+    }, 4000); // Change toutes les 4 secondes
 
     return () => clearInterval(interval);
   }, [slides.length, isAutoPlayActive]);
@@ -47,8 +52,103 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
     }
   };
 
+  // Distance minimale pour considérer un swipe (en pixels)
+  const minSwipeDistance = 50;
+
+  // Gestionnaires d'événements tactiles
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(true);
+    setIsAutoPlayActive(false); // Pause l'auto-play pendant le swipe
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < slides.length - 1) {
+      // Swipe vers la gauche -> slide suivante
+      goToSlide(currentSlide + 1);
+    } else if (isLeftSwipe && currentSlide === slides.length - 1) {
+      // Dernier slide -> retour au premier
+      goToSlide(0);
+    } else if (isRightSwipe && currentSlide > 0) {
+      // Swipe vers la droite -> slide précédente
+      goToSlide(currentSlide - 1);
+    } else if (isRightSwipe && currentSlide === 0) {
+      // Premier slide -> aller au dernier
+      goToSlide(slides.length - 1);
+    }
+
+    setIsDragging(false);
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  // Gestionneurs pour les événements de souris (ordinateur)
+  const onMouseDown = (e: React.MouseEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.clientX);
+    setIsDragging(true);
+    setIsAutoPlayActive(false);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setTouchEnd(e.clientX);
+  };
+
+  const onMouseUp = () => {
+    if (!isDragging || !touchStart || !touchEnd) {
+      setIsDragging(false);
+      return;
+    }
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < slides.length - 1) {
+      goToSlide(currentSlide + 1);
+    } else if (isLeftSwipe && currentSlide === slides.length - 1) {
+      goToSlide(0);
+    } else if (isRightSwipe && currentSlide > 0) {
+      goToSlide(currentSlide - 1);
+    } else if (isRightSwipe && currentSlide === 0) {
+      goToSlide(slides.length - 1);
+    }
+
+    setIsDragging(false);
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section
+      className="relative w-full h-screen overflow-hidden select-none"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseLeave}
+      style={{ cursor: isDragging ? "grabbing" : "grab" }}
+    >
       {/* Images avec transition */}
       {slides.map((slide, index) => (
         <div
@@ -94,7 +194,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
 
             {/* Bouton CTA fixe  */}
             <div className="mb-12">
-              <button className="group relative px-8 py-4 bg-white text-black font-semibold text-lg rounded-full overflow-hidden transition-all duration-300 hover:bg-blue-600 hover:text-white hover:scale-105 hover:shadow-2xl">
+              <button className="group relative px-8 py-4 bg-white text-primary font-semibold text-lg rounded-full overflow-hidden transition-all duration-300 hover:bg-primary-200 hover:text-white hover:scale-105 hover:shadow-2xl">
                 <Link href={slides[currentSlide].href}>
                   <span className="relative z-10 flex items-center gap-2">
                     Consulter
@@ -102,7 +202,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                   </span>
                 </Link>
                 {/* Effet de hover animé */}
-                <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute inset-0 bg-linear-to-r from-primary to-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
             </div>
 

@@ -1,9 +1,9 @@
-import { prodUrl } from "./constant";
+import { APP_NAME, prodUrl } from "./constant";
 
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Drone des Alpes",
+  name: APP_NAME,
   description:
     "Entreprise spécialisée dans le nettoyage par drone : toitures, façades, panneaux solaires et gouttières en Rhône-Alpes.",
   url: prodUrl,
@@ -55,7 +55,7 @@ export const servicesSchema = {
   serviceType: "Nettoyage par drone",
   provider: {
     "@type": "LocalBusiness",
-    name: "Drone des Alpes",
+    name: APP_NAME,
   },
   areaServed: {
     "@type": "State",
