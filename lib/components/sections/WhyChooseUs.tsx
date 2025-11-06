@@ -9,7 +9,7 @@ export default function WhyChooseUs() {
           {/* En-tête */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Pourquoi choisir{" "}
+              Pourquoi choisir
               <span className="text-secondary">{APP_NAME}</span> ?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
