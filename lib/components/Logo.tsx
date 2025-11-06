@@ -16,9 +16,9 @@ export default function Logo({
         alt={APP_NAME}
         width={size}
         height={size}
-        className="rounded-full relative z-100"
+        className="rounded-full relative z-10"
       />
-      <div className="absolute  rounded-full h-21.5 w-21.5 bg-white" />
+      <div className="absolute rounded-full h-21.5 w-21.5 bg-white" />
     </Link>
   );
 }
