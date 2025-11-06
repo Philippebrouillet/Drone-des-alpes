@@ -38,7 +38,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
+      <section className="relative h-[60vh] min-h-[550px] w-full overflow-hidden">
         <Image
           src={prestation.image}
           alt={prestation.title}
@@ -78,7 +78,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
           <div className="max-w-4xl mx-auto space-y-12">
             {prestation.sections.map((section, index) => (
               <div key={index} className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                <h2 className="text-2xl md:text-3xl font-bold text-primary">
                   {section.title}
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -91,7 +91,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
                         key={idx}
                         className="flex items-start gap-3 text-gray-700"
                       >
-                        <CheckCircle2 className="w-6 h-6 text-blue-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                         <span className="text-lg">{item}</span>
                       </li>
                     ))}
@@ -107,17 +107,17 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
       <section className="py-16 md:py-20 bg-gray-50  flex justify-center">
         <div className="customContainer ">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
               Les avantages du nettoyage par drone
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {prestation.advantages.map((advantage, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-lg border border-gray-200 hover:border-blue-400 transition-colors duration-200 shadow-sm hover:shadow-md"
+                  className="bg-white p-6 rounded-lg border border-gray-200 hover:border-secondary transition-colors duration-200 shadow-sm hover:shadow-md"
                 >
                   <div className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-blue-500 shrink-0 mt-1" />
+                    <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
                     <p className="text-lg text-gray-700 font-medium">
                       {advantage}
                     </p>
@@ -130,19 +130,19 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500  flex justify-center">
-        <div className="customContainer  text-center">
+      <section className="py-16 md:py-20 bg-linear-to-br bg-primary flex justify-center">
+        <div className="customContainer text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Prêt à commencer ?
           </h2>
-          <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-50 mb-8 max-w-2xl mx-auto">
             Demandez votre devis gratuit dès maintenant et bénéficiez de notre
             expertise en nettoyage par drone.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/#contact"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Demander un devis gratuit
             </Link>

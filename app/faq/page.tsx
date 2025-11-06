@@ -100,7 +100,7 @@ export default function FAQPage() {
       />
 
       {/* Header */}
-      <section className="bg-linear-to-br from-blue-600 to-blue-500 text-white py-20 pt-35 flex justify-center">
+      <section className=" bg-primary text-white py-20 pt-35 flex justify-center">
         <div className="customContainer ">
           <Link
             href="/"
@@ -115,7 +115,7 @@ export default function FAQPage() {
               Questions Fréquentes (FAQ)
             </h1>
           </div>
-          <p className="text-xl text-blue-50">
+          <p className="text-xl text-primary-50">
             Toutes les réponses sur le nettoyage par drone
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function FAQPage() {
             trouvez pas ce que vous cherchez,{" "}
             <Link
               href="/#contact"
-              className="text-blue-600 font-semibold hover:underline"
+              className="text-primary font-semibold hover:underline"
             >
               contactez-nous directement
             </Link>
@@ -146,7 +146,7 @@ export default function FAQPage() {
             {faqs.map((faq, index) => (
               <details
                 key={index}
-                className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-blue-400 transition-colors duration-200"
+                className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-primary transition-colors duration-200"
               >
                 <summary className="flex items-center justify-between p-6 cursor-pointer select-none">
                   <h3 className="text-lg font-semibold text-gray-900 pr-4">
@@ -164,19 +164,19 @@ export default function FAQPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-linear-to-br from-blue-600 to-blue-500 flex justify-center">
+      <section className="py-16 md:py-20 bg-primary flex justify-center">
         <div className="customContainer text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Vous avez d'autres questions ?
           </h2>
-          <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-50 mb-8 max-w-2xl mx-auto">
             Notre équipe est à votre disposition pour répondre à toutes vos
             interrogations et vous fournir un devis gratuit personnalisé.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/#contact"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Demander un devis gratuit
             </Link>

@@ -9,6 +9,7 @@ import {
   UserCheck,
   AlertTriangle,
 } from "lucide-react";
+import { APP_NAME } from "@/lib/constant";
 
 export const metadata: Metadata = {
   title: "Politique de Confidentialité | Drone des Alpes",
@@ -21,7 +22,7 @@ export default function PolitiqueConfidentialite() {
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-linear-to-br from-blue-600 to-blue-500 text-white py-20 pt-35">
+      <section className="bg-primary text-white py-20 pt-35">
         <div className="customContainer mx-auto ">
           <Link
             href="/"
@@ -33,7 +34,7 @@ export default function PolitiqueConfidentialite() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Politique de Confidentialité
           </h1>
-          <p className="text-xl text-blue-50">
+          <p className="text-xl text-primary-50">
             Protection de vos données personnelles
           </p>
         </div>
@@ -44,16 +45,16 @@ export default function PolitiqueConfidentialite() {
         <div className="customContainer mx-auto ">
           <div className="max-w-4xl mx-auto space-y-12">
             {/* Introduction */}
-            <div className="bg-blue-50 rounded-xl p-8 border border-blue-200">
+            <div className="bg-primary-50 rounded-xl p-8 border border-primary-200">
               <div className="flex items-start gap-4 mb-4">
-                <Shield className="w-8 h-8 text-blue-600 shrink-0 mt-1" />
+                <Shield className="w-8 h-8 text-primary shrink-0 mt-1" />
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
                     Introduction
                   </h2>
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <p>
-                      Chez <strong>Drone des Alpes</strong>, nous accordons une
+                      Chez <strong>{APP_NAME}</strong>, nous accordons une
                       grande importance à la protection de vos données
                       personnelles. Cette politique de confidentialité vous
                       informe sur la manière dont nous collectons, utilisons,
@@ -61,9 +62,9 @@ export default function PolitiqueConfidentialite() {
                       conformément au Règlement Général sur la Protection des
                       Données (RGPD) et à la loi Informatique et Libertés.
                     </p>
-                    <div className="bg-white border-2 border-blue-400 rounded-lg p-4 mt-4">
+                    <div className="bg-white border-2 border-primary-400 rounded-lg p-4 mt-4">
                       <p className="text-gray-800 font-semibold flex items-center gap-2">
-                        <span className="text-blue-600 text-xl">ℹ️</span>
+                        <span className="text-primary text-xl">ℹ️</span>
                         Information importante
                       </p>
                       <p className="text-gray-700 text-sm mt-2 leading-relaxed">
@@ -93,8 +94,8 @@ export default function PolitiqueConfidentialite() {
             {/* 1. Responsable du traitement */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <UserCheck className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <UserCheck className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -104,7 +105,7 @@ export default function PolitiqueConfidentialite() {
               </div>
               <div className="space-y-3 text-gray-700">
                 <p>
-                  <strong>Raison sociale :</strong> Drone des Alpes
+                  <strong>Raison sociale :</strong> {APP_NAME}
                 </p>
                 <p>
                   <strong>Adresse :</strong> [À compléter - Adresse complète]
@@ -113,7 +114,7 @@ export default function PolitiqueConfidentialite() {
                   <strong>Email :</strong>{" "}
                   <a
                     href="mailto:contact@dronedesalpes.fr"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     contact@dronedesalpes.fr
                   </a>
@@ -122,7 +123,7 @@ export default function PolitiqueConfidentialite() {
                   <strong>Téléphone :</strong>{" "}
                   <a
                     href="tel:+33123456789"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     +33 1 23 45 67 89
                   </a>
@@ -133,8 +134,8 @@ export default function PolitiqueConfidentialite() {
             {/* 2. Données collectées */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <Database className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <Database className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -177,8 +178,8 @@ export default function PolitiqueConfidentialite() {
             {/* 3. Finalités du traitement */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <Eye className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <Eye className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -254,7 +255,7 @@ export default function PolitiqueConfidentialite() {
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>Vos données personnelles sont destinées exclusivement à :</p>
                 <ul className="space-y-2 list-disc list-inside">
-                  <li>L'équipe interne de Drone des Alpes</li>
+                  <li>L'équipe interne de {APP_NAME}</li>
                   <li>
                     Nos prestataires techniques (hébergement web, service
                     d'emailing) sous réserve d'engagements stricts de
@@ -311,8 +312,8 @@ export default function PolitiqueConfidentialite() {
             {/* 7. Vos droits */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <Lock className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <Lock className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -355,7 +356,7 @@ export default function PolitiqueConfidentialite() {
                     tout moment
                   </li>
                 </ul>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                <div className="bg-primary-50 border border-primary-200 rounded-lg p-4 mt-6">
                   <p className="font-semibold text-gray-900 mb-2">
                     Pour exercer vos droits :
                   </p>
@@ -363,7 +364,7 @@ export default function PolitiqueConfidentialite() {
                     Envoyez-nous un email à{" "}
                     <a
                       href="mailto:contact@dronedesalpes.fr"
-                      className="text-blue-600 hover:underline font-medium"
+                      className="text-primary hover:underline font-medium"
                     >
                       contact@dronedesalpes.fr
                     </a>{" "}
@@ -382,7 +383,7 @@ export default function PolitiqueConfidentialite() {
                     href="https://www.cnil.fr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     www.cnil.fr
                   </a>
@@ -393,8 +394,8 @@ export default function PolitiqueConfidentialite() {
             {/* 8. Sécurité */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                  <AlertTriangle className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -498,7 +499,7 @@ export default function PolitiqueConfidentialite() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="mailto:contact@dronedesalpes.fr"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-400 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Nous écrire
             </Link>

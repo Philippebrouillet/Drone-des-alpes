@@ -24,7 +24,7 @@ export default function ServicesSection({ services }: ServicesProps) {
           <div className="customContainer">
             {/* Titre de la section */}
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
                 Nos prestations
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -53,8 +53,8 @@ export default function ServicesSection({ services }: ServicesProps) {
                       {/* Overlay avec icône */}
                       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
                       <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-blue-600" />
+                        <div className="p-3  bg-white rounded-full border-2 border-primary flex items-center justify-center">
+                          <Icon size={24} className="text-primary" />
                         </div>
                         <h3 className="text-2xl font-bold text-white">
                           {service.title}
@@ -74,7 +74,7 @@ export default function ServicesSection({ services }: ServicesProps) {
                       {/* Bouton */}
                       <Link
                         href={service.href}
-                        className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all duration-300"
+                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300"
                       >
                         En savoir plus
                         <ArrowRightIcon size={16} />
@@ -84,16 +84,6 @@ export default function ServicesSection({ services }: ServicesProps) {
                 );
               })}
             </div>
-
-            {/* CTA global */}
-            {/* <div className="mt-16 text-center">
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
-            >
-              Demander un devis gratuit
-            </Link>
-          </div> */}
           </div>
         </div>
       </section>
