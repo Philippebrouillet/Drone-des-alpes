@@ -112,6 +112,8 @@ export default function MultiSelect({
             <input
               ref={inputRef}
               type="text"
+              name="searchService"
+              id="searchService"
               value={searchTerm}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
