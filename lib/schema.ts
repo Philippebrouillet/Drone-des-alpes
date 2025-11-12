@@ -45,8 +45,8 @@ export const organizationSchema = {
     // 'https://www.instagram.com/dronedesalpes',
     // 'https://www.linkedin.com/company/dronedesalpes',
   ],
-  image: `${prodUrl}/logo.png`,
-  logo: `${prodUrl}/logo.png`,
+  image: `${prodUrl}/logo.jpg`,
+  logo: `${prodUrl}/logo.jpg`,
 };
 
 export const servicesSchema = {

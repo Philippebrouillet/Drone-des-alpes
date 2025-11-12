@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/lib/components/Navbar";
 import Footer from "@/lib/components/Footer";
@@ -8,15 +8,36 @@ import { organizationSchema, servicesSchema } from "@/lib/schema";
 import { Metadata } from "next";
 import { prodUrl } from "@/lib/constant";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// const geistSans = Geist({
+//   subsets: ["latin"],
+// });
+
+const montserrat = Montserrat({
   subsets: ["latin"],
+  weight: ["500"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["400"],
+// });
+
+// const inter = Inter({
+//   subsets: ["latin"],
+//   display: "swap",
+// });
+
+// const poppins = Poppins({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600"],
+//   display: "swap",
+// });
+
+// const urbanist = Urbanist({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600"],
+// });
 
 // Métadonnées globales optimisées pour le SEO
 export const metadata: Metadata = {
@@ -65,7 +86,7 @@ export const metadata: Metadata = {
       "Expert en nettoyage par drone en Rhône-Alpes. Solution innovante pour toiture, façade et panneaux solaires.",
     images: [
       {
-        url: "/logo.png",
+        url: "/logo.jpg",
         width: 1200,
         height: 630,
         alt: "Drone des Alpes - Nettoyage par drone",
@@ -76,7 +97,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Drone des Alpes - Nettoyage par drone",
     description: "Expert en nettoyage par drone en Rhône-Alpes. Devis gratuit.",
-    images: ["/logo.png"],
+    images: ["/logo.jpg"],
   },
   alternates: {
     canonical: prodUrl,
@@ -94,7 +115,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${montserrat.className}`}>
       <head>
         <meta
           name="google-site-verification"
@@ -132,9 +153,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <Navbar />
         {children}
         <Footer />

@@ -127,8 +127,6 @@ const services = [
       "Nettoyage de toiture par drone : rapide, économique et écologique",
     description:
       "Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Votre toiture protège votre maison des intempéries. Sans entretien, la mousse et les lichens favorisent les infiltrations d'eau et diminuent les performances énergétiques.",
-
-    href: formatHrefService(Services.NETTOYAGE_TOITURE),
   },
   {
     ...mutualServicesData.facadeCleaning,
@@ -136,7 +134,6 @@ const services = [
     shortDescription: "Protégez et sublimez votre maison par la voie des airs",
     description:
       "Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs. Un nettoyage régulier permet de prévenir la dégradation des matériaux et de conserver une isolation optimale tout en valorisant votre bien immobilier.",
-    href: formatHrefService(Services.NETTOYAGE_FACADE),
   },
   {
     ...mutualServicesData.solarPannelCleaning,
@@ -144,7 +141,6 @@ const services = [
     shortDescription: "Optimisez votre rendement énergétique jusqu'à +20%",
     description:
       "Vos panneaux solaires sont un investissement important. La poussière, les feuilles et la pollution peuvent réduire leur rendement jusqu'à 20%. Entretenir régulièrement vos panneaux permet de maximiser votre production d'énergie et d'allonger leur durée de vie.",
-    href: formatHrefService(Services.NETTOYAGE_PANNEAU_SOLAIRE),
   },
   {
     ...mutualServicesData.gutterCleaning,
@@ -152,7 +148,6 @@ const services = [
     shortDescription: "Prévenez les infiltrations et protégez votre façade",
     description:
       "Des gouttières encrassées peuvent provoquer des infiltrations et des problèmes d'humidité. Nous intervenons avec un aspirateur professionnel pour éliminer complètement les débris, mousses et feuilles, sans risque pour vous.",
-    href: formatHrefService(Services.NETTOYAGE_GOUTTIERE),
   },
 ];
 
