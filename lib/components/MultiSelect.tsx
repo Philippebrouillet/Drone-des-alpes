@@ -115,6 +115,7 @@ export default function MultiSelect({
               value={searchTerm}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              autoComplete="off"
               placeholder={
                 value.length === 0
                   ? placeholder
@@ -181,6 +182,7 @@ export default function MultiSelect({
       <input
         type="hidden"
         name="prestations"
+        id="prestations"
         value={value.join(",")}
         required={required && value.length === 0}
       />
