@@ -237,15 +237,12 @@ export default function ContactForm() {
 
                     {/* Prestations souhaitées (commun) */}
                     <div>
-                      <label
-                        htmlFor="prestations"
-                        className="block text-sm font-semibold text-gray-700 mb-2"
-                      >
+                      <div className="block text-sm font-semibold text-gray-700 mb-2">
                         <div className="flex items-center gap-2">
                           Prestations souhaitées{" "}
                           <span className="text-secondary">*</span>
                         </div>
-                      </label>
+                      </div>
                       <MultiSelect
                         options={services}
                         value={selectedPrestations}
