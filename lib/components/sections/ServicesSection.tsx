@@ -47,6 +47,7 @@ export default function ServicesSection({ services }: ServicesProps) {
                       <Image
                         src={service.image}
                         alt={service.title}
+                        sizes="auto"
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />

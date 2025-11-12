@@ -33,16 +33,10 @@ const GoogleMapComponent = () => {
     const map = new google.maps.Map(mapRef.current, {
       center: { lat: 45.7, lng: 6.0 },
       zoom: 8,
+      mapId: "drone-des-alpes-map", // ID requis pour AdvancedMarkerElement
       mapTypeControl: true,
       streetViewControl: false,
       fullscreenControl: true,
-      styles: [
-        {
-          featureType: "poi",
-          elementType: "labels",
-          stylers: [{ visibility: "off" }],
-        },
-      ],
     });
 
     mapInstanceRef.current = map;
@@ -56,21 +50,27 @@ const GoogleMapComponent = () => {
       "39": colors.primary300, // bleu clair
     };
 
-    // Ajouter les marqueurs pour chaque ville
+    // Ajouter les marqueurs pour chaque ville avec AdvancedMarkerElement
     Object.entries(cityCoordinates).forEach(([cityName, coords]) => {
-      const marker = new google.maps.Marker({
+      // Créer un élément SVG personnalisé pour le marqueur
+      const markerElement = document.createElement("div");
+      markerElement.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="8" fill="${
+            deptColors[coords.dept] || colors.primary500
+          }" stroke="#ffffff" stroke-width="3" opacity="1"/>
+          <circle cx="12" cy="12" r="4" fill="#ffffff" opacity="1"/>
+        </svg>
+      `;
+      markerElement.style.cursor = "pointer";
+      markerElement.style.transform = "translate(-50%, -50%)";
+
+      // Créer le marqueur avancé
+      const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat: coords.lat, lng: coords.lng },
         map: map,
         title: cityName,
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 7,
-          fillColor: deptColors[coords.dept] || "#3b82f6",
-          fillOpacity: 0.9,
-          strokeColor: "#ffffff",
-          strokeWeight: 2,
-        },
-        animation: google.maps.Animation.DROP,
+        content: markerElement,
       });
 
       // Info window au clic
@@ -96,7 +96,9 @@ const GoogleMapComponent = () => {
     // Si le script est déjà chargé et que Google Maps est disponible
     if (window.google && window.google.maps) {
       // Utiliser setTimeout pour éviter le setState synchrone dans l'effet
-      setTimeout(() => createMap(), 0);
+      window.initMap = () => {
+        setTimeout(() => createMap(), 0);
+      };
     }
   }, [isScriptLoaded]);
 
@@ -107,10 +109,9 @@ const GoogleMapComponent = () => {
   return (
     <>
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAYUmr1wSlV3zvO6t04LgcQH9dPXFKSc0o&libraries=places`}
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places,marker&loading=async&callback=initMap`}
         strategy="afterInteractive"
         onLoad={handleScriptLoad}
-        async={true}
       />
       <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-lg">
         <div ref={mapRef} className="w-full h-full" />
