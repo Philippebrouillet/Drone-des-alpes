@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { APP_NAME, Services } from "@/lib/constant";
-import {
-  User,
-  Building2,
-  MapPin,
-  Phone,
-  Mail,
-  Briefcase,
-  Loader2,
-} from "lucide-react";
+import { User, Building2, MapPin, Phone, Mail, Loader2 } from "lucide-react";
 import MultiSelect from "@/lib/components/MultiSelect";
 
 type ClientType = "particulier" | "pro";
