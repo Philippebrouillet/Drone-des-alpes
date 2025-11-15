@@ -1,9 +1,10 @@
+import { APP_NAME } from "@/lib/constant";
 import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Drone des Alpes - Nettoyage par Drone",
-    short_name: "Drone des Alpes",
+    name: `${APP_NAME} - Nettoyage par Drone`,
+    short_name: `${APP_NAME}`,
     description:
       "Expert en nettoyage par drone en Rhône-Alpes. Toiture, façade, panneaux solaires.",
     start_url: "/",

@@ -6,7 +6,7 @@ import ScrollToTop from "@/lib/components/ScrollToTop";
 import Script from "next/script";
 import { organizationSchema, servicesSchema } from "@/lib/schema";
 import { Metadata } from "next";
-import { prodUrl } from "@/lib/constant";
+import { APP_NAME, prodUrl } from "@/lib/constant";
 
 // const geistSans = Geist({
 //   subsets: ["latin"],
@@ -43,12 +43,17 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(prodUrl),
   title: {
-    default: "Drone des Alpes | Nettoyage par drone en Rhône-Alpes",
-    template: "%s | Drone des Alpes",
+    default: `${APP_NAME} | Nettoyage par drone en Rhône-Alpes`,
+    template: `%s | ${APP_NAME}`,
   },
   description:
     "Expert en nettoyage par drone en Rhône-Alpes : toiture, façade, panneaux solaires, gouttières. Solution rapide, écologique et sans échafaudage. Devis gratuit.",
   keywords: [
+    "nettoyage",
+    "nettoyage toiture",
+    "nettoyage façade",
+    "nettoyage panneaux solaires",
+    "nettoyage gouttières",
     "nettoyage drone",
     "toiture drone",
     "façade drone",
@@ -57,14 +62,15 @@ export const metadata: Metadata = {
     "démoussage drone",
     "nettoyage écologique",
     "sans échafaudage",
+    "Rhône-Alpes",
     "Grenoble",
     "Lyon",
     "Annecy",
     "Chambéry",
   ],
-  authors: [{ name: "Drone des Alpes" }],
-  creator: "Drone des Alpes",
-  publisher: "Drone des Alpes",
+  authors: [{ name: APP_NAME }],
+  creator: APP_NAME,
+  publisher: APP_NAME,
   robots: {
     index: true,
     follow: true,
@@ -80,8 +86,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: prodUrl,
-    siteName: "Drone des Alpes",
-    title: "Drone des Alpes - Nettoyage professionnel par drone",
+    siteName: APP_NAME,
+    title: `${APP_NAME} - Nettoyage professionnel par drone`,
     description:
       "Expert en nettoyage par drone en Rhône-Alpes. Solution innovante pour toiture, façade et panneaux solaires.",
     images: [
@@ -89,13 +95,13 @@ export const metadata: Metadata = {
         url: "/logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Drone des Alpes - Nettoyage par drone",
+        alt: `${APP_NAME} - Nettoyage par drone`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drone des Alpes - Nettoyage par drone",
+    title: `${APP_NAME} - Nettoyage par drone`,
     description: "Expert en nettoyage par drone en Rhône-Alpes. Devis gratuit.",
     images: ["/logo.jpg"],
   },
@@ -104,8 +110,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "f30T9EALMQEXLfIdCNEjg9HPiKqEH5LMmifSeI-Hy1g",
-    // yandex: 'votre-code-yandex',
-    // bing: 'votre-code-bing',
   },
 };
 

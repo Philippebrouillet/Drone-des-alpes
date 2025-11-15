@@ -13,9 +13,8 @@ import {
 import { APP_NAME } from "@/lib/constant";
 
 export const metadata: Metadata = {
-  title: "Politique de Confidentialité | Drone des Alpes",
-  description:
-    "Politique de confidentialité de Drone des Alpes - Comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.",
+  title: `Politique de Confidentialité | ${APP_NAME}`,
+  description: `Politique de confidentialité de ${APP_NAME} - Comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.`,
   robots: "noindex, follow",
 };
 

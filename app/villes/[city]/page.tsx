@@ -53,7 +53,7 @@ export async function generateMetadata({
   const dept = departments.find((d) => d.code === cityData.dept);
 
   return {
-    title: `Nettoyage par Drone à ${cityName} (${cityData.dept}) | Drone des Alpes`,
+    title: `Nettoyage par Drone à ${cityName} (${cityData.dept}) | ${APP_NAME}`,
     description: `Expert en nettoyage par drone à ${cityName} et ses environs. Toiture, façade, panneaux solaires, gouttières. ✅ Sans échafaudage ✅ Rapide ✅ Devis gratuit sous 24h.`,
     keywords: [
       `nettoyage drone ${cityName}`,
@@ -65,7 +65,7 @@ export async function generateMetadata({
       cityData.dept,
     ],
     openGraph: {
-      title: `Nettoyage par Drone à ${cityName} | Drone des Alpes`,
+      title: `Nettoyage par Drone à ${cityName} | ${APP_NAME}`,
       description: `Service professionnel de nettoyage par drone à ${cityName}. Toiture, façade, panneaux solaires.`,
       type: "website",
     },

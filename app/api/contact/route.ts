@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/lib/constant";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -51,7 +52,7 @@ Message:
 ${message || "Aucun message spécifique"}
 
 ---
-Email envoyé automatiquement depuis le site web Drone des Alpes
+Email envoyé automatiquement depuis le site web ${APP_NAME}
     `.trim();
 
     // Envoi de l'email
@@ -107,7 +108,7 @@ Email envoyé automatiquement depuis le site web Drone des Alpes
 
           <hr style="margin: 30px 0; border: none; border-top: 1px solid #dee2e6;">
           <p style="color: #6c757d; font-size: 12px; text-align: center;">
-            Email envoyé automatiquement depuis le site web Drone des Alpes
+            Email envoyé automatiquement depuis le site web ${APP_NAME}
           </p>
         </div>
       `,
