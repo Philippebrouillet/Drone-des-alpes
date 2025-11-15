@@ -13,6 +13,8 @@ export default function Logo({ size = 150 }: { size?: number }) {
         alt={APP_NAME}
         width={size}
         height={size}
+        priority
+        fetchPriority="high"
         className="relative z-10"
       />
       <div className="absolute rounded-full h-23 w-23 transform translate-y-[2.2%] -translate-x-[0.4%] bg-white" />
