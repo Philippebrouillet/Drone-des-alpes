@@ -4,15 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
 
   images: {
-    qualities: [70, 70, 70, 75],
     formats: ["image/avif", "image/webp"], // Formats modernes pour de meilleures performances
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "randomuser.me",
-        pathname: "/api/portraits/**",
-      },
-    ],
   },
 
   // Compression pour améliorer les performances
