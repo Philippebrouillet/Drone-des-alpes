@@ -94,7 +94,7 @@ export default function GoogleMapComponent() {
     if (isScriptLoaded && window?.google && window?.google?.maps) {
       setTimeout(() => {
         createMap();
-      });
+      }, 500); // Petit délai pour s'assurer que le DOM est prêt
     }
   }, [isScriptLoaded]);
 
