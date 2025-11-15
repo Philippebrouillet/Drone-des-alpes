@@ -46,7 +46,6 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
           fill
           priority
           className="object-cover"
-          quality={90}
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/70" />
 

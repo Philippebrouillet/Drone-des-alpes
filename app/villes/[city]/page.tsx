@@ -104,7 +104,6 @@ export default async function CityPage({
           fill
           className="object-cover"
           priority
-          quality={90}
         />
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/40" />
 

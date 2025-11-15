@@ -2,6 +2,17 @@
   "name": "next_16_test",
   "version": "0.1.0",
   "private": true,
+  "browserslist": {
+    "production": [
+      "last 2 chrome versions",
+      "last 2 safari versions",
+      "last 2 ios versions",
+      "last 2 edge versions"
+    ],
+    "development": [
+      "last 1 chrome version"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
