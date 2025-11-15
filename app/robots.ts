@@ -21,6 +21,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${prodUrl}/sitemap.xml`,
-    host: prodUrl,
+    // host: prodUrl,
   };
 }
