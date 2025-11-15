@@ -2,8 +2,6 @@ import { prodUrl } from "@/lib/constant";
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = prodUrl;
-
   return {
     rules: [
       {
@@ -22,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 0,
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${prodUrl}/sitemap.xml`,
+    host: prodUrl,
   };
 }
