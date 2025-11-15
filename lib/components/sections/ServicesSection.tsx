@@ -75,6 +75,7 @@ export default function ServicesSection({ services }: ServicesProps) {
                       {/* Bouton */}
                       <Link
                         href={service.href}
+                        aria-label={`En savoir plus sur ${service.title}`}
                         className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300"
                       >
                         En savoir plus
