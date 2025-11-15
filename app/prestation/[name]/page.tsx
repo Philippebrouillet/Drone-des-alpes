@@ -4,6 +4,7 @@ import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getPrestationByKey } from "@/lib/services/services";
+import { APP_NAME } from "@/lib/constant";
 
 interface PrestationPageProps {
   params: Promise<{ name: string }>;
@@ -17,12 +18,12 @@ export async function generateMetadata({
 
   if (!prestation) {
     return {
-      title: "Prestation introuvable | Drone des Alpes",
+      title: `Prestation introuvable | ${APP_NAME}`,
     };
   }
 
   return {
-    title: `${prestation.title} | Drone des Alpes`,
+    title: `${prestation.title} | ${APP_NAME}`,
     description: prestation.description,
   };
 }

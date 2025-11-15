@@ -3,9 +3,10 @@ import Link from "next/link";
 import { ArrowLeft, HelpCircle, ChevronDown } from "lucide-react";
 import Script from "next/script";
 import { faqSchema } from "@/lib/schema";
+import { APP_NAME } from "@/lib/constant";
 
 export const metadata: Metadata = {
-  title: "FAQ - Questions Fréquentes | Drone des Alpes",
+  title: `FAQ - Questions Fréquentes | ${APP_NAME}`,
   description:
     "Toutes les réponses à vos questions sur le nettoyage par drone : prix, zones d'intervention, efficacité, durée. Découvrez notre expertise en Rhône-Alpes.",
   keywords: [
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     "zone intervention drone",
   ],
   openGraph: {
-    title: "FAQ - Questions sur le nettoyage par drone | Drone des Alpes",
+    title: `FAQ - Questions sur le nettoyage par drone | ${APP_NAME}`,
     description:
       "Toutes les réponses à vos questions sur le nettoyage par drone en Rhône-Alpes.",
     type: "website",

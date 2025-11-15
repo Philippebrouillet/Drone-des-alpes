@@ -4,9 +4,8 @@ import { ArrowLeft, Building2, User, Scale, Shield } from "lucide-react";
 import { APP_NAME } from "@/lib/constant";
 
 export const metadata: Metadata = {
-  title: "Mentions Légales | Drone des Alpes",
-  description:
-    "Mentions légales de Drone des Alpes - Informations sur l'entreprise, le directeur de publication, l'hébergement et les conditions d'utilisation du site.",
+  title: `Mentions Légales | ${APP_NAME}`,
+  description: `Mentions légales de ${APP_NAME} - Informations sur l'entreprise, le directeur de publication, l'hébergement et les conditions d'utilisation du site.`,
   robots: "noindex, follow",
 };
 
