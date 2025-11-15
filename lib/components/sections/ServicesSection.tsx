@@ -49,6 +49,7 @@ export default function ServicesSection({ services }: ServicesProps) {
                         alt={service.title}
                         sizes="auto"
                         fill
+                        loading="lazy"
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       {/* Overlay avec icône */}

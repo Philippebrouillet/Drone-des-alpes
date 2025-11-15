@@ -42,6 +42,7 @@ export default function FoundersSection() {
                       alt={`Jules Menguy - Fondateur ${APP_NAME}`}
                       width={128}
                       height={128}
+                      loading="lazy"
                       className="w-full h-full object-cover "
                     />
                   </div>
@@ -79,6 +80,7 @@ export default function FoundersSection() {
                       alt={`Samir Lasri - Co-fondateur ${APP_NAME}`}
                       width={128}
                       height={128}
+                      loading="lazy"
                       className="w-full h-full object-cover "
                     />
                   </div>

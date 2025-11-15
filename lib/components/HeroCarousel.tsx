@@ -165,6 +165,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             fill
             className="object-cover"
             priority={index === 0}
+            fetchPriority={index === 0 ? "high" : "auto"}
           />
           {/* Overlay gradient pour meilleure lisibilité */}
           <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
