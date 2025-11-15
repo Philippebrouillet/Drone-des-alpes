@@ -163,7 +163,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             src={slide.image}
             alt={slide.alt}
             fill
-            className=" object-cover"
+            className="object-cover"
             priority={index === 0}
             quality={90}
           />
@@ -194,16 +194,25 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
 
             {/* Bouton CTA fixe  */}
             <div className="mb-12">
-              <button className="group relative px-8 py-4 bg-white text-primary font-semibold text-lg rounded-full overflow-hidden transition-all duration-300 hover:bg-primary-200 hover:text-white hover:scale-105 hover:shadow-2xl">
-                <Link href={slides[currentSlide].href}>
-                  <span className="relative z-10 flex items-center gap-2">
-                    Consulter
-                    <ArrowRightIcon size={16} />
-                  </span>
-                </Link>
+              <Link
+                href={slides[currentSlide].href}
+                className="group relative inline-flex items-center justify-center px-8 py-4 
+               bg-white text-primary font-semibold text-lg rounded-full overflow-hidden 
+               transition-all duration-300 hover:bg-primary-200 hover:text-white 
+               hover:scale-105 hover:shadow-2xl"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Consulter
+                  <ArrowRightIcon size={16} />
+                </span>
+
                 {/* Effet de hover animé */}
-                <div className="absolute inset-0 bg-linear-to-r from-primary to-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </button>
+                <div
+                  className="absolute inset-0 bg-linear-to-r from-primary to-primary-400 
+                    transform scale-x-0 group-hover:scale-x-100 
+                    transition-transform duration-300 origin-left"
+                />
+              </Link>
             </div>
 
             {/* Indicateurs de slides */}

@@ -20,7 +20,9 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 0,
       },
     ],
+
     sitemap: `${prodUrl}/sitemap.xml`,
+
     // host: prodUrl,
   };
 }

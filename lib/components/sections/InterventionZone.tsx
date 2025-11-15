@@ -127,10 +127,10 @@ const GoogleMapComponent = () => {
 
         {/* Légende */}
         <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs">
-          <h4 className="font-bold text-primary mb-3 flex items-center gap-2 text-sm">
+          <h3 className="font-bold text-primary mb-3 flex items-center gap-2 text-sm">
             <MapPin className="w-4 h-4 text-primary" />
             Légende
-          </h4>
+          </h3>
           <ul className="text-xs text-gray-700 space-y-2">
             <li className="flex items-center gap-2">
               <span className="w-3 h-3 bg-primary rounded-full border-2 border-white"></span>
