@@ -27,7 +27,6 @@ export default function GoogleMapComponent() {
     const createMap = () => {
       if (!mapRef.current || !window.google) return;
 
-      console.log("Initialisation de la carte Google Maps...");
       // Centre sur la région Rhône-Alpes
       const map = new google.maps.Map(mapRef.current, {
         center: { lat: 45.7, lng: 6.0 },
