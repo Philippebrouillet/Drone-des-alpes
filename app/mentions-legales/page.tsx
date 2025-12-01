@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Building2, User, Scale, Shield } from "lucide-react";
-import { APP_NAME } from "@/lib/constant";
+import { APP_NAME, emailContact } from "@/lib/constant";
 
 export const metadata: Metadata = {
   title: `Mentions Légales | ${APP_NAME}`,
@@ -72,22 +72,22 @@ export default function MentionsLegales() {
                 <br />
                 Rhône-Alpes, France
               </p>
-              <p>
+              {/* <p>
                 <strong>Téléphone :</strong>{" "}
                 <a
-                  href="tel:+33123456789"
+                href={`tel:${phoneContact}`}
                   className="text-primary hover:underline"
                 >
-                  +33 1 23 45 67 89
+                  {phoneContact}
                 </a>
-              </p>
+              </p> */}
               <p>
                 <strong>Email :</strong>{" "}
                 <a
-                  href="mailto:contact@dronedesalpes.fr"
+                  href={`mailto:${emailContact}`}
                   className="text-primary hover:underline"
                 >
-                  contact@dronedesalpes.fr
+                  {emailContact}
                 </a>
               </p>
             </div>
@@ -115,10 +115,10 @@ export default function MentionsLegales() {
               <p>
                 <strong>Contact :</strong>{" "}
                 <a
-                  href="mailto:contact@dronedesalpes.fr"
+                  href={`mailto:${emailContact}`}
                   className="text-primary hover:underline"
                 >
-                  contact@dronedesalpes.fr
+                  {emailContact}
                 </a>
               </p>
             </div>
@@ -217,10 +217,10 @@ export default function MentionsLegales() {
                 Pour exercer vos droits, vous pouvez nous contacter à l'adresse
                 suivante :{" "}
                 <a
-                  href="mailto:contact@dronedesalpes.fr"
+                  href={`mailto:${emailContact}`}
                   className="text-primary hover:underline"
                 >
-                  contact@dronedesalpes.fr
+                  {emailContact}
                 </a>
               </p>
               <p>

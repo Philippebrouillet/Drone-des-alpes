@@ -8,3 +8,8 @@ export enum Services {
 }
 
 export const prodUrl = "https://dronedesalpes.fr";
+export const siegeAdress =
+  "Site économique des Lacs - 320 Rue des Sorbiers, 74300 Thyez";
+export const emailContact = "contact@dronedesalpes.fr";
+
+export const phoneContact = "+33 1 23 45 67 89";

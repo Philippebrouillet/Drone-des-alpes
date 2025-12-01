@@ -1,4 +1,4 @@
-import { APP_NAME, prodUrl } from "./constant";
+import { APP_NAME, emailContact, prodUrl } from "./constant";
 
 export const organizationSchema = {
   "@context": "https://schema.org",
@@ -8,7 +8,7 @@ export const organizationSchema = {
     "Entreprise spécialisée dans le nettoyage par drone : toitures, façades, panneaux solaires et gouttières en Rhône-Alpes.",
   url: prodUrl,
   telephone: "+33-XXX-XXX-XXX", // À remplacer par votre vrai numéro
-  email: "contact@dronedesalpes.fr",
+  email: emailContact,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Rhône-Alpes",

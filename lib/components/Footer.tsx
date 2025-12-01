@@ -11,7 +11,7 @@ import Logo from "./Logo";
 
 import Link from "next/link";
 import { serviceLinks } from "../services/services";
-import { APP_NAME } from "../constant";
+import { APP_NAME, emailContact, siegeAdress } from "../constant";
 
 export default function Footer() {
   const currentYear = 2025;
@@ -117,27 +117,27 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
                 <span className="text-sm">
-                  Rhône-Alpes
+                  {siegeAdress}
                   <br />
                   France
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
+              {/* <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-secondary shrink-0" />
                 <Link
-                  href="tel:+33123456789"
+                  href={`tel:${phoneContact}`}
                   className="text-sm hover:text-white transition-colors duration-200"
                 >
-                  +33 1 23 45 67 89
+                  {phoneContact}
                 </Link>
-              </li>
+              </li> */}
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-secondary shrink-0" />
                 <Link
-                  href="mailto:contact@dronedesalpes.fr"
+                  href={`mailto:${emailContact}`}
                   className="text-sm hover:text-white transition-colors duration-200"
                 >
-                  contact@dronedesalpes.fr
+                  {emailContact}
                 </Link>
               </li>
             </ul>

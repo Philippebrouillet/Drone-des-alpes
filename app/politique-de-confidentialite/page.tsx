@@ -10,7 +10,7 @@ import {
   AlertTriangle,
   InfoIcon,
 } from "lucide-react";
-import { APP_NAME } from "@/lib/constant";
+import { APP_NAME, emailContact } from "@/lib/constant";
 
 export const metadata: Metadata = {
   title: `Politique de Confidentialité | ${APP_NAME}`,
@@ -114,21 +114,21 @@ export default function PolitiqueConfidentialite() {
               <p>
                 <strong>Email :</strong>{" "}
                 <a
-                  href="mailto:contact@dronedesalpes.fr"
+                  href={`mailto:${emailContact}`}
                   className="text-primary hover:underline"
                 >
-                  contact@dronedesalpes.fr
+                  {emailContact}
                 </a>
               </p>
-              <p>
+              {/* <p>
                 <strong>Téléphone :</strong>{" "}
                 <a
-                  href="tel:+33123456789"
+                  href={`tel:${phoneContact}`}
                   className="text-primary hover:underline"
                 >
-                  +33 1 23 45 67 89
+                  {phoneContact}
                 </a>
-              </p>
+              </p> */}
             </div>
           </div>
 
@@ -362,10 +362,10 @@ export default function PolitiqueConfidentialite() {
                 <p>
                   Envoyez-nous un email à{" "}
                   <a
-                    href="mailto:contact@dronedesalpes.fr"
+                    href={`mailto:${emailContact}`}
                     className="text-primary hover:underline font-medium"
                   >
-                    contact@dronedesalpes.fr
+                    {emailContact}
                   </a>{" "}
                   en précisant votre demande et en joignant une copie de votre
                   pièce d'identité.
@@ -496,7 +496,7 @@ export default function PolitiqueConfidentialite() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="mailto:contact@dronedesalpes.fr"
+              href={`mailto:${emailContact}`}
               className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-400 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Nous écrire
