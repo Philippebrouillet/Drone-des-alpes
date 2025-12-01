@@ -8,8 +8,10 @@ export default function FoundersSection() {
         <div className="customContainer">
           {/* En-tête */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Samir Lasri & Jules Menguy
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 flex gap-2 flex-col sm:flex-row sm:gap-4  sm:justify-center">
+              <span className="whitespace-nowrap">Jules Menguy</span>
+              <span> & </span>
+              <span className="whitespace-nowrap">Samir Lasri</span>
             </h2>
             <p className="text-xl text-gray-600">Gérants et fondateurs</p>
           </div>
