@@ -312,13 +312,13 @@ export default async function CityPage({
               <Mail className="w-5 h-5" />
               Demander un devis
             </Link>
-            <a
-              href="tel:+33XXXXXXXXX"
+            {/* <a
+              href={`tel:${phoneContact}`}
               className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors duration-200"
             >
               <Phone className="w-5 h-5" />
-              +33 X XX XX XX XX
-            </a>
+              {phoneContact}
+            </a> */}
           </div>
         </div>
       </section>

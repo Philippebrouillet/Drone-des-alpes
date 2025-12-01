@@ -5,6 +5,7 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Clock,
 } from "lucide-react";
 
 import Logo from "./Logo";
@@ -116,11 +117,21 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
-                <span className="text-sm">
-                  {siegeAdress}
-                  <br />
-                  France
-                </span>
+                <div className="text-sm">
+                  <p>{siegeAdress}</p>
+                  <p>France</p>
+                  <p className="text-gray-400 italic mt-1 whitespace-nowrap">
+                    Uniquement sur rendez-vous
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start space-x-3">
+                <Clock className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                <div className="text-sm">
+                  <p className="font-medium text-white mb-1">Horaires</p>
+                  <p>Lundi - Samedi : 9h - 19h</p>
+                  <p>Dimanche : Fermé</p>
+                </div>
               </li>
               {/* <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-secondary shrink-0" />
@@ -178,7 +189,7 @@ export default function Footer() {
               © {currentYear} {APP_NAME}. Tous droits réservés.
             </p>
             <div className="flex space-x-6">
-              <Link
+              {/* <Link
                 href="/mentions-legales"
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
               >
@@ -189,7 +200,15 @@ export default function Footer() {
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Politique de confidentialité
-              </Link>
+              </Link> */}
+              <div className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                {" "}
+                Mentions légales
+              </div>
+              <div className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                {" "}
+                Politique de confidentialité{" "}
+              </div>
             </div>
           </div>
         </div>

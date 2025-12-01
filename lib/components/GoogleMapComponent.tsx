@@ -10,6 +10,8 @@ const colors = {
   primary400: "#3d5588",
   primary500: "#0c2b6a",
   primary600: "#0a2255",
+  secondary500: "#f23455",
+  secondary600: "#c22a44",
 };
 
 // Composant de carte Google Maps
@@ -46,6 +48,8 @@ export default function GoogleMapComponent() {
         "01": colors.primary300, // bleu clair
         "38": colors.primary400, // bleu moyen
         "39": colors.primary300, // bleu clair
+        VD: colors.secondary500, // rouge
+        GE: colors.secondary600, // rouge foncé
       };
 
       // Ajouter les marqueurs pour chaque ville avec AdvancedMarkerElement
@@ -69,7 +73,13 @@ export default function GoogleMapComponent() {
           map: map,
           title: cityName,
           content: markerElement,
+          collisionBehavior:
+            google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL,
         });
+
+        // Empêcher le comportement étrange lors du zoom
+        markerElement.style.position = "absolute";
+        markerElement.style.willChange = "transform";
 
         // Info window au clic
         const infoWindow = new google.maps.InfoWindow({
@@ -138,6 +148,14 @@ export default function GoogleMapComponent() {
             <li className="flex items-center gap-2">
               <span className="w-3 h-3 bg-primary-300 rounded-full border-2 border-white"></span>
               <span>Ain (01) & Jura (39)</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-3 h-3 bg-secondary rounded-full border-2 border-white"></span>
+              <span>GE (SUISSE)</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-3 h-3 bg-secondary-600 rounded-full border-2 border-white"></span>
+              <span>VD (SUISSE)</span>
             </li>
           </ul>
           <p className="text-xs text-gray-500 mt-3 italic">

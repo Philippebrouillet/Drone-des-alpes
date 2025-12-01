@@ -16,9 +16,15 @@ export const metadata: Metadata = {
   title:
     "Nettoyage par Drone Rhône-Alpes | Toiture, Façade, Panneaux Solaires - Devis Gratuit",
   description:
-    "🚁 Expert nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy). Toiture, façade, panneaux solaires, gouttières. ✅ Sans échafaudage ✅ Écologique ✅ Rapide. Devis gratuit sous 24h.",
+    "Expert nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy). Toiture, façade, panneaux solaires, gouttières. ✅ Sans échafaudage ✅ Écologique ✅ Rapide. Devis gratuit sous 24h.",
   keywords: [
     "nettoyage",
+    "nettoyage par drone",
+    "nettoyage toiture drone",
+    "nettoyage drone",
+    "nettoyage façade drone",
+    "nettoyage panneaux solaires drone",
+    "nettoyage gouttières drone",
     "nettoyage toiture",
     "nettoyage façade",
     "nettoyage panneaux solaires",
@@ -101,7 +107,7 @@ const slides = [
   {
     ...mutualServicesData.roofCleaning,
     subtitle:
-      "Rapide, économique et écologique. Démoussage professionnel sans échafaudage",
+      "Rapide, économique et écologique. Démoussage professionnel à l'aide de drone",
     alt: "Nettoyage de toiture par drone professionnel",
   },
   {

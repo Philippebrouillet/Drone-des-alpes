@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* tailwind color generated on https://tailcolor.com/?color=f23455 */
 :root {
   --primary: #0c2b6a;
   --secondary: #f23455;
@@ -14,6 +15,15 @@
   --primary-700: #071a40;
   --primary-800: #05112a;
   --primary-900: #020915;
+  --secondary-50: #feebee;
+  --secondary-100: #fcd6dd;
+  --secondary-200: #faaebb;
+  --secondary-300: #f78599;
+  --secondary-400: #f55d77;
+  --secondary-600: #c22a44;
+  --secondary-700: #911f33;
+  --secondary-800: #611522;
+  --secondary-900: #300a11;
   --font-geist-sans: "Geist Sans", sans-serif;
   --font-geist-mono: "Geist Mono", monospace;
 }
@@ -32,6 +42,15 @@
   --color-primary-700: var(--primary-700);
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --color-secondary-400: var(--secondary-400);
+  --color-secondary-600: var(--secondary-600);
+  --color-secondary-700: var(--secondary-700);
+  --color-secondary-800: var(--secondary-800);
+  --color-secondary-900: var(--secondary-900);
 }
 
 @layer components {
