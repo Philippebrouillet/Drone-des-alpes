@@ -46,7 +46,8 @@ export default function AboutSection() {
               <br />
               <span className="text-gray-600">
                 Nous intervenons également dans l&apos;Ain, la Savoie,
-                l&apos;Isère et le Jura
+                l&apos;Isère et le Jura, ainsi que le canton de Genève et de
+                Vaud en Suisse.
               </span>
             </p>
           </div>
