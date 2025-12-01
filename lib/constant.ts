@@ -7,4 +7,4 @@ export enum Services {
   NETTOYAGE_GOUTTIERE = "Nettoyage de Gouttières",
 }
 
-export const prodUrl = "https://drone-des-alpes.vercel.app";
+export const prodUrl = "https://dronedesalpes.fr";
