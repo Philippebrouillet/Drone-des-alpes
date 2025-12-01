@@ -97,7 +97,7 @@ export default async function CityPage({
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[600px] ">
+      <section className="relative h-[70vh] min-h-[600px]">
         <Image
           src="/Nettoyage toiture.jpg"
           alt={`Nettoyage par drone à ${cityName}`}
@@ -107,7 +107,7 @@ export default async function CityPage({
         />
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/40" />
 
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center mt-20">
           <div className="customContainer ">
             <Link
               href="/"
