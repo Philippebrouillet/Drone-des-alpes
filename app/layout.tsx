@@ -108,9 +108,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: prodUrl,
   },
-  verification: {
-    google: "f30T9EALMQEXLfIdCNEjg9HPiKqEH5LMmifSeI-Hy1g",
-  },
 };
 
 export default function RootLayout({
