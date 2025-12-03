@@ -118,10 +118,6 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.className}`}>
       <head>
-        <meta
-          name="google-site-verification"
-          content="f30T9EALMQEXLfIdCNEjg9HPiKqEH5LMmifSeI-Hy1g"
-        />
         {/* Données structurées JSON-LD pour le SEO */}
         <Script
           id="organization-schema"
