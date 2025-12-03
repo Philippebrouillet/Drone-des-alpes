@@ -58,7 +58,7 @@ Email envoyé automatiquement depuis le site web ${APP_NAME}
     // Envoi de l'email
     const data = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
-      to: ["menguy.julespro@gmail.com"], // Remplacez par votre email
+      to: [emailContact], // Remplacez par votre email
       subject: `Nouvelle demande de devis - ${
         clientType === "pro" ? societe : `${nom} ${prenom}`
       }`,
