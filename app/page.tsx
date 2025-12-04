@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     images: [
       {
-        url: "/Nettoyage toiture.jpg",
+        url: "/logo.jpg",
         width: 1200,
         height: 630,
         alt: `Nettoyage de toiture par drone - ${APP_NAME}`,
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title: `${APP_NAME} - Nettoyage par drone Rhône-Alpes`,
     description:
       "Expert en nettoyage par drone. Toiture, façade, panneaux solaires. Devis gratuit.",
-    images: ["/Nettoyage toiture.jpg"],
+    images: ["/logo.jpg"],
   },
   alternates: {
     canonical: prodUrl,
