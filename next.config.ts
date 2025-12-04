@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
 
   // Headers pour la sécurité et le SEO
   async headers() {
+    const isVercelDomain =
+      process.env.VERCEL_URL && process.env.VERCEL_URL.includes("vercel.app");
+
+    console.log("isVercelDomain", process.env.VERCEL_URL);
+
     return [
       {
         source: "/:path*",
