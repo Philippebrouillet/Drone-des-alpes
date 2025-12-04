@@ -23,7 +23,7 @@
     "@googlemaps/js-api-loader": "^2.0.2",
     "@plausible-analytics/tracker": "^0.4.4",
     "lucide-react": "^0.552.0",
-    "next": "16.0.0",
+    "next": "^16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "resend": "^6.4.2"
