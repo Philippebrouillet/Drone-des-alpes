@@ -43,11 +43,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(prodUrl),
   title: {
-    default: `${APP_NAME} | Nettoyage par drone en Rhône-Alpes`,
+    default: `${APP_NAME} | Nettoyage par drone en Rhône-Alpes et Suisse`,
     template: `%s | ${APP_NAME}`,
   },
   description:
-    "Expert en nettoyage par drone en Rhône-Alpes : toiture, façade, panneaux solaires, gouttières. Solution rapide, écologique et sans échafaudage.",
+    "Expert en nettoyage par drone en Rhône-Alpes et en Suisse : toiture, façade, panneaux solaires, gouttières. Solution rapide, écologique et sans échafaudage.",
   keywords: [
     "nettoyage",
     "nettoyage toiture",
