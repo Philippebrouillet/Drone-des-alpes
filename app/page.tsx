@@ -14,9 +14,9 @@ import { formatHrefService } from "@/lib/services/services";
 
 export const metadata: Metadata = {
   title:
-    "Nettoyage par Drone Rhône-Alpes | Toiture, Façade, Panneaux Solaires - Devis Gratuit",
+    "Nettoyage par drone en Rhône-Alpes | Toitures, façades, panneaux solaires",
   description:
-    "Expert nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy). Toiture, façade, panneaux solaires, gouttières. ✅ Sans échafaudage ✅ Écologique ✅ Rapide. Devis gratuit sous 24h.",
+    "Expert en nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy) et en Suisse. Toitures, façades, panneaux solaires et gouttières.",
   keywords: [
     "nettoyage",
     "nettoyage par drone",

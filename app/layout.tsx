@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     template: `%s | ${APP_NAME}`,
   },
   description:
-    "Expert en nettoyage par drone en Rhône-Alpes : toiture, façade, panneaux solaires, gouttières. Solution rapide, écologique et sans échafaudage. Devis gratuit.",
+    "Expert en nettoyage par drone en Rhône-Alpes : toiture, façade, panneaux solaires, gouttières. Solution rapide, écologique et sans échafaudage.",
   keywords: [
     "nettoyage",
     "nettoyage toiture",
@@ -63,8 +63,16 @@ export const metadata: Metadata = {
     "nettoyage écologique",
     "sans échafaudage",
     "Rhône-Alpes",
-    "Grenoble",
+    "Suisse",
+    "Vaud",
+    "Genève",
+    "Ain",
+    "Jura",
+    "Isère",
+    "Savoie",
+    "Haute-Savoie",
     "Lyon",
+    "Grenoble",
     "Annecy",
     "Chambéry",
   ],
@@ -89,7 +97,7 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     title: `${APP_NAME} - Nettoyage professionnel par drone`,
     description:
-      "Expert en nettoyage par drone en Rhône-Alpes. Solution innovante pour toiture, façade et panneaux solaires.",
+      "Expert en nettoyage par drone en Rhône-Alpes et en Suisse. Solution innovante pour toiture, façade et panneaux solaires.",
     images: [
       {
         url: "/logo.jpg",
@@ -102,7 +110,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${APP_NAME} - Nettoyage par drone`,
-    description: "Expert en nettoyage par drone en Rhône-Alpes. Devis gratuit.",
+    description: "Expert en nettoyage par drone en Rhône-Alpes et en Suisse.",
     images: ["/logo.jpg"],
   },
   alternates: {
