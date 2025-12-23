@@ -126,6 +126,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.className}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" />
+
         {/* Données structurées JSON-LD pour le SEO */}
         <Script
           id="organization-schema"
