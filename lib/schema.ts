@@ -7,7 +7,7 @@ export const organizationSchema = {
   description:
     "Entreprise spécialisée dans le nettoyage par drone : toitures, façades, panneaux solaires et gouttières en Rhône-Alpes.",
   url: prodUrl,
-  telephone: phoneContact, // À remplacer par votre vrai numéro
+  telephone: phoneContact,
   email: emailContact,
   address: {
     "@type": "PostalAddress",
@@ -42,7 +42,7 @@ export const organizationSchema = {
   sameAs: [
     // Ajoutez vos réseaux sociaux ici
     // 'https://www.facebook.com/dronedesalpes',
-    // 'https://www.instagram.com/dronedesalpes',
+    "https://www.instagram.com/dronedesalpes",
     // 'https://www.linkedin.com/company/dronedesalpes',
   ],
   image: `${prodUrl}/logo.jpg`,
