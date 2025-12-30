@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function MentionsLegales() {
+  const lastUpdate = "30 décembre";
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
@@ -237,7 +238,7 @@ export default function MentionsLegales() {
           {/* Date de mise à jour */}
           <div className="text-center pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              Dernière mise à jour : 2 novembre 2025
+              Dernière mise à jour : {lastUpdate} 2025
             </p>
           </div>
         </div>
