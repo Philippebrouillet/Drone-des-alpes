@@ -27,10 +27,10 @@ export default function CertificationSection() {
               <div className="order-2 lg:order-1">
                 <div className="relative bg-linear-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 shadow-lg border border-gray-200">
                   <Image
-                    src="/certification.PNG"
+                    src="/certification.png"
                     alt={`Certification professionnelle ${APP_NAME}`}
-                    width={600}
-                    height={800}
+                    width={200}
+                    height={50}
                     loading="lazy"
                     className="w-full h-auto rounded-lg shadow-md"
                   />
