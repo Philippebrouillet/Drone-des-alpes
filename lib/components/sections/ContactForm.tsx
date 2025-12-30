@@ -1,8 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { APP_NAME, Services } from "@/lib/constant";
-import { User, Building2, MapPin, Phone, Mail, Loader2 } from "lucide-react";
+import {
+  APP_NAME,
+  Services,
+  phoneContact,
+  emailContact,
+  openHours,
+} from "@/lib/constant";
+import {
+  User,
+  Building2,
+  MapPin,
+  Phone,
+  Mail,
+  Loader2,
+  Clock,
+} from "lucide-react";
 import MultiSelect from "@/lib/components/MultiSelect";
 
 type ClientType = "particulier" | "pro";
@@ -66,22 +80,70 @@ export default function ContactForm() {
     <>
       <div id="contact" className="mb-6"></div>
 
-      <section className="section bg-gray-50">
+      <section className="section bg-white">
         <div className="flex justify-center">
           <div className="customContainer">
             {/* En-tête */}
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-                Demander un devis gratuit
+                Contactez-nous
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Remplissez le formulaire ci-dessous et nous vous recontacterons
-                dans les plus brefs délais
+                Notre équipe est à votre disposition pour répondre à toutes vos
+                questions
               </p>
             </div>
 
+            {/* Cartes d'informations de contact */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12  mx-auto">
+              {/* Téléphone */}
+              <a
+                href={`tel:${phoneContact.replace(/\s/g, "")}`}
+                className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs text-gray-500 font-medium">Téléphone</p>
+                  <p className="text-sm font-bold text-gray-900">
+                    {phoneContact}
+                  </p>
+                </div>
+              </a>
+
+              {/* Email */}
+              <a
+                href={`mailto:${emailContact}`}
+                className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <Mail className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs text-gray-500 font-medium">Email</p>
+                  <p className="text-sm font-bold text-gray-900">
+                    {emailContact}
+                  </p>
+                </div>
+              </a>
+
+              {/* Horaires */}
+              <div className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-primary" />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs text-gray-500 font-medium">Horaires</p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Lun-Sam: {openHours}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Formulaire */}
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 {/* Switch Particulier / Pro */}
                 <div className="flex border-b border-gray-200">

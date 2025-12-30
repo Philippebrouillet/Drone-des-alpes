@@ -11,6 +11,7 @@ import ContactForm from "../lib/components/sections/ContactForm";
 import { Home as HomeIcon, Building2, Sun, Droplets } from "lucide-react";
 import { APP_NAME, prodUrl, Services } from "@/lib/constant";
 import { formatHrefService } from "@/lib/services/services";
+import CertificationSection from "@/lib/components/sections/CertificationSection";
 
 export const metadata: Metadata = {
   title:
@@ -171,6 +172,7 @@ export default function Home() {
       <ServicesSection services={services} />
       <OffersSection />
       <WhyChooseUs />
+      <CertificationSection />
       <FoundersSection />
       <InterventionZone />
       <ContactForm />

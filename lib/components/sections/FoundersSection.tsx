@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function FoundersSection() {
   return (
-    <section className="section bg-gray-50">
+    <section className="section bg-white">
       <div className="flex justify-center ">
         <div className="customContainer">
           {/* En-tête */}

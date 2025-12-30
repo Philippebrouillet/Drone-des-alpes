@@ -5,16 +5,23 @@ import {
   Instagram,
   Linkedin,
   Clock,
+  Phone,
 } from "lucide-react";
 
 import Logo from "./Logo";
 
 import Link from "next/link";
 import { serviceLinks } from "../services/services";
-import { APP_NAME, emailContact, siegeAdress } from "../constant";
+import {
+  APP_NAME,
+  emailContact,
+  openHours,
+  phoneContact,
+  siegeAdress,
+} from "../constant";
 
 export default function Footer() {
-  const currentYear = 2025;
+  const createdYear = 2025;
 
   return (
     <footer className="bg-primary-800 text-gray-300">
@@ -128,11 +135,11 @@ export default function Footer() {
                 <Clock className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
                 <div className="text-sm">
                   <p className="font-medium text-white mb-1">Horaires</p>
-                  <p>Lundi - Samedi : 9h - 19h</p>
+                  <p>Lundi - Samedi : {openHours}</p>
                   <p>Dimanche : Fermé</p>
                 </div>
               </li>
-              {/* <li className="flex items-center space-x-3">
+              <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-secondary shrink-0" />
                 <Link
                   href={`tel:${phoneContact}`}
@@ -140,7 +147,7 @@ export default function Footer() {
                 >
                   {phoneContact}
                 </Link>
-              </li> */}
+              </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-secondary shrink-0" />
                 <Link
@@ -185,10 +192,10 @@ export default function Footer() {
         <div className="md:max-w-5xl md:w-full md:mx-auto py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
-              © {currentYear} {APP_NAME}. Tous droits réservés.
+              © {createdYear} {APP_NAME}. Tous droits réservés.
             </p>
             <div className="flex space-x-6">
-              {/* <Link
+              <Link
                 href="/mentions-legales"
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
               >
@@ -199,15 +206,7 @@ export default function Footer() {
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Politique de confidentialité
-              </Link> */}
-              <div className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                {" "}
-                Mentions légales
-              </div>
-              <div className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                {" "}
-                Politique de confidentialité{" "}
-              </div>
+              </Link>
             </div>
           </div>
         </div>

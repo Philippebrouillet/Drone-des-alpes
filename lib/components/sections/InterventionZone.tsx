@@ -21,7 +21,7 @@ export default function InterventionZone() {
   return (
     <>
       <div id="intervention-zone" className="mb-6"></div>
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-gray-50">
         <div className="flex justify-center">
           <div className="customContainer">
             {/* En-tête */}

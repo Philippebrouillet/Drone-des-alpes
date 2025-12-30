@@ -11,5 +11,5 @@ export const prodUrl = "https://dronedesalpes.fr";
 export const siegeAdress =
   "Site économique des Lacs - 320 Rue des Sorbiers, 74300 Thyez";
 export const emailContact = "contact@dronedesalpes.fr";
-
-export const phoneContact = "+33 1 23 45 67 89";
+export const openHours = "9h - 19h";
+export const phoneContact = "+33 7 64 46 13 66";

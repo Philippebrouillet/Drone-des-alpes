@@ -10,7 +10,12 @@ import {
   AlertTriangle,
   InfoIcon,
 } from "lucide-react";
-import { APP_NAME, emailContact } from "@/lib/constant";
+import {
+  APP_NAME,
+  emailContact,
+  phoneContact,
+  siegeAdress,
+} from "@/lib/constant";
 
 export const metadata: Metadata = {
   title: `Politique de Confidentialité | ${APP_NAME}`,
@@ -22,7 +27,7 @@ export default function PolitiqueConfidentialite() {
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-primary text-white py-20 pt-35 flex justify-center">
+      <section className="bg-primary text-white py-20 pt-45 flex justify-center">
         <div className="customContainer">
           <Link
             href="/"
@@ -84,7 +89,7 @@ export default function PolitiqueConfidentialite() {
                     </p>
                   </div>
                   <p>
-                    <strong>Date de dernière mise à jour :</strong> 2 novembre
+                    <strong>Date de dernière mise à jour :</strong> 30 décembre
                     2025
                   </p>
                 </div>
@@ -109,7 +114,7 @@ export default function PolitiqueConfidentialite() {
                 <strong>Raison sociale :</strong> {APP_NAME}
               </p>
               <p>
-                <strong>Adresse :</strong> [À compléter - Adresse complète]
+                <strong>Adresse :</strong> {siegeAdress}
               </p>
               <p>
                 <strong>Email :</strong>{" "}
@@ -120,7 +125,7 @@ export default function PolitiqueConfidentialite() {
                   {emailContact}
                 </a>
               </p>
-              {/* <p>
+              <p>
                 <strong>Téléphone :</strong>{" "}
                 <a
                   href={`tel:${phoneContact}`}
@@ -128,7 +133,7 @@ export default function PolitiqueConfidentialite() {
                 >
                   {phoneContact}
                 </a>
-              </p> */}
+              </p>
             </div>
           </div>
 
@@ -170,7 +175,7 @@ export default function PolitiqueConfidentialite() {
                   <li>Type de navigateur</li>
                   <li>Pages visitées</li>
                   <li>Date et heure de connexion</li>
-                  <li>Données de navigation (cookies)</li>
+                  {/* <li>Données de navigation (cookies)</li> */}
                 </ul>
               </div>
             </div>
@@ -200,10 +205,6 @@ export default function PolitiqueConfidentialite() {
                   personnalisés
                 </li>
                 <li>
-                  <strong>Gestion de la relation client :</strong> suivi de
-                  votre dossier, communication sur nos prestations
-                </li>
-                <li>
                   <strong>Amélioration de nos services :</strong> analyse
                   statistique de la fréquentation du site
                 </li>
@@ -229,10 +230,6 @@ export default function PolitiqueConfidentialite() {
                 <li>
                   <strong>Votre consentement :</strong> lorsque vous remplissez
                   le formulaire de contact
-                </li>
-                <li>
-                  <strong>L'exécution d'un contrat :</strong> pour la
-                  réalisation de nos prestations
                 </li>
                 <li>
                   <strong>L'intérêt légitime :</strong> pour améliorer nos
@@ -289,10 +286,10 @@ export default function PolitiqueConfidentialite() {
                   liés à la facturation et documents contractuels (obligation
                   légale)
                 </li>
-                <li>
+                {/* <li>
                   <strong>Données de navigation (cookies) :</strong> 13 mois
                   maximum
-                </li>
+                </li> */}
               </ul>
               <p className="text-sm bg-gray-100 p-3 rounded-lg mt-4">
                 <strong>Note :</strong> Vous pouvez demander la suppression de
@@ -421,7 +418,7 @@ export default function PolitiqueConfidentialite() {
           </div>
 
           {/* 9. Cookies */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+          {/* <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               9. Cookies et technologies similaires
             </h2>
@@ -455,12 +452,12 @@ export default function PolitiqueConfidentialite() {
                 certains cookies peut limiter les fonctionnalités du site.
               </p>
             </div>
-          </div>
+          </div> */}
 
-          {/* 10. Modifications */}
+          {/* 9. Modifications */}
           <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              10. Modifications de la politique
+              9. Modifications de la politique
             </h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
@@ -478,7 +475,7 @@ export default function PolitiqueConfidentialite() {
           {/* Date de mise à jour */}
           <div className="text-center pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              Dernière mise à jour : 2 novembre 2025
+              Dernière mise à jour : 30 décembre 2025
             </p>
           </div>
         </div>

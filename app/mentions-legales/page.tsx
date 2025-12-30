@@ -1,7 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Building2, User, Scale, Shield } from "lucide-react";
-import { APP_NAME, emailContact } from "@/lib/constant";
+import {
+  APP_NAME,
+  emailContact,
+  phoneContact,
+  siegeAdress,
+} from "@/lib/constant";
 
 export const metadata: Metadata = {
   title: `Mentions Légales | ${APP_NAME}`,
@@ -13,7 +18,7 @@ export default function MentionsLegales() {
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-primary text-white py-20 pt-35 flex justify-center">
+      <section className="bg-primary text-white py-20 pt-45 flex justify-center">
         <div className="customContainer ">
           <Link
             href="/"
@@ -51,36 +56,30 @@ export default function MentionsLegales() {
                 <strong>Raison sociale :</strong> {APP_NAME}
               </p>
               <p>
-                <strong>Forme juridique :</strong> [À compléter - ex: SARL, SAS,
-                Auto-entrepreneur]
+                <strong>Forme juridique :</strong> Société par actions
+                simplifiée (SAS)
+              </p>
+
+              <p>
+                <strong>SIREN :</strong> 994 670 255
               </p>
               <p>
-                <strong>Capital social :</strong> [À compléter] €
+                <strong>RCS :</strong> Annecy
               </p>
+
               <p>
-                <strong>SIRET :</strong> [À compléter - 14 chiffres]
-              </p>
-              <p>
-                <strong>RCS :</strong> [À compléter - ex: RCS Annecy]
-              </p>
-              <p>
-                <strong>Numéro de TVA intracommunautaire :</strong> [À
-                compléter]
-              </p>
-              <p>
-                <strong>Siège social :</strong> [À compléter - Adresse complète]
+                <strong>Siège social :</strong> {siegeAdress}
                 <br />
-                Rhône-Alpes, France
               </p>
-              {/* <p>
+              <p>
                 <strong>Téléphone :</strong>{" "}
                 <a
-                href={`tel:${phoneContact}`}
+                  href={`tel:${phoneContact}`}
                   className="text-primary hover:underline"
                 >
                   {phoneContact}
                 </a>
-              </p> */}
+              </p>
               <p>
                 <strong>Email :</strong>{" "}
                 <a
@@ -107,10 +106,10 @@ export default function MentionsLegales() {
             </div>
             <div className="space-y-3 text-gray-700">
               <p>
-                <strong>Nom :</strong> [À compléter - Nom du directeur]
+                <strong>Nom :</strong> Jules Menguy
               </p>
               <p>
-                <strong>Qualité :</strong> [À compléter - ex: Gérant, Président]
+                <strong>Qualité :</strong> Fondateur de {APP_NAME}
               </p>
               <p>
                 <strong>Contact :</strong>{" "}
@@ -138,12 +137,11 @@ export default function MentionsLegales() {
             </div>
             <div className="space-y-3 text-gray-700">
               <p>
-                <strong>Hébergeur :</strong> [À compléter - ex: Vercel Inc.,
-                OVH, etc.]
+                <strong>Hébergeur :</strong> Vercel Inc.
               </p>
               <p>
-                <strong>Adresse :</strong> [À compléter - Adresse de
-                l'hébergeur]
+                <strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA
+                91723
               </p>
               <p>
                 <strong>Site web :</strong>{" "}
@@ -153,7 +151,7 @@ export default function MentionsLegales() {
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"
                 >
-                  [À compléter - URL de l'hébergeur]
+                  https://vercel.com/
                 </a>
               </p>
             </div>
@@ -193,74 +191,10 @@ export default function MentionsLegales() {
             </div>
           </div>
 
-          {/* 5. Protection des données */}
+          {/* 5. Responsabilité */}
           <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              5. Protection des données personnelles
-            </h2>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                Conformément à la loi « Informatique et Libertés » du 6 janvier
-                1978 modifiée et au Règlement Général sur la Protection des
-                Données (RGPD) du 27 avril 2016, vous disposez d'un droit
-                d'accès, de rectification, de suppression et d'opposition aux
-                données personnelles vous concernant.
-              </p>
-              <p>
-                Les informations recueillies sur ce site sont enregistrées dans
-                un fichier informatisé par {APP_NAME} pour la gestion des
-                demandes de devis et de contact. Elles sont conservées pendant
-                [durée à définir] et sont destinées uniquement à l'usage interne
-                de l'entreprise.
-              </p>
-              <p>
-                Pour exercer vos droits, vous pouvez nous contacter à l'adresse
-                suivante :{" "}
-                <a
-                  href={`mailto:${emailContact}`}
-                  className="text-primary hover:underline"
-                >
-                  {emailContact}
-                </a>
-              </p>
-              <p>
-                Pour plus d'informations, consultez notre{" "}
-                <Link
-                  href="/politique-de-confidentialite"
-                  className="text-primary hover:underline font-medium"
-                >
-                  Politique de confidentialité
-                </Link>
-                .
-              </p>
-            </div>
-          </div>
-
-          {/* 6. Cookies */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              6. Cookies
-            </h2>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                Ce site peut utiliser des cookies pour améliorer l'expérience
-                utilisateur et réaliser des statistiques de visites. Un cookie
-                est un fichier texte déposé sur votre ordinateur lors de la
-                visite d'un site ou de la consultation d'une publicité.
-              </p>
-              <p>
-                Vous pouvez désactiver l'utilisation de cookies en sélectionnant
-                les paramètres appropriés de votre navigateur. Cependant, une
-                telle désactivation pourrait empêcher l'utilisation de certaines
-                fonctionnalités de ce site.
-              </p>
-            </div>
-          </div>
-
-          {/* 7. Responsabilité */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              7. Limitation de responsabilité
+              5. Limitation de responsabilité
             </h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
@@ -285,10 +219,10 @@ export default function MentionsLegales() {
             </div>
           </div>
 
-          {/* 8. Droit applicable */}
+          {/* 6. Droit applicable */}
           <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              8. Droit applicable et juridiction compétente
+              6. Droit applicable et juridiction compétente
             </h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
