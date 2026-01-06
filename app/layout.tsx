@@ -126,7 +126,21 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.className}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="https://dronedesalpes.fr/icon.ico"
+          sizes="48x48"
+        />
+        <link
+          rel="icon"
+          href="https://dronedesalpes.fr/web-app-manifest-192-192.png"
+          sizes="192x192"
+        />
+        <link
+          rel="icon"
+          href="https://dronedesalpes.fr/web-app-manifest-512-512.png"
+          sizes="512x512"
+        />
 
         {/* Données structurées JSON-LD pour le SEO */}
         <Script
