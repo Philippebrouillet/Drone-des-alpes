@@ -105,6 +105,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.className}`}>
       <head>
+        <meta name="apple-mobile-web-app-title" content="Dronedesalpes" />
+
         <link
           rel="icon"
           type="image/png"
