@@ -8,36 +8,11 @@ import { organizationSchema, servicesSchema } from "@/lib/schema";
 import { Metadata } from "next";
 import { APP_NAME, prodUrl } from "@/lib/constant";
 
-// const geistSans = Geist({
-//   subsets: ["latin"],
-// });
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["500"],
   display: "swap",
 });
-
-// const lexend = Lexend({
-//   subsets: ["latin"],
-//   weight: ["400"],
-// });
-
-// const inter = Inter({
-//   subsets: ["latin"],
-//   display: "swap",
-// });
-
-// const poppins = Poppins({
-//   subsets: ["latin"],
-//   weight: ["300", "400", "500", "600"],
-//   display: "swap",
-// });
-
-// const urbanist = Urbanist({
-//   subsets: ["latin"],
-//   weight: ["300", "400", "500", "600"],
-// });
 
 // Métadonnées globales optimisées pour le SEO
 export const metadata: Metadata = {
@@ -62,6 +37,10 @@ export const metadata: Metadata = {
     "démoussage drone",
     "nettoyage écologique",
     "sans échafaudage",
+    "drone",
+    "nettoyage professionnel",
+    "nettoyage par drone",
+    "nettoyage par drone Rhône-Alpes",
     "Rhône-Alpes",
     "Suisse",
     "Vaud",
@@ -128,21 +107,17 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="https://dronedesalpes.fr/icon.ico"
-          sizes="48x48"
+          type="image/png"
+          sizes="32x32"
+          href="https://dronedesalpes.fr/favicon-32x32.png"
         />
         <link
           rel="icon"
-          href="https://dronedesalpes.fr/web-app-manifest-192-192.png"
-          sizes="192x192"
-        />
-        <link
-          rel="icon"
-          href="https://dronedesalpes.fr/web-app-manifest-512-512.png"
-          sizes="512x512"
+          type="image/png"
+          sizes="16x16"
+          href="https://dronedesalpes.fr/favicon-16x16.png"
         />
 
-        {/* Données structurées JSON-LD pour le SEO */}
         <Script
           id="organization-schema"
           type="application/ld+json"
@@ -158,14 +133,12 @@ export default function RootLayout({
           }}
         />
 
-        {/* Plausible Cloud script */}
         <Script
           strategy="afterInteractive"
           async
           src="https://plausible.io/js/pa-jjzjjkzlrC6g-cNxqEsZJ.js"
         />
 
-        {/* Initialisation */}
         <Script id="plausible-init" strategy="afterInteractive">
           {`
             window.plausible = window.plausible || function(){ (plausible.q = plausible.q || []).push(arguments) };

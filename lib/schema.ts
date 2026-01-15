@@ -43,7 +43,7 @@ export const organizationSchema = {
     // Ajoutez vos réseaux sociaux ici
     // 'https://www.facebook.com/dronedesalpes',
     "https://www.instagram.com/dronedesalpes",
-    // 'https://www.linkedin.com/company/dronedesalpes',
+    "https://www.linkedin.com/company/drones-des-alpes/",
   ],
   image: `${prodUrl}/logo.jpg`,
   logo: `${prodUrl}/logo.jpg`,
