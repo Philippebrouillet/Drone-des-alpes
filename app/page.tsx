@@ -14,8 +14,7 @@ import { formatHrefService } from "@/lib/services/services";
 import CertificationSection from "@/lib/components/sections/CertificationSection";
 
 export const metadata: Metadata = {
-  title:
-    "Nettoyage par drone en Rhône-Alpes | Toitures, façades, panneaux solaires",
+  title: "Nettoyage par drone en Rhône-Alpes et Suisse",
   description:
     "Expert en nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy) et en Suisse. Toitures, façades, panneaux solaires et gouttières.",
   keywords: [
