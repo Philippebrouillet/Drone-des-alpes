@@ -105,8 +105,6 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.className}`}>
       <head>
-        <meta name="apple-mobile-web-app-title" content="Dronedesalpes" />
-
         <link
           rel="icon"
           type="image/png"
@@ -126,6 +124,8 @@ export default function RootLayout({
           sizes="16x16"
           href="https://dronedesalpes.fr/favicon-16x16.png"
         />
+
+        <meta name="apple-mobile-web-app-title" content="Dronedesalpes" />
 
         <Script
           id="organization-schema"
