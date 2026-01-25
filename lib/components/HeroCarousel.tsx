@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
+import gsap from "../customGsap";
 
 interface Slide {
   image: string;
@@ -137,9 +138,51 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
     setTouchEnd(null);
   };
 
+  useEffect(() => {
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      scrollTrigger: {
+        trigger: "#hero-carousel",
+        start: "top 80%",
+        toggleActions: "play none none none", // play quand visible
+        once: true,
+      },
+    });
+
+    tl.fromTo(
+      "#hero-carousel h1",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.2)" }
+    );
+
+    tl.fromTo(
+      [
+        "#hero-carousel p",
+        "#hero-carousel #heroLink",
+        "#hero-carousel button",
+        "#hero-carousel #expertiseBadge",
+      ],
+      { opacity: 0, y: 15, scale: 0.95 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.4,
+        stagger: 0.08,
+        ease: "back.out(1.1)",
+      },
+      "-=0.3"
+    );
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
   return (
     <section
-      className="relative w-full h-screen overflow-hidden select-none"
+      id="hero-carousel"
+      className="relative w-full h-screen overflow-hidden select-none  "
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -184,10 +227,10 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                   : "opacity-100 translate-y-0"
               }`}
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="opacity-0 text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 {slides[currentSlide].title}
               </h1>
-              <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-8 font-light">
+              <p className="opacity-0 text-xl md:text-2xl lg:text-3xl text-gray-200 mb-8 font-light">
                 {slides[currentSlide].subtitle}
               </p>
             </div>
@@ -195,13 +238,14 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             {/* Bouton CTA fixe  */}
             <div className="mb-12">
               <Link
+                id="heroLink"
                 href={slides[currentSlide].href}
-                className="group relative inline-flex items-center justify-center px-8 py-4 
+                className=" opacity-0 group relative inline-flex items-center justify-center px-8 py-4 
                bg-white text-primary font-semibold text-lg rounded-full overflow-hidden 
                transition-all duration-300 hover:bg-primary-200 hover:text-white 
                hover:scale-105 hover:shadow-2xl"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className=" relative z-10 flex items-center gap-2">
                   Consulter
                   <ArrowRightIcon size={16} />
                 </span>
@@ -221,7 +265,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`transition-all duration-300 ${
+                  className={`opacity-0 transition-all duration-300 ${
                     index === currentSlide
                       ? "w-12 bg-white"
                       : "w-12 bg-white/40 hover:bg-white/60"
@@ -235,9 +279,12 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
       </div>
 
       {/* Badge décoratif en bas */}
-      <div className="absolute bottom-8 left-0 flex justify-center items-center w-full">
+      <div className="  absolute bottom-8 left-0 flex justify-center items-center w-full">
         <div className="customContainer flex justify-end items-center">
-          <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+          <div
+            id="expertiseBadge"
+            className=" opacity-0 bg-white/10 backdrop-blur-md  px-6 py-3 rounded-full border border-white/20"
+          >
             {" "}
             <p className="text-white font-medium text-sm">
               Expertise professionnelle

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* html {
+  scroll-behavior: smooth;
+} */
+
+[id] {
+  scroll-margin-top: 90px;
+}
+
 /* tailwind color generated on https://tailcolor.com/?color=f23455 */
 :root {
   --primary: #0c2b6a;
@@ -67,7 +75,7 @@ button {
 }
 
 .section {
-  @apply py-20 md:py-32;
+  @apply py-16 md:py-24;
 }
 @media (max-width: 1080px) {
   .customContainer {

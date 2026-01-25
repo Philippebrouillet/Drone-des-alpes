@@ -101,7 +101,7 @@ export default function FAQPage() {
       />
 
       {/* Header */}
-      <section className=" bg-primary text-white py-20 pt-35 flex justify-center">
+      <section className="bg-primary text-white py-20 pt-50 flex justify-center">
         <div className="customContainer ">
           <Link
             href="/"

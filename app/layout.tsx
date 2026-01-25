@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     "façade drone",
     "panneaux solaires",
     "nettoyage toiture Rhône-Alpes",
+    "nettoyage toiture Suisse",
     "démoussage drone",
     "nettoyage écologique",
     "sans échafaudage",
