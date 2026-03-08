@@ -33,7 +33,6 @@ export default function AdvantagesSection() {
   ];
 
   useEffect(() => {
-    // Animation du titre
     gsap.fromTo(
       ".advantages-title",
       { opacity: 0, y: 40, scale: 0.95 },
@@ -41,85 +40,57 @@ export default function AdvantagesSection() {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.7,
+        duration: 0.5, // 0.7 → 0.5
         ease: "power2.out",
         scrollTrigger: {
           trigger: ".advantages-title",
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
-    // Animation du sous-titre
     gsap.fromTo(
       ".advantages-subtitle",
       { opacity: 0, y: 25 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.6,
+        duration: 0.4, // 0.6 → 0.4
         ease: "power2.out",
         scrollTrigger: {
           trigger: ".advantages-subtitle",
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
-    // Animation de chaque carte individuellement
     gsap.utils.toArray(".advantage-card").forEach((card: any) => {
-      // Timeline pour chaque carte
       const cardTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          once: true,
-        },
+        scrollTrigger: { trigger: card, start: "top 85%", once: true },
       });
 
-      // Animation de la carte container
       cardTimeline
         .fromTo(
           card,
           { opacity: 0, y: 50, scale: 0.9 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.3,
-            ease: "power3.out",
-          }
+          { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "power3.out" }, // 0.3 → 0.25
         )
-
-        // Animation du titre
         .fromTo(
           card.querySelector(".advantage-title"),
           { opacity: 0, x: -20 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          },
-          "-=0.05"
+          { opacity: 1, x: 0, duration: 0.22, ease: "power2.out" }, // 0.3 → 0.22
+          "-=0.05",
         )
-        // Animation de la description
         .fromTo(
           card.querySelector(".advantage-description"),
           { opacity: 0, y: 10 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          },
-          "-=0.1"
+          { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, // 0.3 → 0.22
+          "-=0.08",
         );
     });
 
-    // Cleanup
     return () => {
       gsap.killTweensOf(".advantages-title");
       gsap.killTweensOf(".advantages-subtitle");

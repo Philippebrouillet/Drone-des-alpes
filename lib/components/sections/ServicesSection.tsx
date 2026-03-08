@@ -51,9 +51,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
         "Des gouttières encrassées peuvent provoquer des infiltrations et des problèmes d'humidité. Nous intervenons avec un aspirateur professionnel pour éliminer complètement les débris, mousses et feuilles, sans risque pour vous.",
     },
   ];
-
   useEffect(() => {
-    // Animation du titre et sous-titre
     const headerTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: sectionId,
@@ -67,16 +65,15 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
       .fromTo(
         `${sectionId} h2`,
         { opacity: 0, y: 40, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.4 }, // 0.5 → 0.4
       )
       .fromTo(
         `${sectionId} .services-subtitle`,
         { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.4 },
-        "-=0.3",
+        { opacity: 1, y: 0, duration: 0.3 }, // 0.4 → 0.3
+        "-=0.2",
       );
 
-    // Animation individuelle pour chaque carte avec timeline interne
     gsap.utils.toArray(".service-card").forEach((card: any) => {
       const cardTimeline = gsap.timeline({
         scrollTrigger: {
@@ -86,127 +83,68 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
         },
       });
 
-      // Animation du container de la carte
       cardTimeline.fromTo(
         card,
-        {
-          opacity: 0,
-          y: 50,
-          scale: 0.9,
-          rotateY: -15,
-        },
+        { opacity: 0, y: 50, scale: 0.9, rotateY: -15 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
           rotateY: 0,
-          duration: 0.6,
+          duration: 0.45,
           ease: "back.out(1.3)",
-        },
+        }, // 0.6 → 0.45
       );
 
-      // Animation de l'image avec effet parallaxe
       cardTimeline.fromTo(
         card.querySelector(".service-image"),
-        {
-          scale: 1.1,
-          opacity: 0,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.5",
+        { scale: 1.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out" }, // 0.8 → 0.6
+        "-=0.4",
       );
 
-      // Animation de l'icône avec rotation spectaculaire
       cardTimeline.fromTo(
         card.querySelector(".service-icon"),
-        {
-          scale: 0,
-          rotation: -180,
-          opacity: 0,
-        },
+        { scale: 0, rotation: -180, opacity: 0 },
         {
           scale: 1,
           rotation: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.45,
           ease: "back.out(2)",
-        },
-        "-=0.6",
+        }, // 0.6 → 0.45
+        "-=0.5",
       );
 
-      // Animation du titre
       cardTimeline.fromTo(
         card.querySelector(".service-title"),
-        {
-          x: -30,
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        },
-        "-=0.4",
-      );
-
-      // Animation de la description courte
-      cardTimeline.fromTo(
-        card.querySelector(".service-short-desc"),
-        {
-          y: 20,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        },
+        { x: -30, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, // 0.4 → 0.3
         "-=0.3",
       );
 
-      // Animation de la description longue
       cardTimeline.fromTo(
-        card.querySelector(".service-description"),
-        {
-          y: 15,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        },
-        "-=0.25",
+        card.querySelector(".service-short-desc"),
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, // 0.4 → 0.3
+        "-=0.2",
       );
 
-      // Animation du bouton avec effet bounce
+      cardTimeline.fromTo(
+        card.querySelector(".service-description"),
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, // 0.4 → 0.3
+        "-=0.2",
+      );
+
       cardTimeline.fromTo(
         card.querySelector(".service-button"),
-        {
-          scale: 0.8,
-          opacity: 0,
-          y: 10,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: "back.out(1.5)",
-        },
-        "-=0.2",
+        { scale: 0.8, opacity: 0, y: 10 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.5)" }, // 0.4 → 0.3
+        "-=0.15",
       );
     });
 
-    // Cleanup
     return () => {
       gsap.killTweensOf(".service-card");
       gsap.killTweensOf(".service-image");
