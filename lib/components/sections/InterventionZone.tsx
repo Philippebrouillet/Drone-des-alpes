@@ -199,7 +199,7 @@ export default function InterventionZone() {
                       <h3 className="text-xl font-bold text-primary text-left">
                         {dept.name}
                       </h3>
-                      <p className="text-sm text-gray-500 whitespace-nowrap">
+                      <p className="text-sm text-gray-500 whitespace-nowrap text-left">
                         {dept.cities.length} villes desservies
                       </p>
                     </div>
