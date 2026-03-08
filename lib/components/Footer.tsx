@@ -38,9 +38,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-primary-800 text-gray-300">
+    <footer className="bg-primary-800 text-gray-300 flex flex-col items-center">
       {/* Section principale */}
-      <div className="customContainer md:mx-auto px-4 py-16">
+      <div className="py-16  max-w-5xl w-full 2xl:max-w-7xl md:max-w-5xl md:w-full px-4 ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Colonne 1: Logo et description */}
           <div className="space-y-4">
@@ -162,28 +162,27 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
+      <div className="border-t border-gray-800 w-full"></div>
       {/* Barre du bas */}
-      <div className="border-t border-gray-800">
-        <div className="customContainer md:mx-auto py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-400">
-              © {createdYear} {APP_NAME}. Tous droits réservés.
-            </p>
-            <div className="flex space-x-6">
-              <Link
-                href="/mentions-legales"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Mentions légales
-              </Link>
-              <Link
-                href="/politique-de-confidentialite"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Politique de confidentialité
-              </Link>
-            </div>
+
+      <div className="py-6  max-w-5xl w-full 2xl:max-w-7xl md:max-w-5xl md:w-full px-4 ">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-sm text-gray-400">
+            © {createdYear} {APP_NAME}. Tous droits réservés.
+          </p>
+          <div className="flex space-x-6">
+            <Link
+              href="/mentions-legales"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+            >
+              Mentions légales
+            </Link>
+            <Link
+              href="/politique-de-confidentialite"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+            >
+              Politique de confidentialité
+            </Link>
           </div>
         </div>
       </div>

@@ -41,19 +41,19 @@ export default function CertificationSection() {
           rotation: 0,
           duration: 0.8,
           ease: "back.out(1.5)",
-        }
+        },
       )
       .fromTo(
         titleRef.current,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.4"
+        "-=0.4",
       )
       .fromTo(
         subtitleRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       );
 
     // Animation de l'image - Slide depuis la gauche avec rotation
@@ -71,7 +71,7 @@ export default function CertificationSection() {
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation du contenu texte - Timeline séquentielle
@@ -87,41 +87,44 @@ export default function CertificationSection() {
       .fromTo(
         mainTitleRef.current,
         { opacity: 0, x: 50, scale: 0.95 },
-        { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power2.out" }
+        { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power2.out" },
       )
       .fromTo(
         descriptionRef.current,
         { opacity: 0, x: 50 },
         { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         checkItem1Ref.current,
         { opacity: 0, x: 30 },
         { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.2"
+        "-=0.2",
       )
       .fromTo(
         checkItem2Ref.current,
         { opacity: 0, x: 30 },
         { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         checkItem3Ref.current,
         { opacity: 0, x: 30 },
         { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         quoteRef.current,
         { opacity: 0, scale: 0.9, y: 20 },
         { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.2)" },
-        "-=0.2"
+        "-=0.2",
       );
   }, []);
   return (
-    <section id="certification" className="section bg-gray-50">
+    <section
+      id="certification"
+      className="section bg-gray-50 overflow-x-hidden"
+    >
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête */}

@@ -86,7 +86,7 @@ export default function OffersSection() {
   }, []);
 
   return (
-    <section id={sectionName} className="section bg-gray-50">
+    <section id={sectionName} className="section bg-gray-50 overflow-x-hidden">
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête sobre */}

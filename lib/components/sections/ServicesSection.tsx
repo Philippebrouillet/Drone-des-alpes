@@ -67,13 +67,13 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
       .fromTo(
         `${sectionId} h2`,
         { opacity: 0, y: 40, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5 }
+        { opacity: 1, y: 0, scale: 1, duration: 0.5 },
       )
       .fromTo(
         `${sectionId} .services-subtitle`,
         { opacity: 0, y: 25 },
         { opacity: 1, y: 0, duration: 0.4 },
-        "-=0.3"
+        "-=0.3",
       );
 
     // Animation individuelle pour chaque carte avec timeline interne
@@ -102,7 +102,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           rotateY: 0,
           duration: 0.6,
           ease: "back.out(1.3)",
-        }
+        },
       );
 
       // Animation de l'image avec effet parallaxe
@@ -118,7 +118,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           duration: 0.8,
           ease: "power2.out",
         },
-        "-=0.5"
+        "-=0.5",
       );
 
       // Animation de l'icône avec rotation spectaculaire
@@ -136,7 +136,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           duration: 0.6,
           ease: "back.out(2)",
         },
-        "-=0.6"
+        "-=0.6",
       );
 
       // Animation du titre
@@ -152,7 +152,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           duration: 0.4,
           ease: "power2.out",
         },
-        "-=0.4"
+        "-=0.4",
       );
 
       // Animation de la description courte
@@ -168,7 +168,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           duration: 0.4,
           ease: "power2.out",
         },
-        "-=0.3"
+        "-=0.3",
       );
 
       // Animation de la description longue
@@ -184,7 +184,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           duration: 0.4,
           ease: "power2.out",
         },
-        "-=0.25"
+        "-=0.25",
       );
 
       // Animation du bouton avec effet bounce
@@ -202,7 +202,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           duration: 0.4,
           ease: "back.out(1.5)",
         },
-        "-=0.2"
+        "-=0.2",
       );
     });
 
@@ -221,7 +221,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
   }, []);
 
   return (
-    <section id={sectionName} className="section bg-white">
+    <section id={sectionName} className="section bg-white overflow-x-hidden">
       <div className="flex justify-center">
         <div className="customContainer">
           {/* Titre de la section */}

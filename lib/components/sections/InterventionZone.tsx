@@ -23,7 +23,7 @@ export default function InterventionZone() {
       // Utiliser setTimeout pour laisser le DOM se mettre à jour
       setTimeout(() => {
         const expandedCard = document.querySelector(
-          `[data-dept-code="${code}"] .dept-cities`
+          `[data-dept-code="${code}"] .dept-cities`,
         );
         if (expandedCard) {
           const cities = expandedCard.querySelectorAll(".city-item");
@@ -38,7 +38,7 @@ export default function InterventionZone() {
               duration: 0.4,
               stagger: 0.03,
               ease: "power2.out",
-            }
+            },
           );
         }
       }, 50);
@@ -61,19 +61,19 @@ export default function InterventionZone() {
       .fromTo(
         `${sectionId} .zone-title`,
         { opacity: 0, y: 50, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" }
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" },
       )
       .fromTo(
         `${sectionId} .zone-paragraph-1`,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.4"
+        "-=0.4",
       )
       .fromTo(
         `${sectionId} .zone-paragraph-2`,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       );
 
     // Animation de la carte Google Maps
@@ -91,7 +91,7 @@ export default function InterventionZone() {
           start: "top 85%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation individuelle pour chaque carte de département
@@ -112,7 +112,7 @@ export default function InterventionZone() {
             start: "top 90%",
             once: true,
           },
-        }
+        },
       );
 
       // Animation du badge du code département
@@ -130,7 +130,7 @@ export default function InterventionZone() {
               start: "top 90%",
               once: true,
             },
-          }
+          },
         );
       }
     });
@@ -178,7 +178,7 @@ export default function InterventionZone() {
             <LazyComponentLoader componentName="GoogleMapComponent" />
           </div>
           {/* Liste détaillée des villes par département */}
-          <div className="mx-auto space-y-4">
+          <div className="mx-auto space-y-4 overflow-x-hidden">
             {departments.map((dept) => (
               <div
                 key={dept.code}

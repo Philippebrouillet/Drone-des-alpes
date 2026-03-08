@@ -124,7 +124,7 @@ export default function FoundersSection() {
     );
   }, []);
   return (
-    <section id="fondateurs" className="section bg-white">
+    <section id="fondateurs" className="section bg-white overflow-x-hidden">
       <div className="flex justify-center ">
         <div className="customContainer">
           {/* En-tête */}
@@ -162,7 +162,7 @@ export default function FoundersSection() {
           </div>
 
           {/* Profils des fondateurs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 customContainer mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto mb-12">
             {/* Jules Menguy */}
             <div
               id="founder1Card"
