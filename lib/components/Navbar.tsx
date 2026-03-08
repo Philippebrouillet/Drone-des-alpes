@@ -94,9 +94,9 @@ const Navbar: NextPage<Props> = ({}) => {
 
             {/* Menu Desktop */}
             <nav className="hidden lg:block">
-              <ul className="flex items-center justify-center uppercase font-semibold text-xs">
+              <ul className="flex items-center justify-center uppercase font-semibold text-sm">
                 <li
-                  className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
                     pathname === "/" && !activeSection
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
@@ -108,7 +108,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 {/* Dropdown Prestations */}
                 <li className="relative">
                   <button
-                    className={`flex gap-2 items-center px-5 py-2 uppercase font-semibold text-sm transition-all duration-150 hover:opacity-80 ${
+                    className={`flex gap-2 items-center px-4 py-2 uppercase font-semibold text-sm transition-all duration-150 hover:opacity-80 ${
                       pathname.includes("nettoyage")
                         ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                         : "border-b-0 border-transparent"
@@ -129,7 +129,7 @@ const Navbar: NextPage<Props> = ({}) => {
                         <li key={i}>
                           <Link
                             href={prestation.href}
-                            className={`block px-5 py-3.5 hover:bg-primary/4  font-medium hover:text-primary transition-colors whitespace-nowrap ${
+                            className={`block px-4 py-3.5 hover:bg-primary/4  font-medium hover:text-primary transition-colors whitespace-nowrap ${
                               pathname.includes(prestation.href)
                                 ? "bg-primary/4 text-primary font-semibold"
                                 : ""
@@ -145,7 +145,7 @@ const Navbar: NextPage<Props> = ({}) => {
 
                 {/* Onglet Zone d'intervention */}
                 <li
-                  className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
                     activeSection === "intervention-zone"
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
@@ -155,7 +155,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 </li>
 
                 <li
-                  className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
                     activeSection === "offres"
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
@@ -165,7 +165,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 </li>
 
                 <li
-                  className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
                     activeSection === "contact"
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
