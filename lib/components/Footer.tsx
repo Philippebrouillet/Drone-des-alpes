@@ -1,3 +1,4 @@
+"use client";
 import {
   Mail,
   MapPin,
@@ -23,10 +24,23 @@ import {
 export default function Footer() {
   const createdYear = 2025;
 
+  const links = [
+    { name: "Accueil", href: "/#accueil" },
+    { name: "À propos", href: "/#a-propos" },
+    { name: "Avantages", href: "/#avantages" },
+    { name: "Nos prestations", href: "/#services" },
+    { name: "Offres spéciales", href: "/#offres" },
+    { name: "Zone d'intervention", href: "/#intervention-zone" },
+    { name: "Nos fondateurs", href: "/#fondateurs" },
+    { name: "Certification", href: "/#certification" },
+    { name: "Contact", href: "/#contact" },
+    { name: "FAQ", href: "/faq" },
+  ];
+
   return (
     <footer className="bg-primary-800 text-gray-300">
       {/* Section principale */}
-      <div className="md:max-w-5xl md:w-full md:mx-auto px-4 py-16">
+      <div className="customContainer md:mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Colonne 1: Logo et description */}
           <div className="space-y-4">
@@ -47,54 +61,16 @@ export default function Footer() {
               Navigation
             </h3>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  Accueil
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#a-propos"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  À propos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#prestations"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  Nos prestations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#offres"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  Offres spéciales
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#contact"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  Contact
-                </Link>
-              </li>
+              {links.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
+                    className="text-sm hover:text-white transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -189,7 +165,7 @@ export default function Footer() {
 
       {/* Barre du bas */}
       <div className="border-t border-gray-800">
-        <div className="md:max-w-5xl md:w-full md:mx-auto py-6">
+        <div className="customContainer md:mx-auto py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
               © {createdYear} {APP_NAME}. Tous droits réservés.

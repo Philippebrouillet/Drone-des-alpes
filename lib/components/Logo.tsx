@@ -6,7 +6,7 @@ export default function Logo({ size = 150 }: { size?: number }) {
   return (
     <Link
       href="/"
-      className="relative flex justify-center items-center px-0 -ml-2.5"
+      className=" relative flex justify-center items-center px-0 -ml-2.5"
     >
       <Image
         src="/logoCrop2.png"

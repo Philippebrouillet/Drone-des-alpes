@@ -1,9 +1,91 @@
+"use client";
+import gsap from "../../customGsap";
 import { APP_NAME } from "@/lib/constant";
 import { Clock, Building, Zap } from "lucide-react";
+import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function WhyChooseUs() {
+  useEffect(() => {
+    ScrollTrigger.refresh();
+    // Animation pour le titre et sous-titre
+    const headerTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#why-us h2",
+        start: "top 80%",
+        once: true,
+      },
+    });
+
+    headerTl
+      .fromTo(
+        "#why-us h2",
+        { opacity: 0, y: 30, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power2.out" }
+      )
+      .fromTo(
+        "#why-us-subtitle",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        "-=0.4"
+      );
+
+    // Animation Carte 1 - Fade + Scale + Slide depuis le bas
+    gsap.fromTo(
+      "#why-us #card1",
+      { opacity: 0, y: 60, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: "#why-us #card1",
+          start: "top 90%",
+          once: true,
+        },
+      }
+    );
+
+    // Animation Carte 2 - Fade + Scale + Slide depuis le bas (avec délai)
+    gsap.fromTo(
+      "#why-us #card2",
+      { opacity: 0, y: 60, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: "#why-us #card2",
+          start: "top 90%",
+          once: true,
+        },
+      }
+    );
+
+    // Animation Carte 3 - Fade + Scale + Slide depuis le bas (avec délai)
+    gsap.fromTo(
+      "#why-us #card3",
+      { opacity: 0, y: 60, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: "#why-us #card3",
+          start: "top 90%",
+          once: true,
+        },
+      }
+    );
+  }, []);
   return (
-    <section className="section ">
+    <section id="why-us" className="section">
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête */}
@@ -12,7 +94,10 @@ export default function WhyChooseUs() {
               Pourquoi choisir{" "}
               <span className="text-secondary">{APP_NAME}</span> ?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p
+              id="why-us-subtitle"
+              className="text-lg text-gray-600 max-w-2xl mx-auto"
+            >
               Notre engagement : un service de qualité, flexible et réactif
               adapté à vos besoins
             </p>
@@ -21,7 +106,10 @@ export default function WhyChooseUs() {
           {/* Liste des avantages */}
           <div className="space-y-8  mx-auto">
             {/* Plage horaire étendue */}
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+            <div
+              id="card1"
+              className="bg-gray-50 rounded-xl p-8 border border-gray-200"
+            >
               <div className="flex items-start gap-6">
                 <div className="shrink-0">
                   <div className="w-14 h-14 bg-white border border-secondary rounded-lg flex items-center justify-center">
@@ -52,7 +140,10 @@ export default function WhyChooseUs() {
             </div>
 
             {/* Prestations flexibles */}
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+            <div
+              id="card2"
+              className="bg-gray-50 rounded-xl p-8 border border-gray-200"
+            >
               <div className="flex items-start gap-6">
                 <div className="shrink-0">
                   <div className="w-14 h-14 bg-white border border-secondary rounded-lg flex items-center justify-center">
@@ -89,7 +180,10 @@ export default function WhyChooseUs() {
             </div>
 
             {/* Réponse rapide et sur mesure */}
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+            <div
+              id="card3"
+              className="bg-gray-50 rounded-xl p-8 border border-gray-200"
+            >
               <div className="flex items-start gap-6">
                 <div className="shrink-0">
                   <div className="w-14 h-14 bg-white border border-secondary rounded-lg flex items-center justify-center">
