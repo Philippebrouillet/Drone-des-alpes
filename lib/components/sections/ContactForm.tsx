@@ -376,7 +376,7 @@ export default function ContactForm() {
                   </div>
 
                   {/* Prestations souhaitées (commun) */}
-                  <div className="form-field">
+                  <div className="form-field relative z-100">
                     <div className="block text-sm font-semibold text-gray-700 mb-2">
                       <div className="flex items-center gap-2">
                         Prestations souhaitées{" "}
