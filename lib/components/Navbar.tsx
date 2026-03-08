@@ -231,6 +231,7 @@ const Navbar: NextPage<Props> = ({}) => {
             <ul className="flex flex-col p-4 space-y-2">
               <li>
                 <Link
+                  onClick={() => setIsMobileMenuOpen(false)}
                   href="/"
                   className={`block px-5 py-3 rounded-lg font-semibold transition-colors ${
                     pathname === "/" && !activeSection
