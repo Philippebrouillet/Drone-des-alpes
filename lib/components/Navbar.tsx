@@ -19,6 +19,27 @@ const Navbar: NextPage<Props> = ({}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobilePrestationsOpen, setIsMobilePrestationsOpen] = useState(false);
 
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const sections = ["offres", "contact", "intervention-zone"];
+
+    const observers = sections.map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+          else setActiveSection((prev) => (prev === id ? "" : prev));
+        },
+        { threshold: 0.3 },
+      );
+      observer.observe(el);
+      return observer;
+    });
+    return () => observers.forEach((o) => o?.disconnect());
+  }, [pathname]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -39,6 +60,7 @@ const Navbar: NextPage<Props> = ({}) => {
     const timer = setTimeout(() => {
       setIsMobileMenuOpen(false);
       setIsMobilePrestationsOpen(false);
+      if (pathname !== "/") setActiveSection("");
     }, 0);
     return () => clearTimeout(timer);
   }, [pathname]);
@@ -59,23 +81,23 @@ const Navbar: NextPage<Props> = ({}) => {
     <>
       {/* Header principal */}
       <header
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        className={`fixed w-full max-w-screen top-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-white shadow-lg text-title"
             : "bg-transparent text-white"
         }`}
       >
         <div className="flex justify-center items-center">
-          <div className="flex justify-between items-center w-full customContainer ">
+          <div className="flex justify-between items-center w-full customContainer">
             {/* Logo */}
             <Logo />
 
             {/* Menu Desktop */}
             <nav className="hidden lg:block">
-              <ul className="flex gap-2 items-center justify-center uppercase font-semibold text-sm">
+              <ul className="flex items-center justify-center uppercase font-semibold text-xs">
                 <li
                   className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
-                    pathname === "/"
+                    pathname === "/" && !activeSection
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
                   }`}
@@ -121,9 +143,20 @@ const Navbar: NextPage<Props> = ({}) => {
                   )}
                 </li>
 
+                {/* Onglet Zone d'intervention */}
                 <li
                   className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
-                    pathname === "/offres"
+                    activeSection === "intervention-zone"
+                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
+                      : "border-b-0 border-transparent"
+                  }`}
+                >
+                  <Link href="/#intervention-zone">Zone d'intervention</Link>
+                </li>
+
+                <li
+                  className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
+                    activeSection === "offres"
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
                   }`}
@@ -133,7 +166,7 @@ const Navbar: NextPage<Props> = ({}) => {
 
                 <li
                   className={`px-5 py-2 transition-all duration-150 hover:opacity-80 ${
-                    pathname === "/contact"
+                    activeSection === "contact"
                       ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
                       : "border-b-0 border-transparent"
                   }`}
@@ -200,7 +233,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 <Link
                   href="/"
                   className={`block px-5 py-3 rounded-lg font-semibold transition-colors ${
-                    pathname === "/"
+                    pathname === "/" && !activeSection
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
@@ -256,12 +289,27 @@ const Navbar: NextPage<Props> = ({}) => {
                   </ul>
                 </div>
               </li>
+
+              {/* Onglet Zone d'intervention mobile */}
+              <li>
+                <Link
+                  href="/#intervention-zone"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block px-5 py-3 rounded-lg font-semibold transition-colors  ${
+                    activeSection === "intervention-zone"
+                      ? "bg-primary/5 text-primary"
+                      : "text-gray-700 hover:bg-gray-100"
+                  }`}
+                >
+                  Zone d'intervention
+                </Link>
+              </li>
               <li>
                 <Link
                   onClick={() => setIsMobileMenuOpen(false)}
                   href="/#offres"
                   className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-colors ${
-                    pathname === "/offres"
+                    activeSection === "offres"
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
@@ -275,7 +323,7 @@ const Navbar: NextPage<Props> = ({}) => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   href="/#contact"
                   className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-colors ${
-                    pathname === "/contact"
+                    activeSection === "contact"
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}

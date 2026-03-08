@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-/* html {
-  scroll-behavior: smooth;
-} */
-
-[id] {
-  scroll-margin-top: 90px;
-}
-
 /* tailwind color generated on https://tailcolor.com/?color=f23455 */
 :root {
   --primary: #0c2b6a;
@@ -63,7 +55,7 @@
 
 @layer components {
   .customContainer {
-    @apply max-w-5xl w-full;
+    @apply max-w-5xl w-full 2xl:max-w-7xl md:max-w-5xl md:w-full;
   }
   .activeLink {
     @apply text-primary border-b-2 border-primary;
@@ -74,6 +66,13 @@ button {
   cursor: pointer;
 }
 
+/* html {
+  scroll-behavior: smooth;
+} */
+
+[id] {
+  scroll-margin-top: 90px;
+}
 .section {
   @apply py-16 md:py-24;
 }

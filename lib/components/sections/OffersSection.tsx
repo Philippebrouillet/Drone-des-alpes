@@ -24,13 +24,13 @@ export default function OffersSection() {
       .fromTo(
         `${sectionId} h2`,
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
       )
       .fromTo(
         `${sectionId} p`,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       );
 
     // Animation Offre 1 - Depuis la droite
@@ -47,7 +47,7 @@ export default function OffersSection() {
           start: "top 75%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation Offre 2 - Depuis la gauche
@@ -64,7 +64,7 @@ export default function OffersSection() {
           start: "top 75%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation Offre 3 - Depuis la droite
@@ -81,7 +81,7 @@ export default function OffersSection() {
           start: "top 75%",
           once: true,
         },
-      }
+      },
     );
   }, []);
 
@@ -102,58 +102,6 @@ export default function OffersSection() {
 
           {/* Liste verticale des offres */}
           <div className="space-y-8 ">
-            {/* Offre de Lancement */}
-            <div
-              id="offer1"
-              className="bg-white  rounded-xl shadow-sm border border-secondary  overflow-hidden hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="p-8">
-                <div className="flex items-start gap-6">
-                  <div className="shrink-0">
-                    <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Sparkles className="w-8 h-8 text-primary" />
-                    </div>
-                  </div>
-
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-2xl font-bold text-primary">
-                        Offre de Lancement
-                      </h3>
-                      <span className="inline-block px-3 py-1 bg-secondary text-white text-xs font-semibold rounded">
-                        Limité
-                      </span>
-                    </div>
-
-                    <p className="text-gray-600 mb-6">
-                      Une remise exceptionnelle pour nos premiers clients
-                    </p>
-
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <div className="text-center mb-4">
-                        <div className="text-5xl font-bold text-primary mb-2">
-                          20%
-                        </div>
-                        <div className="text-gray-700 font-medium">
-                          de remise sur toutes nos prestations
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Check className="w-4 h-4 text-gray-700" />
-                          <span>Pour les 20 premiers clients</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Check className="w-4 h-4 text-gray-700" />
-                          <span>Valable jusqu&apos;au 31 décembre 2025</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             {/* Offre Groupement */}
             <div
               id="offer2"

@@ -22,7 +22,7 @@ export default function FoundersSection() {
       .fromTo(
         "#fondateurs #founder1",
         { opacity: 0, x: -50, rotateX: -20 },
-        { opacity: 1, x: 0, rotateX: 0, duration: 0.7, ease: "power2.out" }
+        { opacity: 1, x: 0, rotateX: 0, duration: 0.7, ease: "power2.out" },
       )
       .fromTo(
         "#fondateurs #ampersand",
@@ -34,19 +34,19 @@ export default function FoundersSection() {
           duration: 0.5,
           ease: "back.out(2)",
         },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         "#fondateurs #founder2",
         { opacity: 0, x: 50, rotateX: -20 },
         { opacity: 1, x: 0, rotateX: 0, duration: 0.7, ease: "power2.out" },
-        "-=0.4"
+        "-=0.4",
       )
       .fromTo(
         "#fondateurs #subtitle",
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3"
+        "-=0.3",
       );
 
     // Animation de l'introduction
@@ -64,7 +64,7 @@ export default function FoundersSection() {
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation Carte Jules - Depuis la gauche avec rotation 3D
@@ -83,7 +83,7 @@ export default function FoundersSection() {
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation Carte Samir - Depuis la droite avec rotation 3D
@@ -102,7 +102,7 @@ export default function FoundersSection() {
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation de la conclusion - Fade + Scale avec rebond
@@ -120,7 +120,7 @@ export default function FoundersSection() {
           start: "top 85%",
           once: true,
         },
-      }
+      },
     );
   }, []);
   return (
@@ -162,7 +162,7 @@ export default function FoundersSection() {
           </div>
 
           {/* Profils des fondateurs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 customContainer mx-auto mb-12">
             {/* Jules Menguy */}
             <div
               id="founder1Card"
@@ -233,7 +233,7 @@ export default function FoundersSection() {
                 <p className="text-gray-700 leading-relaxed">
                   Samir bénéficie d&apos;une solide expérience en tant que{" "}
                   <span className="font-semibold text-primary">
-                    Leader Étanchéité chez Dassault Aviation
+                    Leader Étanchéité pour Dassault Aviation
                   </span>
                   . Il y a développé un haut niveau d&apos;exigence, de rigueur
                   et de contrôle qualité, indispensables dans la conception

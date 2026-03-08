@@ -7,6 +7,7 @@ import MultiSelect from "@/lib/components/MultiSelect";
 import gsap from "../../customGsap";
 
 type ClientType = "particulier" | "pro";
+const sectionId = "#contact";
 
 export default function ContactForm() {
   const [clientType, setClientType] = useState<ClientType>("particulier");
@@ -20,7 +21,7 @@ export default function ContactForm() {
 
   // Animation lors du changement de type de client
   useEffect(() => {
-    const formFields = document.querySelectorAll("#contact .form-field");
+    const formFields = document.querySelectorAll(`${sectionId} .form-field`);
 
     if (formFields.length > 0) {
       gsap.fromTo(
@@ -32,14 +33,12 @@ export default function ContactForm() {
           duration: 0.4,
           stagger: 0.05,
           ease: "power2.out",
-        }
+        },
       );
     }
   }, [clientType]);
 
   useEffect(() => {
-    const sectionId = "#contact";
-
     // Animation du header (titre + paragraphe)
     const headerTl = gsap.timeline({
       scrollTrigger: {
@@ -53,13 +52,13 @@ export default function ContactForm() {
       .fromTo(
         `${sectionId} .contact-title`,
         { opacity: 0, y: 40, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" },
       )
       .fromTo(
         `${sectionId} .contact-subtitle`,
         { opacity: 0, y: 25 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.4"
+        "-=0.4",
       );
 
     // Animation des cartes de contact (téléphone + email)
@@ -79,7 +78,7 @@ export default function ContactForm() {
           start: "top 85%",
           once: true,
         },
-      }
+      },
     );
     // Animation du container de formulaire
     gsap.fromTo(
@@ -96,7 +95,7 @@ export default function ContactForm() {
           start: "top 85%",
           once: true,
         },
-      }
+      },
     );
 
     // Animation des boutons de switch (Particulier/Pro)
@@ -114,7 +113,7 @@ export default function ContactForm() {
           start: "top 80%",
           once: true,
         },
-      }
+      },
     );
 
     // Cleanup
@@ -173,7 +172,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="section bg-white">
+    <section id={sectionId.replace("#", "")} className="section bg-white">
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête */}
