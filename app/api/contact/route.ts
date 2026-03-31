@@ -1,6 +1,6 @@
 import { APP_NAME, emailContact } from "@/lib/constant";
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
+// import { Ratelimit } from "@upstash/ratelimit";
+// import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
@@ -10,11 +10,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // ---------------------------------------------------------------------------
 // Rate limiting (Upstash Redis — compatible Vercel serverless)
 // ---------------------------------------------------------------------------
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(5, "1 h"),
-  prefix: "contact_form",
-});
+// const ratelimit = new Ratelimit({
+//   redis: Redis.fromEnv(),
+//   limiter: Ratelimit.slidingWindow(5, "1 h"),
+//   prefix: "contact_form",
+// });
 
 // ---------------------------------------------------------------------------
 // Schéma Zod
@@ -54,18 +54,18 @@ const contactSchema = z.discriminatedUnion("clientType", [
 // ---------------------------------------------------------------------------
 export async function POST(req: NextRequest) {
   // Rate limiting
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
-    req.headers.get("x-real-ip") ??
-    "unknown";
+  // const ip =
+  //   req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+  //   req.headers.get("x-real-ip") ??
+  //   "unknown";
 
-  const { success } = await ratelimit.limit(ip);
-  if (!success) {
-    return NextResponse.json(
-      { error: "Trop de demandes. Veuillez réessayer dans une heure." },
-      { status: 429 },
-    );
-  }
+  // const { success } = await ratelimit.limit(ip);
+  // if (!success) {
+  //   return NextResponse.json(
+  //     { error: "Trop de demandes. Veuillez réessayer dans une heure." },
+  //     { status: 429 },
+  //   );
+  // }
 
   try {
     const body = await req.json();
