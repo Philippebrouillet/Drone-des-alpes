@@ -108,7 +108,7 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-title" content="Dronedesalpes" />
 
-        <script
+        <Script
           src="https://cdn.visitors.now/v.js"
           data-token="e37ea11d-4885-4246-a4b3-d9883487d5dd"
         />
