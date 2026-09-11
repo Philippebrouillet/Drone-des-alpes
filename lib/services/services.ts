@@ -142,32 +142,22 @@ export const prestationsData: Record<string, PrestationData> = {
       "Protection de votre toiture et de vos façades",
     ],
   },
-  "nettoyage-batiments": {
-    title: "Nettoyage de bâtiments par drone",
-    subtitle: "Solution professionnelle pour tous types de structures",
-    description: `Chez ${APP_NAME}, nous assurons le nettoyage professionnel de tous types de bâtiments : toitures, façades, bardages, terrasses et panneaux solaires, mais aussi sites complexes, monuments historiques, ponts ou statues. Notre technologie par drone permet d'accéder à toutes les surfaces, même les plus difficiles d'accès, rapidement et en toute sécurité.`,
-    image: "/Nettoyage facade.jpg",
-    sections: [
-      {
-        title: "Polyvalence et expertise",
-        content:
-          "Nos drones utilisent des pulvérisations adaptées à chaque matériau (zinc, ardoise, béton, brique, verre, métal, PVC), garantissant un nettoyage précis et en profondeur sans risque d'endommager vos structures.",
-      },
-      {
-        title: "Intervention professionnelle",
-        content: `Pour un nettoyage sûr, rapide et performant de tous vos bâtiments, classiques ou exceptionnels, demandez dès maintenant votre devis gratuit avec ${APP_NAME}.`,
-      },
-    ],
-    advantages: [
-      "Sécurité maximale : opérations contrôlées depuis le sol",
-      "Rapidité : jusqu'à 5 fois plus rapide qu'un nettoyage traditionnel",
-      "Polyvalence totale : bâtiments industriels, monuments, ponts, statues",
-      "Impact minimal sur vos activités",
-      "Adapté à tous les matériaux",
-    ],
-  },
 };
 
 export function getPrestationByKey(slug: string): PrestationData | null {
   return prestationsData[slug] || null;
 }
+
+/**
+ * Toutes les pages prestations existantes, y compris celles absentes de l'enum
+ * `Services` (qui ne sert qu'au carrousel de la page d'accueil). Sert de source
+ * unique pour le sitemap et le maillage interne, afin de ne laisser aucune page
+ * orpheline.
+ */
+export const allPrestationLinks = Object.entries(prestationsData).map(
+  ([slug, data]) => ({
+    slug,
+    name: data.title,
+    href: `/prestation/${slug}`,
+  }),
+);

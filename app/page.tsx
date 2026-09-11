@@ -3,6 +3,7 @@ import HeroCarousel from "../lib/components/HeroCarousel";
 import AboutSection from "../lib/components/sections/AboutSection";
 import AdvantagesSection from "../lib/components/sections/AdvantagesSection";
 import ServicesSection from "../lib/components/sections/ServicesSection";
+import BeforeAfterSection from "../lib/components/sections/BeforeAfterSection";
 import OffersSection from "../lib/components/sections/OffersSection";
 import WhyChooseUs from "../lib/components/sections/WhyChooseUs";
 
@@ -15,31 +16,25 @@ import FoundersSection from "@/lib/components/sections/FoundersSection";
 import gsap from "@/lib/customGsap";
 
 export const metadata: Metadata = {
-  title: "Nettoyage par drone en Rhône-Alpes et Suisse",
+  title: "Nettoyage par drone en Haute-Savoie, Savoie et Isère",
   description:
-    "Expert en nettoyage par drone en Rhône-Alpes (Lyon, Grenoble, Annecy) et en Suisse. Toitures, façades, panneaux solaires et gouttières.",
+    "Nettoyage par drone de toiture, façade, panneaux solaires et gouttières en Haute-Savoie, Savoie, Ain, Isère et Jura. Sans échafaudage, devis gratuit sous 48h.",
   keywords: [
-    "nettoyage",
-    "nettoyage toiture",
     "nettoyage par drone",
     "nettoyage toiture drone",
-    "nettoyage drone",
+    "démoussage toiture drone",
     "nettoyage façade drone",
     "nettoyage panneaux solaires drone",
-    "nettoyage gouttières drone",
-    "nettoyage façade",
-    "nettoyage panneaux solaires",
     "nettoyage gouttières",
-    "nettoyage drone Rhône-Alpes",
-    "nettoyage toiture drone Lyon",
-    "nettoyage façade drone Grenoble",
-    "nettoyage panneaux solaires Annecy",
-    "démoussage toiture drone",
-    "nettoyage gouttières Chambéry",
+    "nettoyage drone Haute-Savoie",
+    "nettoyage toiture Annecy",
+    "nettoyage toiture Annemasse",
+    "nettoyage façade Chambéry",
+    "nettoyage panneaux solaires Grenoble",
+    "nettoyage toiture Annemasse",
     "entreprise nettoyage drone",
     "nettoyage sans échafaudage",
     "nettoyage écologique drone",
-    "drone nettoyage professionnel",
   ],
   authors: [{ name: APP_NAME }],
   robots: {
@@ -54,31 +49,22 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${APP_NAME} - Expert Nettoyage par Drone en Rhône-Alpes et Suisse`,
+    title: `${APP_NAME} - Expert du nettoyage par drone en Haute-Savoie et Savoie`,
     description:
-      "Nettoyage professionnel de toitures, façades et panneaux solaires par drone. Solution innovante sans échafaudage en Rhône-Alpes et Suisse. Devis gratuit.",
+      "Nettoyage professionnel de toitures, façades et panneaux solaires par drone. Solution innovante sans échafaudage en Haute-Savoie, Savoie, Ain, Isère et Jura. Devis gratuit.",
     type: "website",
     locale: "fr_FR",
     url: prodUrl,
     siteName: APP_NAME,
-    images: [
-      {
-        url: "/logo.jpg",
-        width: 1200,
-        height: 630,
-        alt: `Nettoyage de toiture par drone - ${APP_NAME}`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${APP_NAME} - Nettoyage par drone Rhône-Alpes`,
+    title: `${APP_NAME} - Nettoyage par drone en Haute-Savoie et Savoie`,
     description:
       "Expert en nettoyage par drone. Toiture, façade, panneaux solaires. Devis gratuit.",
-    images: ["/logo.jpg"],
   },
   alternates: {
-    canonical: prodUrl,
+    canonical: "/",
   },
 };
 
@@ -137,8 +123,12 @@ export default function Home() {
     <main>
       {gsap && (
         <>
-          <HeroCarousel slides={slides} />
+          <HeroCarousel
+            slides={slides}
+            heading="Nettoyage professionnel par drone"
+          />
           <AboutSection />
+          <BeforeAfterSection />
           <AdvantagesSection />
           <ServicesSection mutualServicesData={mutualServicesData} />
           <OffersSection />

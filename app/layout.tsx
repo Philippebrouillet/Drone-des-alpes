@@ -18,43 +18,28 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(prodUrl),
   title: {
-    default: `${APP_NAME} | Nettoyage par drone en Rhône-Alpes et Suisse`,
+    default: `${APP_NAME} | Nettoyage par drone en Haute-Savoie et Savoie`,
     template: `%s | ${APP_NAME}`,
   },
   description:
-    "Expert en nettoyage par drone en Rhône-Alpes et en Suisse : toiture, façade, panneaux solaires, gouttières. Solution rapide, écologique et sans échafaudage.",
+    "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura : toiture, façade, panneaux solaires, gouttières. Rapide, écologique et sans échafaudage.",
   keywords: [
-    "nettoyage",
     "nettoyage toiture",
-    "nettoyage façade",
-    "nettoyage panneaux solaires",
-    "nettoyage gouttières",
-    "nettoyage drone",
-    "toiture drone",
-    "façade drone",
-    "panneaux solaires",
-    "nettoyage toiture Rhône-Alpes",
-    "nettoyage toiture Suisse",
-    "démoussage drone",
-    "nettoyage écologique",
-    "sans échafaudage",
-    "drone",
-    "nettoyage professionnel",
+    "nettoyage toiture drone",
     "nettoyage par drone",
-    "nettoyage par drone Rhône-Alpes",
-    "Rhône-Alpes",
-    "Suisse",
-    "Vaud",
-    "Genève",
-    "Ain",
-    "Jura",
-    "Isère",
-    "Savoie",
-    "Haute-Savoie",
-    "Lyon",
-    "Grenoble",
-    "Annecy",
-    "Chambéry",
+    "démoussage toiture drone",
+    "nettoyage façade",
+    "nettoyage façade drone",
+    "nettoyage panneaux solaires",
+    "nettoyage panneaux solaires drone",
+    "nettoyage gouttières",
+    "nettoyage sans échafaudage",
+    "nettoyage toiture Haute-Savoie",
+    "nettoyage toiture Annecy",
+    "nettoyage toiture Bourg-en-Bresse",
+    "nettoyage toiture Chambéry",
+    "nettoyage toiture Grenoble",
+    "nettoyage toiture Annemasse",
   ],
   authors: [{ name: APP_NAME }],
   creator: APP_NAME,
@@ -77,24 +62,16 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     title: `${APP_NAME} - Nettoyage professionnel par drone`,
     description:
-      "Expert en nettoyage par drone en Rhône-Alpes et en Suisse. Solution innovante pour toiture, façade et panneaux solaires.",
-    images: [
-      {
-        url: "/logo.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${APP_NAME} - Nettoyage par drone`,
-      },
-    ],
+      "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura. Solution innovante pour toiture, façade et panneaux solaires.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${APP_NAME} - Nettoyage par drone`,
-    description: "Expert en nettoyage par drone en Rhône-Alpes et en Suisse.",
-    images: ["/logo.jpg"],
+    description:
+      "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura.",
   },
   alternates: {
-    canonical: prodUrl,
+    canonical: "/",
   },
 };
 
@@ -108,39 +85,31 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-title" content="Dronedesalpes" />
 
-        <Script
-          src="https://cdn.visitors.now/v.js"
-          data-token="e37ea11d-4885-4246-a4b3-d9883487d5dd"
-        />
+        {/*
+          Sans JavaScript, aucune animation ne viendra révéler les blocs
+          `.reveal` : on les réaffiche pour que la page reste lisible.
+        */}
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; }`}</style>
+        </noscript>
 
-        <Script
-          id="organization-schema"
+        {/*
+          Données structurées rendues côté serveur : une balise <script> native est
+          présente dans le HTML livré, là où next/script les injecterait seulement
+          après hydratation (donc invisibles pour un crawl sans exécution de JS).
+        */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        <Script
-          id="services-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(servicesSchema),
           }}
         />
-
-        <Script
-          strategy="afterInteractive"
-          async
-          src="https://plausible.io/js/pa-jjzjjkzlrC6g-cNxqEsZJ.js"
-        />
-
-        <Script id="plausible-init" strategy="afterInteractive">
-          {`
-            window.plausible = window.plausible || function(){ (plausible.q = plausible.q || []).push(arguments) };
-            plausible.init = plausible.init || function(i){ plausible.o = i || {} };
-            plausible.init();
-          `}
-        </Script>
       </head>
       <body>
         <Navbar />

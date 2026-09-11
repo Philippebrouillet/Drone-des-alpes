@@ -1,14 +1,30 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Phone } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getPrestationByKey } from "@/lib/services/services";
-import { APP_NAME } from "@/lib/constant";
+import {
+  getPrestationByKey,
+  prestationsData,
+} from "@/lib/services/services";
+import {
+  APP_NAME,
+  phoneContact,
+  phoneContactRaw,
+  prodUrl,
+} from "@/lib/constant";
+import { breadcrumbSchema, prestationSchema } from "@/lib/schema";
 
 interface PrestationPageProps {
   params: Promise<{ name: string }>;
 }
+
+// Prérendu au build : ces 4 pages sont les plus stratégiques du site.
+export async function generateStaticParams() {
+  return Object.keys(prestationsData).map((name) => ({ name }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -23,8 +39,19 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${prestation.title} | ${APP_NAME}`,
-    description: prestation.description,
+    // Le nom de marque est ajouté par le `template` du layout : ne pas le répéter.
+    title: prestation.title,
+    description: prestation.description.slice(0, 155),
+    alternates: {
+      canonical: `/prestation/${name}`,
+    },
+    openGraph: {
+      title: `${prestation.title} | ${APP_NAME}`,
+      description: prestation.description.slice(0, 200),
+      type: "website",
+      url: `${prodUrl}/prestation/${name}`,
+      images: [{ url: prestation.image, alt: prestation.title }],
+    },
   };
 }
 
@@ -36,21 +63,63 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
     notFound();
   }
 
+  const jsonLd = [
+    prestationSchema({
+      title: prestation.title,
+      description: prestation.description,
+      url: `${prodUrl}/prestation/${name}`,
+      image: prestation.image,
+    }),
+    breadcrumbSchema([
+      { name: "Accueil", url: prodUrl },
+      { name: "Nos prestations", url: `${prodUrl}/#services` },
+      { name: prestation.title, url: `${prodUrl}/prestation/${name}` },
+    ]),
+  ];
+
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[550px] w-full overflow-hidden">
         <Image
           src={prestation.image}
-          alt={prestation.title}
+          alt={`${prestation.title} - ${APP_NAME}`}
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/70" />
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="customContainer mx-auto px-6 text-center text-white">
+            <nav aria-label="Fil d'Ariane" className="mb-6">
+              <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-white/80">
+                <li>
+                  <Link href="/" className="hover:text-white hover:underline">
+                    Accueil
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+                <li>
+                  <Link
+                    href="/#services"
+                    className="hover:text-white hover:underline"
+                  >
+                    Nos prestations
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+                <li className="text-white font-medium" aria-current="page">
+                  {prestation.title}
+                </li>
+              </ol>
+            </nav>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
               {prestation.title}
             </h1>
@@ -146,12 +215,13 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
             >
               Demander un devis gratuit
             </Link>
-            <Link
-              href="/"
-              className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors duration-200"
+            <a
+              href={`tel:${phoneContactRaw}`}
+              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors duration-200"
             >
-              Retour à l'accueil
-            </Link>
+              <Phone className="w-5 h-5" />
+              {phoneContact}
+            </a>
           </div>
         </div>
       </section>

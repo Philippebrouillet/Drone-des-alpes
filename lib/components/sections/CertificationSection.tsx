@@ -151,7 +151,7 @@ export default function CertificationSection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Image de certification */}
               <div ref={imageContainerRef} className="order-2 lg:order-1">
-                <div className="relative bg-linear-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 shadow-lg border border-gray-200">
+                <div className="relative rounded-2xl p-8 shadow-lg border border-gray-200">
                   <Image
                     src="/certification.png"
                     alt={`Certification professionnelle ${APP_NAME}`}
@@ -160,6 +160,24 @@ export default function CertificationSection() {
                     loading="lazy"
                     className="w-full h-auto rounded-lg shadow-md"
                   />
+
+                  <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col items-center gap-3">
+                    <Image
+                      src="/certibiocide.png"
+                      alt="Logo Certibiocide - professionnel certifié pour l'usage de produits biocides"
+                      width={218}
+                      height={222}
+                      loading="lazy"
+                      className="w-28 h-auto"
+                    />
+                    <p className="text-center text-sm text-gray-600 max-w-xs">
+                      <span className="font-semibold text-gray-900">
+                        Certibiocide
+                      </span>{" "}
+                      : certification requise pour l&apos;achat et
+                      l&apos;utilisation professionnelle des produits biocides.
+                    </p>
+                  </div>
                 </div>
               </div>
 

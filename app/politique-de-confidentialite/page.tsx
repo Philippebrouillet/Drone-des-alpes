@@ -18,7 +18,7 @@ import {
 } from "@/lib/constant";
 
 export const metadata: Metadata = {
-  title: `Politique de Confidentialité | ${APP_NAME}`,
+  title: "Politique de confidentialité",
   description: `Politique de confidentialité de ${APP_NAME} - Comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.`,
   robots: "noindex, follow",
 };

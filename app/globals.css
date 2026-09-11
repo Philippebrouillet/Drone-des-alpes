@@ -93,3 +93,17 @@ button {
     opacity: 0;
   }
 }
+
+/*
+  Éléments animés à l'apparition : masqués jusqu'à ce que GSAP les révèle.
+  Le <noscript> du layout les réaffiche si JavaScript est indisponible.
+*/
+.reveal {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+  }
+}

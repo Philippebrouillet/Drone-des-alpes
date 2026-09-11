@@ -129,52 +129,7 @@ export const cityCoordinates: Record<
   Morez: { lat: 46.5219, lng: 6.0219, dept: "39" },
   Poligny: { lat: 46.8361, lng: 5.7089, dept: "39" },
 
-  // Canton de Genève (Suisse)
-  Genève: { lat: 46.2044, lng: 6.1432, dept: "GE" },
-  Carouge: { lat: 46.1806, lng: 6.1389, dept: "GE" },
-  Lancy: { lat: 46.1889, lng: 6.1169, dept: "GE" },
-  Onex: { lat: 46.1833, lng: 6.1, dept: "GE" },
-  Vernier: { lat: 46.2167, lng: 6.0833, dept: "GE" },
-  Meyrin: { lat: 46.2333, lng: 6.0833, dept: "GE" },
-  "Le Grand-Saconnex": { lat: 46.2333, lng: 6.1167, dept: "GE" },
-  Thônex: { lat: 46.1833, lng: 6.2, dept: "GE" },
-  "Chêne-Bourg": { lat: 46.1944, lng: 6.1997, dept: "GE" },
-  "Chêne-Bougeries": { lat: 46.1925, lng: 6.1833, dept: "GE" },
-  Bernex: { lat: 46.1833, lng: 6.0667, dept: "GE" },
-  Confignon: { lat: 46.1833, lng: 6.0833, dept: "GE" },
-  "Plan-les-Ouates": { lat: 46.1667, lng: 6.1167, dept: "GE" },
-  "Perly-Certoux": { lat: 46.1597, lng: 6.1061, dept: "GE" },
-  Bardonnex: { lat: 46.1444, lng: 6.1278, dept: "GE" },
-  Troinex: { lat: 46.1556, lng: 6.1444, dept: "GE" },
-  Veyrier: { lat: 46.1667, lng: 6.1833, dept: "GE" },
-  "Collonge-Bellerive": { lat: 46.25, lng: 6.1833, dept: "GE" },
-  Cologny: { lat: 46.2167, lng: 6.1833, dept: "GE" },
-  Versoix: { lat: 46.2833, lng: 6.1667, dept: "GE" },
-  Genthod: { lat: 46.2667, lng: 6.15, dept: "GE" },
-  Bellevue: { lat: 46.2556, lng: 6.1444, dept: "GE" },
-  "Pregny-Chambésy": { lat: 46.25, lng: 6.1333, dept: "GE" },
 
-  // Canton de Vaud (Suisse)
-  Lausanne: { lat: 46.5197, lng: 6.6322, dept: "VD" },
-  Renens: { lat: 46.5333, lng: 6.5833, dept: "VD" },
-  Prilly: { lat: 46.5333, lng: 6.6, dept: "VD" },
-  Crissier: { lat: 46.55, lng: 6.5667, dept: "VD" },
-  Ecublens: { lat: 46.5333, lng: 6.5667, dept: "VD" },
-  Pully: { lat: 46.5108, lng: 6.6622, dept: "VD" },
-  Lutry: { lat: 46.5039, lng: 6.6856, dept: "VD" },
-  Vevey: { lat: 46.4608, lng: 6.8431, dept: "VD" },
-  Montreux: { lat: 46.4312, lng: 6.9106, dept: "VD" },
-  "La Tour-de-Peilz": { lat: 46.4528, lng: 6.8578, dept: "VD" },
-  "Blonay-Saint-Légier": { lat: 46.4667, lng: 6.9, dept: "VD" },
-  Chexbres: { lat: 46.4833, lng: 6.7667, dept: "VD" },
-  Chardonne: { lat: 46.4833, lng: 6.8333, dept: "VD" },
-  "Corsier-sur-Vevey": { lat: 46.4667, lng: 6.8667, dept: "VD" },
-  Clarens: { lat: 46.4394, lng: 6.9078, dept: "VD" },
-  Villeneuve: { lat: 46.3958, lng: 6.9269, dept: "VD" },
-  Aigle: { lat: 46.3167, lng: 6.9667, dept: "VD" },
-  Ollon: { lat: 46.3, lng: 7.0, dept: "VD" },
-  Bex: { lat: 46.25, lng: 7.0167, dept: "VD" },
-  Yvorne: { lat: 46.3333, lng: 6.95, dept: "VD" },
 };
 
 export const departments = [
@@ -325,63 +280,43 @@ export const departments = [
       "Salins-les-Bains",
     ],
   },
-  {
-    code: "GE",
-    name: "CANTON DE GENÈVE (SUISSE)",
-    color: "bg-secondary",
-    hoverColor: "hover:bg-secondary-50",
-    cities: [
-      "Genève",
-      "Carouge",
-      "Lancy",
-      "Onex",
-      "Vernier",
-      "Meyrin",
-      "Le Grand-Saconnex",
-      "Thônex",
-      "Chêne-Bourg",
-      "Chêne-Bougeries",
-      "Bernex",
-      "Confignon",
-      "Plan-les-Ouates",
-      "Perly-Certoux",
-      "Bardonnex",
-      "Troinex",
-      "Veyrier",
-      "Collonge-Bellerive",
-      "Cologny",
-      "Versoix",
-      "Genthod",
-      "Bellevue",
-      "Pregny-Chambésy",
-    ],
-  },
-  {
-    code: "VD",
-    name: "CANTON DE VAUD (SUISSE)",
-    color: "bg-secondary-600",
-    hoverColor: "hover:bg-secondary-50",
-    cities: [
-      "Lausanne",
-      "Renens",
-      "Prilly",
-      "Crissier",
-      "Ecublens",
-      "Pully",
-      "Lutry",
-      "Vevey",
-      "Montreux",
-      "La Tour-de-Peilz",
-      "Blonay-Saint-Légier",
-      "Chexbres",
-      "Chardonne",
-      "Corsier-sur-Vevey",
-      "Clarens",
-      "Villeneuve",
-      "Aigle",
-      "Ollon",
-      "Bex",
-      "Yvorne",
-    ],
-  },
+];
+
+/**
+ * Libellés lisibles des zones (les noms de `departments` sont en majuscules,
+ * inexploitables tels quels dans une phrase ou une balise title).
+ */
+export const deptLabels: Record<
+  string,
+  { label: string; region: string; country: "FR" }
+> = {
+  "74": { label: "Haute-Savoie", region: "Haute-Savoie", country: "FR" },
+  "73": { label: "Savoie", region: "Savoie", country: "FR" },
+  "01": { label: "Ain", region: "Ain", country: "FR" },
+  "38": { label: "Isère", region: "Isère", country: "FR" },
+  "39": { label: "Jura", region: "Jura", country: "FR" },
+};
+
+export function getDeptLabel(code: string) {
+  return (
+    deptLabels[code] ?? { label: code, region: code, country: "FR" as const }
+  );
+}
+
+/** Villes mises en avant : repères sur la carte et maillage dans le pied de page. */
+export const villesPrincipales = [
+  "Annecy",
+  "Annemasse",
+  "Cluses",
+  "Thonon-les-Bains",
+  "Chamonix-Mont-Blanc",
+  "Sallanches",
+  "Chambéry",
+  "Aix-les-Bains",
+  "Albertville",
+  "Grenoble",
+  "Bourg-en-Bresse",
+  "Bonneville",
+  "Rumilly",
+  "Lons-le-Saunier",
 ];

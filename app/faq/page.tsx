@@ -1,14 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, HelpCircle, ChevronDown } from "lucide-react";
-import Script from "next/script";
-import { faqSchema } from "@/lib/schema";
-import { APP_NAME } from "@/lib/constant";
+import { HelpCircle, ChevronDown } from "lucide-react";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+import { APP_NAME, prodUrl } from "@/lib/constant";
 
 export const metadata: Metadata = {
-  title: `FAQ - Questions Fréquentes | ${APP_NAME}`,
+  title: "FAQ - Questions fréquentes sur le nettoyage par drone",
   description:
-    "Toutes les réponses à vos questions sur le nettoyage par drone : prix, zones d'intervention, efficacité, durée. Découvrez notre expertise en Rhône-Alpes.",
+    "Prix, zones d'intervention, efficacité, durée, produits utilisés : toutes les réponses à vos questions sur le nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura.",
   keywords: [
     "faq nettoyage drone",
     "prix nettoyage toiture drone",
@@ -16,11 +15,15 @@ export const metadata: Metadata = {
     "efficacité drone nettoyage",
     "zone intervention drone",
   ],
+  alternates: {
+    canonical: "/faq",
+  },
   openGraph: {
     title: `FAQ - Questions sur le nettoyage par drone | ${APP_NAME}`,
     description:
-      "Toutes les réponses à vos questions sur le nettoyage par drone en Rhône-Alpes.",
+      "Toutes les réponses à vos questions sur le nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura.",
     type: "website",
+    url: `${prodUrl}/faq`,
   },
 };
 
@@ -33,7 +36,7 @@ const faqs = [
   {
     question: "Dans quelles villes intervenez-vous en Rhône-Alpes ?",
     answer:
-      "Nous intervenons dans toute la région Rhône-Alpes, notamment en Haute-Savoie, Savoie, Ain, Isère et Jura. Nos principales zones d'intervention incluent Lyon, Grenoble, Annecy, Chambéry, Annemasse, Thonon-les-Bains, Chamonix, Bourg-en-Bresse et toutes les villes environnantes. N'hésitez pas à nous contacter pour confirmer notre disponibilité dans votre secteur.",
+      "Nous intervenons en Haute-Savoie, Savoie, Ain, Isère et Jura. Nos principales zones d'intervention incluent Annecy, Annemasse, Cluses, Thonon-les-Bains, Chamonix, Sallanches, Chambéry, Aix-les-Bains, Albertville, Grenoble, Bourg-en-Bresse, Lons-le-Saunier et toutes les villes environnantes. N'hésitez pas à nous contacter pour confirmer notre disponibilité dans votre secteur.",
   },
   {
     question: "Le nettoyage par drone est-il vraiment efficace ?",
@@ -91,29 +94,43 @@ const faqs = [
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Schema JSON-LD pour la FAQ */}
-      <Script
-        id="faq-schema"
+      {/*
+        Données structurées rendues côté serveur : présentes dans le HTML
+        livré, sans dépendre de l'exécution du JavaScript.
+      */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema(faqs)),
+          __html: JSON.stringify([
+            faqSchema(faqs),
+            breadcrumbSchema([
+              { name: "Accueil", url: prodUrl },
+              { name: "FAQ", url: `${prodUrl}/faq` },
+            ]),
+          ]),
         }}
       />
 
       {/* Header */}
       <section className="bg-primary text-white py-20 pt-50 flex justify-center">
         <div className="customContainer ">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 mb-8"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span>Retour à l'accueil</span>
-          </Link>
+          <nav aria-label="Fil d'Ariane" className="mb-8">
+            <ol className="flex flex-wrap items-center gap-2 text-sm text-white/80">
+              <li>
+                <Link href="/" className="hover:text-white hover:underline">
+                  Accueil
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-white font-medium" aria-current="page">
+                FAQ
+              </li>
+            </ol>
+          </nav>
           <div className="flex items-center gap-4 mb-4">
             <HelpCircle className="w-12 h-12" />
             <h1 className="text-4xl md:text-5xl font-bold">
-              Questions Fréquentes (FAQ)
+              Nettoyage par drone : questions fréquentes
             </h1>
           </div>
           <p className="text-xl text-primary-50">

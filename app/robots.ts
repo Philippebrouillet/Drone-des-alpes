@@ -7,22 +7,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/static/", "/_next/image/", "/admin/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        crawlDelay: 0,
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-        crawlDelay: 0,
+        // Ne jamais bloquer /_next/static/ ni /_next/image/ :
+        // Google a besoin du CSS, du JS et des images pour rendre et indexer les pages.
+        disallow: ["/api/", "/admin/"],
       },
     ],
 
     sitemap: `${prodUrl}/sitemap.xml`,
-
-    // host: prodUrl,
+    host: prodUrl,
   };
 }

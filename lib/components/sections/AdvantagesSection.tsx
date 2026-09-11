@@ -104,10 +104,10 @@ export default function AdvantagesSection() {
         <div className="customContainer">
           {/* Titre de la section */}
           <div className="text-center mb-16">
-            <h2 className="advantages-title opacity-0 text-4xl md:text-5xl font-bold text-primary mb-4">
+            <h2 className="advantages-title reveal text-4xl md:text-5xl font-bold text-primary mb-4">
               Les avantages du nettoyage par drone
             </h2>
-            <p className="advantages-subtitle opacity-0 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="advantages-subtitle reveal text-lg text-gray-600 max-w-2xl mx-auto">
               Une technologie qui combine performance, sécurité et respect de
               l&apos;environnement
             </p>
@@ -120,7 +120,7 @@ export default function AdvantagesSection() {
               return (
                 <div
                   key={index}
-                  className="advantage-card opacity-0 bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="advantage-card reveal bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Icône avec background */}
                   <div className="advantage-icon w-16 h-16 bg-primary rounded-full flex items-center border-2 border-secondary justify-center mb-6">

@@ -2,22 +2,27 @@
 import {
   Mail,
   MapPin,
-  Facebook,
   Instagram,
   Linkedin,
   Clock,
   Phone,
+  Facebook,
 } from "lucide-react";
 
 import Logo from "./Logo";
 
 import Link from "next/link";
-import { serviceLinks } from "../services/services";
+import { allPrestationLinks } from "../services/services";
+import {
+  formatCityUrl,
+  villesPrincipales,
+} from "../services/interventionZone";
 import {
   APP_NAME,
   emailContact,
   openHours,
   phoneContact,
+  phoneContactRaw,
   siegeAdress,
 } from "../constant";
 
@@ -50,8 +55,9 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed">
-              Spécialiste du nettoyage par drone en Rhône-Alpes. Technologie
-              innovante pour des prestations rapides, sécurisées et écologiques.
+              Spécialiste du nettoyage par drone en Haute-Savoie, Savoie, Ain,
+              Isère et Jura. Technologie innovante pour des prestations
+              rapides, sécurisées et écologiques.
             </p>
           </div>
 
@@ -80,8 +86,8 @@ export default function Footer() {
               Nos prestations
             </h3>
             <ul className="space-y-3">
-              {serviceLinks.map((prestation, i) => (
-                <li key={i}>
+              {allPrestationLinks.map((prestation) => (
+                <li key={prestation.slug}>
                   <Link
                     href={prestation.href}
                     className="text-sm hover:text-white transition-colors duration-200"
@@ -117,12 +123,12 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-secondary shrink-0" />
-                <Link
-                  href={`tel:${phoneContact}`}
+                <a
+                  href={`tel:${phoneContactRaw}`}
                   className="text-sm hover:text-white transition-colors duration-200"
                 >
                   {phoneContact}
-                </Link>
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-secondary shrink-0" />
@@ -137,29 +143,62 @@ export default function Footer() {
 
             {/* Réseaux sociaux */}
             <div className="flex space-x-4 mt-6">
-              <Link
-                href="#"
+              <a
+                href="https://www.facebook.com/share/1PiDp3AFjo/?mibextid=wwXIfr"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Facebook className="w-5 h-5" />
-              </Link>
-              <Link
-                href="https://www.instagram.com/dronedesalpes?igsh=OWV4NXhlZXY2MTE2"
+              </a>
+              <a
+                href="https://www.instagram.com/dronedesalpes"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="https://www.linkedin.com/company/drones-des-alpes/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
-              </Link>
+              </a>
             </div>
           </div>
+        </div>
+
+        {/* Villes desservies : maillage interne vers les pages locales */}
+        <div className="mt-12 pt-8 border-t border-gray-800">
+          <h3 className="text-white font-semibold text-lg mb-4">
+            Nettoyage par drone près de chez vous
+          </h3>
+          <ul className="flex flex-wrap gap-x-4 gap-y-2">
+            {villesPrincipales.map((city) => (
+              <li key={city}>
+                <Link
+                  href={`/villes/${formatCityUrl(city)}`}
+                  className="text-sm hover:text-white transition-colors duration-200"
+                >
+                  Nettoyage par drone à {city}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/#intervention-zone"
+                className="text-sm font-semibold text-white hover:underline"
+              >
+                Toutes nos zones d&apos;intervention →
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-gray-800 w-full"></div>

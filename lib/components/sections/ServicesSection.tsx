@@ -65,13 +65,13 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
       .fromTo(
         `${sectionId} h2`,
         { opacity: 0, y: 40, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.4 }, // 0.5 → 0.4
+        { opacity: 1, y: 0, scale: 1, duration: 0.32 },
       )
       .fromTo(
         `${sectionId} .services-subtitle`,
         { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.3 }, // 0.4 → 0.3
-        "-=0.2",
+        { opacity: 1, y: 0, duration: 0.26 },
+        "-=0.18",
       );
 
     gsap.utils.toArray(".service-card").forEach((card: any) => {
@@ -91,16 +91,16 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           y: 0,
           scale: 1,
           rotateY: 0,
-          duration: 0.45,
+          duration: 0.35,
           ease: "back.out(1.3)",
-        }, // 0.6 → 0.45
+        },
       );
 
       cardTimeline.fromTo(
         card.querySelector(".service-image"),
         { scale: 1.1, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out" }, // 0.8 → 0.6
-        "-=0.4",
+        { scale: 1, opacity: 1, duration: 0.45, ease: "power2.out" },
+        "-=0.3",
       );
 
       cardTimeline.fromTo(
@@ -110,37 +110,37 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
           scale: 1,
           rotation: 0,
           opacity: 1,
-          duration: 0.45,
+          duration: 0.38,
           ease: "back.out(2)",
-        }, // 0.6 → 0.45
-        "-=0.5",
+        },
+        "-=0.38",
       );
 
       cardTimeline.fromTo(
         card.querySelector(".service-title"),
         { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, // 0.4 → 0.3
+        { x: 0, opacity: 1, duration: 0.28, ease: "power2.out" },
         "-=0.3",
       );
 
       cardTimeline.fromTo(
         card.querySelector(".service-short-desc"),
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, // 0.4 → 0.3
+        { y: 0, opacity: 1, duration: 0.28, ease: "power2.out" },
         "-=0.2",
       );
 
       cardTimeline.fromTo(
         card.querySelector(".service-description"),
         { y: 15, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, // 0.4 → 0.3
+        { y: 0, opacity: 1, duration: 0.28, ease: "power2.out" },
         "-=0.2",
       );
 
       cardTimeline.fromTo(
         card.querySelector(".service-button"),
         { scale: 0.8, opacity: 0, y: 10 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.5)" }, // 0.4 → 0.3
+        { scale: 1, opacity: 1, y: 0, duration: 0.28, ease: "back.out(1.5)" },
         "-=0.15",
       );
     });
@@ -164,10 +164,10 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
         <div className="customContainer">
           {/* Titre de la section */}
           <div className="text-center mb-16">
-            <h2 className="services-title text-4xl md:text-5xl font-bold text-primary mb-4 opacity-0">
+            <h2 className="services-title text-4xl md:text-5xl font-bold text-primary mb-4 reveal">
               Nos prestations
             </h2>
-            <p className="services-subtitle text-lg text-gray-600 max-w-2xl mx-auto opacity-0">
+            <p className="services-subtitle text-lg text-gray-600 max-w-2xl mx-auto reveal">
               Des solutions professionnelles adaptées à tous vos besoins de
               nettoyage
             </p>
@@ -180,7 +180,7 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
               return (
                 <div
                   key={index}
-                  className="service-card group opacity-0 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                  className="service-card group reveal bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100"
                 >
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden">

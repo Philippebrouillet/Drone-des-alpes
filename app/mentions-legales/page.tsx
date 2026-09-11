@@ -9,7 +9,7 @@ import {
 } from "@/lib/constant";
 
 export const metadata: Metadata = {
-  title: `Mentions Légales | ${APP_NAME}`,
+  title: "Mentions légales",
   description: `Mentions légales de ${APP_NAME} - Informations sur l'entreprise, le directeur de publication, l'hébergement et les conditions d'utilisation du site.`,
   robots: "noindex, follow",
 };

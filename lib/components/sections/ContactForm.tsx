@@ -177,10 +177,10 @@ export default function ContactForm() {
         <div className="customContainer">
           {/* En-tête */}
           <div className="text-center mb-12">
-            <h2 className="contact-title text-4xl md:text-5xl font-bold text-primary mb-4 opacity-0">
+            <h2 className="contact-title text-4xl md:text-5xl font-bold text-primary mb-4 reveal">
               Contactez-nous
             </h2>
-            <p className="contact-subtitle text-lg text-gray-600 max-w-2xl mx-auto opacity-0">
+            <p className="contact-subtitle text-lg text-gray-600 max-w-2xl mx-auto reveal">
               Notre équipe est à votre disposition pour répondre à toutes vos
               questions
             </p>
@@ -191,7 +191,7 @@ export default function ContactForm() {
             {/* Téléphone */}
             <a
               href={`tel:${phoneContact.replace(/\s/g, "")}`}
-              className="contact-card flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group opacity-0"
+              className="contact-card flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group reveal"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
                 <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
@@ -207,7 +207,7 @@ export default function ContactForm() {
             {/* Email */}
             <a
               href={`mailto:${emailContact}`}
-              className="contact-card flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group opacity-0"
+              className="contact-card flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group reveal"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
                 <Mail className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
@@ -223,13 +223,13 @@ export default function ContactForm() {
 
           {/* Formulaire */}
           <div className="max-w-4xl mx-auto">
-            <div className="form-container bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden opacity-0">
+            <div className="form-container bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden reveal">
               {/* Switch Particulier / Pro */}
               <div className="flex border-b border-gray-200">
                 <button
                   type="button"
                   onClick={() => setClientType("particulier")}
-                  className={`client-type-btn flex-1 py-4 px-6 font-semibold transition-colors duration-200 opacity-0 ${
+                  className={`client-type-btn flex-1 py-4 px-6 font-semibold transition-colors duration-200 reveal ${
                     clientType === "particulier"
                       ? "bg-primary text-white"
                       : "bg-gray-50 text-gray-600 hover:bg-gray-100"
@@ -243,7 +243,7 @@ export default function ContactForm() {
                 <button
                   type="button"
                   onClick={() => setClientType("pro")}
-                  className={`client-type-btn flex-1 py-4 px-6 font-semibold transition-colors duration-200 opacity-0 ${
+                  className={`client-type-btn flex-1 py-4 px-6 font-semibold transition-colors duration-200 reveal ${
                     clientType === "pro"
                       ? "bg-primary text-white"
                       : "bg-gray-50 text-gray-600 hover:bg-gray-100"
