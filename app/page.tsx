@@ -70,22 +70,22 @@ export const metadata: Metadata = {
 
 const mutualServicesData = {
   roofCleaning: {
-    image: "/Nettoyage toiture.jpg",
+    image: "/nettoyage-toiture.jpg",
     title: Services.NETTOYAGE_TOITURE,
     href: formatHrefService(Services.NETTOYAGE_TOITURE),
   },
   facadeCleaning: {
-    image: "/Nettoyage facade.jpg",
+    image: "/nettoyage-facade.jpg",
     title: Services.NETTOYAGE_FACADE,
     href: formatHrefService(Services.NETTOYAGE_FACADE),
   },
   solarPannelCleaning: {
-    image: "/Nettoyage panneaux solaire.jpg",
+    image: "/nettoyage-panneaux-solaires.jpg",
     title: Services.NETTOYAGE_PANNEAU_SOLAIRE,
     href: formatHrefService(Services.NETTOYAGE_PANNEAU_SOLAIRE),
   },
   gutterCleaning: {
-    image: "/Nettoyage gouttières.jpg",
+    image: "/nettoyage-gouttieres.jpg",
     title: Services.NETTOYAGE_GOUTTIERE,
     href: formatHrefService(Services.NETTOYAGE_GOUTTIERE),
   },

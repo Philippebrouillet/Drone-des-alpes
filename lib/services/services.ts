@@ -32,7 +32,7 @@ export const prestationsData: Record<string, PrestationData> = {
     title: "Nettoyage de toiture par drone",
     subtitle: "Rapide, économique et écologique",
     description: `Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Avec ${APP_NAME}, profitez d'un nettoyage par drone plus rapide, moins coûteux et respectueux de l'environnement, aussi bien pour les particuliers que pour les professionnels.`,
-    image: "/Nettoyage toiture.jpg",
+    image: "/nettoyage-toiture.jpg",
     sections: [
       {
         title: "Pourquoi entretenir sa toiture régulièrement ?",
@@ -68,7 +68,7 @@ export const prestationsData: Record<string, PrestationData> = {
     title: "Nettoyage de façade par drone",
     subtitle: "Protégez et sublimez votre maison par la voie des airs",
     description: `Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs et fragilisent vos revêtements. Grâce à la technologie drone, ${APP_NAME} propose un nettoyage de façade rapide, précis et sans échafaudage, pour redonner à votre maison tout son éclat tout en la protégeant durablement.`,
-    image: "/Nettoyage facade.jpg",
+    image: "/nettoyage-facade.jpg",
     sections: [
       {
         title: "Pourquoi nettoyer sa façade ?",
@@ -102,7 +102,7 @@ export const prestationsData: Record<string, PrestationData> = {
     title: "Nettoyage de panneaux solaires par drone",
     subtitle: "Optimisez le rendement de votre installation",
     description: `Vos panneaux solaires sont un investissement important et leur performance dépend directement de leur propreté. La poussière, les feuilles, la pollution ou les dépôts de pollen peuvent réduire leur rendement jusqu'à 20 %. ${APP_NAME} propose un nettoyage par drone rapide, précis et sécurisé, même sur des installations difficiles d'accès ou en hauteur.`,
-    image: "/Nettoyage panneaux solaire.jpg",
+    image: "/nettoyage-panneaux-solaires.jpg",
     sections: [
       {
         title: "Pourquoi nettoyer régulièrement vos panneaux solaires ?",
@@ -123,7 +123,7 @@ export const prestationsData: Record<string, PrestationData> = {
     subtitle: "Prévention et protection de votre habitation",
     description:
       "Des gouttières encrassées ou bouchées peuvent provoquer des infiltrations, des dégâts sur la façade et des problèmes d'humidité dans votre maison. Les feuilles, mousses et débris s'accumulent rapidement, surtout en automne ou après de fortes pluies.",
-    image: "/Nettoyage gouttières.jpg",
+    image: "/nettoyage-gouttieres.jpg",
     sections: [
       {
         title: "Notre méthode professionnelle",

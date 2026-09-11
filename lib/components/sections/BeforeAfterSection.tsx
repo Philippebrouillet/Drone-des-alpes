@@ -10,6 +10,10 @@ const sectionId = "#" + sectionName;
 
 const START_POSITION = 55;
 
+// Déplacement minimal, en pixels, avant de décider si un geste tactile
+// pilote la comparaison ou fait défiler la page
+const DRAG_THRESHOLD = 8;
+
 // Hauteur maximale du comparateur, pour qu'une photo tienne toujours dans l'écran
 const MAX_HEIGHT = "80vh";
 const MAX_WIDTH_PX = 820;
@@ -38,6 +42,11 @@ const comparisons = [
 export default function BeforeAfterSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
+  const pendingTouchRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+  } | null>(null);
   const [position, setPosition] = useState(START_POSITION);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -60,18 +69,53 @@ export default function BeforeAfterSection() {
   }, []);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    isDraggingRef.current = true;
-    containerRef.current?.setPointerCapture(event.pointerId);
-    updateFromClientX(event.clientX);
+    // À la souris, le clic positionne directement le curseur
+    if (event.pointerType === "mouse") {
+      isDraggingRef.current = true;
+      containerRef.current?.setPointerCapture(event.pointerId);
+      updateFromClientX(event.clientX);
+      return;
+    }
+
+    // Au doigt, on attend de savoir si le geste est horizontal (comparaison)
+    // ou vertical (défilement de la page)
+    pendingTouchRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+    };
   };
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current) return;
-    updateFromClientX(event.clientX);
+    if (isDraggingRef.current) {
+      updateFromClientX(event.clientX);
+      return;
+    }
+
+    const pending = pendingTouchRef.current;
+    if (!pending || pending.pointerId !== event.pointerId) return;
+
+    const deltaX = event.clientX - pending.startX;
+    const deltaY = event.clientY - pending.startY;
+
+    // Geste vertical : on laisse la page défiler normalement
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > DRAG_THRESHOLD) {
+      pendingTouchRef.current = null;
+      return;
+    }
+
+    // Geste horizontal : on prend la main sur la comparaison
+    if (Math.abs(deltaX) > DRAG_THRESHOLD) {
+      pendingTouchRef.current = null;
+      isDraggingRef.current = true;
+      containerRef.current?.setPointerCapture(event.pointerId);
+      updateFromClientX(event.clientX);
+    }
   };
 
   const stopDragging = (event: React.PointerEvent<HTMLDivElement>) => {
     isDraggingRef.current = false;
+    pendingTouchRef.current = null;
     if (containerRef.current?.hasPointerCapture(event.pointerId)) {
       containerRef.current.releasePointerCapture(event.pointerId);
     }
@@ -178,7 +222,7 @@ export default function BeforeAfterSection() {
                 aspectRatio: activeComparison.ratio,
                 maxWidth: `min(${MAX_WIDTH_PX}px, calc(${MAX_HEIGHT} * ${activeComparison.ratio}))`,
               }}
-              className="relative w-full mx-auto overflow-hidden rounded-2xl shadow-lg select-none touch-none cursor-ew-resize transition-[aspect-ratio,max-width] duration-500"
+              className="relative w-full mx-auto overflow-hidden rounded-2xl shadow-lg select-none touch-pan-y cursor-ew-resize transition-[aspect-ratio,max-width] duration-500"
             >
               {comparisons.map((comparison, index) => (
                 <div
