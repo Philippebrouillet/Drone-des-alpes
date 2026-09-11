@@ -15,7 +15,7 @@ export default function GoogleMapComponent() {
   const mapInstanceRef = useRef<google.maps.Map | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [isScriptLoaded, setIsScriptLoaded] = useState(
-    window.google ? true : false
+    window.google ? true : false,
   );
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function GoogleMapComponent() {
       // Centre sur la zone d'intervention (Haute-Savoie / Savoie / Ain / Isère / Jura)
       const map = new google.maps.Map(mapRef.current, {
         center: { lat: 45.85, lng: 5.85 },
-        zoom: 8,
+        zoom: 7,
         mapId: "drone-des-alpes-map", // ID requis pour AdvancedMarkerElement
         mapTypeControl: true,
         streetViewControl: false,
