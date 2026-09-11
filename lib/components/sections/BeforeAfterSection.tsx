@@ -26,12 +26,12 @@ const comparisons = [
     afterAlt: "Façade propre après nettoyage par drone",
   },
   {
-    caption: "Nettoyage de bardage",
+    caption: "Nettoyage de batiment industriel",
     ratio: 4 / 3,
     beforeImage: "/avant-bardage.JPG",
-    beforeAlt: "Bardage encrassé avant nettoyage",
+    beforeAlt: "batiment industriel encrassé avant nettoyage",
     afterImage: "/apres-bardage.jpeg",
-    afterAlt: "Bardage propre après nettoyage par drone",
+    afterAlt: "batiment industriel propre après nettoyage par drone",
   },
 ];
 
@@ -213,13 +213,24 @@ export default function BeforeAfterSection() {
                 </div>
               ))}
 
-              {/* Étiquettes */}
-              <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/80 text-white text-sm font-semibold backdrop-blur-sm pointer-events-none">
-                Avant
-              </span>
-              <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary/80 text-white text-sm font-semibold backdrop-blur-sm pointer-events-none">
-                Après
-              </span>
+              {/* Étiquettes : découpées comme les images, pour qu'une étiquette
+                  disparaisse en même temps que la photo qu'elle désigne */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+              >
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/80 text-white text-sm font-semibold backdrop-blur-sm">
+                  Avant
+                </span>
+              </div>
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ clipPath: `inset(0 0 0 ${position}%)` }}
+              >
+                <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary/80 text-white text-sm font-semibold backdrop-blur-sm">
+                  Après
+                </span>
+              </div>
 
               {/* Barre de séparation */}
               <div
