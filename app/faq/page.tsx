@@ -69,10 +69,9 @@ const faqs = [
       "Oui, tous nos devis sont gratuits et sans engagement ! Nous nous engageons à vous répondre dans un délai de 48h maximum. Remplissez simplement notre formulaire de contact ou appelez-nous directement. Nous pourrons vous donner une estimation précise après avoir évalué vos besoins.",
   },
   {
-    question:
-      "Le nettoyage par drone fonctionne-t-il pour les panneaux solaires ?",
+    question: "Intervenez-vous sur des bâtiments industriels ?",
     answer:
-      "Absolument ! Le nettoyage par drone est même particulièrement recommandé pour les panneaux solaires. La saleté, poussière et pollen peuvent réduire le rendement de vos panneaux jusqu'à 20%. Notre méthode douce et précise nettoie efficacement sans risquer d'endommager les cellules photovoltaïques ou les joints.",
+      "Oui. Nous nettoyons bardages, silos, entrepôts, bâtiments de production et structures industrielles, y compris sur de grandes surfaces, en hauteur et dans les zones difficiles d'accès. Le drone limite le recours aux nacelles et aux échafaudages : moins de personnel exposé au travail en hauteur et une immobilisation minimale de vos zones de travail. Selon la configuration du site, il peut être complété par nos perches télescopiques professionnelles.",
   },
   {
     question: "Intervenez-vous par tous les temps ?",

@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: `${APP_NAME} - Nettoyage par Drone`,
     short_name: `${APP_NAME}`,
     description:
-      "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura. Toiture, façade, panneaux solaires.",
+      "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura. Toiture, façade, bâtiment industriel.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

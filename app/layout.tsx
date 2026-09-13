@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s | ${APP_NAME}`,
   },
   description:
-    "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura : toiture, façade, panneaux solaires, gouttières. Rapide, écologique et sans échafaudage.",
+    "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura : toiture, façade, bâtiment industriel, gouttières. Rapide, écologique et sans échafaudage.",
   keywords: [
     "nettoyage toiture",
     "nettoyage toiture drone",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     "démoussage toiture drone",
     "nettoyage façade",
     "nettoyage façade drone",
-    "nettoyage panneaux solaires",
-    "nettoyage panneaux solaires drone",
+    "nettoyage bâtiment industriel",
+    "nettoyage industriel drone",
     "nettoyage gouttières",
     "nettoyage sans échafaudage",
     "nettoyage toiture Haute-Savoie",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     title: `${APP_NAME} - Nettoyage professionnel par drone`,
     description:
-      "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura. Solution innovante pour toiture, façade et panneaux solaires.",
+      "Expert en nettoyage par drone en Haute-Savoie, Savoie, Ain, Isère et Jura. Solution innovante pour toiture, façade et bâtiment industriel.",
   },
   twitter: {
     card: "summary_large_image",

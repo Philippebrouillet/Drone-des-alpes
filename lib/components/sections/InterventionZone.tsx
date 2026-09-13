@@ -176,7 +176,7 @@ export default function InterventionZone() {
                 Haute-Savoie, Savoie, Ain, Isère et Jura
               </span>{" "}
               pour le nettoyage par drone de : toiture, façade, terrasse,
-              gouttières et panneaux solaires. Grâce à notre technologie, nous
+              gouttières et bâtiment industriel. Grâce à notre technologie, nous
               réalisons des interventions{" "}
               <span className="font-semibold text-primary">
                 rapides, sécurisées et écologiques

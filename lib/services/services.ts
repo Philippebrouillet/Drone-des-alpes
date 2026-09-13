@@ -14,6 +14,26 @@ export const serviceLinks = Object.values(Services).map((service) => ({
   href: formatHrefService(service),
 }));
 
+/** Une comparaison avant/après affichée par le comparateur à curseur. */
+export interface BeforeAfterComparison {
+  caption: string;
+  /** largeur / hauteur des photos : 3 / 4 en portrait, 4 / 3 en paysage. */
+  ratio: number;
+  beforeImage: string;
+  beforeAlt: string;
+  afterImage: string;
+  afterAlt: string;
+}
+
+/** Vidéo d'intervention, affichée sous les comparaisons. */
+export interface PrestationVideo {
+  /** Fichier dans public/. Privilégier le .mp4 (H.264), lu par tous les navigateurs. */
+  src: string;
+  /** Image affichée avant lecture, fortement recommandée. */
+  poster?: string;
+  caption?: string;
+}
+
 export interface PrestationData {
   title: string;
   subtitle: string;
@@ -25,11 +45,21 @@ export interface PrestationData {
     list?: string[];
   }[];
   advantages: string[];
+  /** Comparaisons avant/après propres à la prestation (section masquée si absent). */
+  comparisons?: BeforeAfterComparison[];
+  /** Vidéo de l'intervention (bloc masqué si absent). */
+  video?: PrestationVideo;
 }
 
+// Pour afficher une vidéo sur une prestation, ajouter à son entrée :
+//   video: {
+//     src: "/nettoyage-facade.mp4",      // MP4 H.264 dans public/ (pas de .MOV ni de HEVC)
+//     poster: "/nettoyage-facade-poster.jpg",
+//     caption: "Nettoyage de façade par drone, en conditions réelles",
+//   },
 export const prestationsData: Record<string, PrestationData> = {
   "nettoyage-de-toiture": {
-    title: "Nettoyage de toiture par drone",
+    title: "Nettoyage de toiture",
     subtitle: "Rapide, économique et écologique",
     description: `Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Avec ${APP_NAME}, profitez d'un nettoyage par drone plus rapide, moins coûteux et respectueux de l'environnement, aussi bien pour les particuliers que pour les professionnels.`,
     image: "/nettoyage-toiture.jpg",
@@ -63,9 +93,14 @@ export const prestationsData: Record<string, PrestationData> = {
       "Plus précis grâce à la technologie drone",
       "Respectueux de l'environnement",
     ],
+    video: {
+      src: "/nettoyage-toiture.mp4",
+      poster: "/nettoyage-toiture-poster.jpg",
+      caption: "Nettoyage de toiture par drone, en conditions réelles",
+    },
   },
   "nettoyage-de-facade": {
-    title: "Nettoyage de façade par drone",
+    title: "Nettoyage de façade",
     subtitle: "Protégez et sublimez votre maison par la voie des airs",
     description: `Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs et fragilisent vos revêtements. Grâce à la technologie drone, ${APP_NAME} propose un nettoyage de façade rapide, précis et sans échafaudage, pour redonner à votre maison tout son éclat tout en la protégeant durablement.`,
     image: "/nettoyage-facade.jpg",
@@ -97,26 +132,78 @@ export const prestationsData: Record<string, PrestationData> = {
       "Respect de l'environnement",
       "Finition homogène et durable",
     ],
+    comparisons: [
+      {
+        caption: "Nettoyage de façade",
+        ratio: 5 / 6,
+        beforeImage: "/avant-facade.jpg",
+        beforeAlt: "Façade envahie par la mousse avant nettoyage",
+        afterImage: "/apres-facade.jpg",
+        afterAlt: "Façade propre après nettoyage par drone",
+      },
+    ],
   },
-  "nettoyage-de-panneaux-solaires": {
-    title: "Nettoyage de panneaux solaires par drone",
-    subtitle: "Optimisez le rendement de votre installation",
-    description: `Vos panneaux solaires sont un investissement important et leur performance dépend directement de leur propreté. La poussière, les feuilles, la pollution ou les dépôts de pollen peuvent réduire leur rendement jusqu'à 20 %. ${APP_NAME} propose un nettoyage par drone rapide, précis et sécurisé, même sur des installations difficiles d'accès ou en hauteur.`,
-    image: "/nettoyage-panneaux-solaires.jpg",
+  "nettoyage-de-batiment-industriel": {
+    title: "Nettoyage de bâtiments industriels",
+    subtitle:
+      "Une solution innovante, rapide et sécurisée pour l'entretien de vos sites industriels",
+    description: `${APP_NAME} intervient pour le nettoyage de bardages, silos et structures industrielles, y compris sur de grandes surfaces, en hauteur et dans les zones difficiles d'accès.`,
+    image: "/nettoyage-batiment-industriel.jpg",
     sections: [
       {
-        title: "Pourquoi nettoyer régulièrement vos panneaux solaires ?",
+        title: "Moins de travail en hauteur, plus de sécurité",
         content:
-          "Nos drones pulvérisent des solutions adaptées et biodégradables, assurant un nettoyage efficace sans risque pour vos panneaux ni pour votre toiture. Entretenir régulièrement vos panneaux solaires permet de maximiser votre production d'énergie, d'allonger leur durée de vie et d'éviter des réparations coûteuses.",
+          "Grâce au nettoyage par drone, nous limitons le recours aux nacelles et aux échafaudages : moins de contraintes sur site, moins de personnel exposé au travail en hauteur et une sécurité renforcée.",
+      },
+      {
+        title: "Votre activité continue pendant l'intervention",
+        content:
+          "Nos interventions sont pensées pour préserver la continuité de votre activité, en réduisant au maximum l'immobilisation des zones de travail et les perturbations liées au chantier.",
+      },
+      {
+        title: "Une méthode adaptée à chaque structure",
+        content:
+          "Selon la configuration du site, le drone peut être complété par nos perches télescopiques professionnelles afin d'adapter notre méthode à chaque structure.",
+        list: [
+          "Bardages",
+          "Silos",
+          "Entrepôts",
+          "Bâtiments de production",
+          "Structures industrielles",
+        ],
       },
     ],
     advantages: [
-      "Performance optimale des panneaux grâce à une surface parfaitement propre",
-      "Intervention rapide et sécurisée, sans échafaudage ni danger",
-      "Respect des matériaux et des joints grâce à une méthode douce et précise",
-      "Solution écologique utilisant des produits biodégradables",
-      "Maximisation de votre production d'énergie",
+      "Traitement de grandes surfaces et des zones difficiles d'accès",
+      "Recours aux nacelles et échafaudages fortement limité",
+      "Moins de personnel exposé au travail en hauteur",
+      "Immobilisation minimale de vos zones de travail",
+      "Drone complété par perches télescopiques selon la structure",
     ],
+    comparisons: [
+      {
+        caption: "Nettoyage de silo",
+        ratio: 4 / 3,
+        beforeImage: "/batiment-industriel-before2.JPG",
+        beforeAlt: "Silo encrassée avant nettoyage",
+        afterImage: "/batiment-industriel-after2.jpeg",
+        afterAlt: "Silo propre après nettoyage par drone",
+      },
+      {
+        caption: "Nettoyage de bâtiment industriel",
+        ratio: 12 / 7,
+        beforeImage: "/batiment-industriel-before.jpeg",
+        beforeAlt: "Structure industrielle encrassée avant nettoyage",
+        afterImage: "/batiment-industriel-after.jpeg",
+        afterAlt: "Structure industrielle propre après nettoyage par drone",
+      },
+    ],
+    video: {
+      src: "/nettoyage-batiment-industriel.mp4",
+      poster: "/nettoyage-batiment-industriel-poster.jpg",
+      caption:
+        "Nettoyage de batiment industriel par drone, en conditions réelles",
+    },
   },
   "nettoyage-de-gouttieres": {
     title: "Nettoyage de gouttières",
@@ -160,4 +247,9 @@ export const allPrestationLinks = Object.entries(prestationsData).map(
     name: data.title,
     href: `/prestation/${slug}`,
   }),
+);
+
+/** Toutes les comparaisons avant/après du site, dans l'ordre des prestations. */
+export const allComparisons = Object.values(prestationsData).flatMap(
+  (prestation) => prestation.comparisons ?? [],
 );
