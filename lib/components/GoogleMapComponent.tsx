@@ -9,6 +9,33 @@ const colors = {
   primary500: "#0c2b6a",
 };
 
+/**
+ * Identifiants Google des départements desservis.
+ * Ils permettent de faire colorier à Google ses propres limites officielles,
+ * plutôt que d'en dessiner une approximation par-dessus la carte.
+ */
+const DEPARTEMENTS_DESSERVIS = [
+  "ChIJfRdqefQJjEcRICq55CqrCAM", // Haute-Savoie (74)
+  "ChIJ01Qj_B7Si0cRECq55CqrCAM", // Savoie (73)
+  "ChIJ6WS-4x1Yi0cRgCW55CqrCAM", // Ain (01)
+  "ChIJh1d4BM_oikcR4Ce55CqrCAM", // Isère (38)
+  "ChIJQxu3PkkijUcR8CcNszTOCQM", // Jura (39)
+];
+
+const STYLE_DEPARTEMENT: google.maps.FeatureStyleOptions = {
+  fillColor: colors.primary400,
+  fillOpacity: 0.22,
+  strokeColor: colors.primary500,
+  strokeOpacity: 0.9,
+  strokeWeight: 2,
+};
+
+// Le Map ID conditionne l'accès aux limites administratives : il doit désigner
+// une carte vectorielle dont le style autorise la couche « administrative area
+// level 2 ». Surchargeable sans toucher au code.
+const MAP_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID ?? "455d59b16d884785fc926569";
+
 // Composant de carte Google Maps
 export default function GoogleMapComponent() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -28,7 +55,7 @@ export default function GoogleMapComponent() {
       const map = new google.maps.Map(mapRef.current, {
         center: { lat: 45.85, lng: 5.85 },
         zoom: 7,
-        mapId: "drone-des-alpes-map", // ID requis pour AdvancedMarkerElement
+        mapId: MAP_ID,
         mapTypeControl: true,
         streetViewControl: false,
         fullscreenControl: true,
@@ -36,33 +63,92 @@ export default function GoogleMapComponent() {
 
       mapInstanceRef.current = map;
 
-      /*
-        Une seule zone d'intervention, plutôt qu'un semis de marqueurs : plus
-        lisible, et bien plus léger à l'affichage. Le territoire suisse en est
-        retiré (voir le service), la société n'y étant pas autorisée.
-      */
-      const polygone = new google.maps.Polygon({
-        paths: zoneInterventionPaths,
-        strokeColor: colors.primary500,
-        strokeOpacity: 0.9,
-        strokeWeight: 2,
-        fillColor: colors.primary400,
-        fillOpacity: 0.22,
-        map,
-      });
-
       const infoZone = new google.maps.InfoWindow();
-      polygone.addListener("click", (e: google.maps.PolyMouseEvent) => {
-        infoZone.setContent(`
-          <div style="padding: 8px; min-width: 180px;">
-            <h3 style="margin: 0 0 4px 0; font-weight: bold; font-size: 14px; color: #1f2937;">Zone d'intervention</h3>
-            <p style="margin: 0; font-size: 12px; color: #6b7280;">${Object.keys(cityCoordinates).length} communes dans ${departments.length} départements</p>
-            <p style="margin: 4px 0 0 0; font-size: 11px; color: #3b82f6;">✓ Devis gratuit sous 48h</p>
-          </div>
-        `);
-        infoZone.setPosition(e.latLng);
-        infoZone.open(map);
-      });
+      const contenuInfo = `
+        <div style="padding: 8px; min-width: 180px;">
+          <h3 style="margin: 0 0 4px 0; font-weight: bold; font-size: 14px; color: #1f2937;">Zone d'intervention</h3>
+          <p style="margin: 0; font-size: 12px; color: #6b7280;">${Object.keys(cityCoordinates).length} communes dans ${departments.length} départements</p>
+          <p style="margin: 4px 0 0 0; font-size: 11px; color: #3b82f6;">✓ Devis gratuit sous 48h</p>
+        </div>
+      `;
+
+      /*
+        Affichage privilégié : on demande à Google de colorier ses propres
+        limites départementales. Les frontières sont alors exactes et s'arrêtent
+        d'elles-mêmes au territoire français.
+      */
+      const colorierDepartements = () => {
+        if (!map.getMapCapabilities().isDataDrivenStylingAvailable)
+          return false;
+
+        try {
+          const couche = map.getFeatureLayer(
+            google.maps.FeatureType.ADMINISTRATIVE_AREA_LEVEL_2,
+          );
+
+          couche.style = ({ feature }) =>
+            DEPARTEMENTS_DESSERVIS.includes(
+              (feature as google.maps.PlaceFeature).placeId,
+            )
+              ? STYLE_DEPARTEMENT
+              : null;
+
+          couche.addListener("click", (e: google.maps.FeatureMouseEvent) => {
+            if (!e.latLng) return;
+            infoZone.setContent(contenuInfo);
+            infoZone.setPosition(e.latLng);
+            infoZone.open(map);
+          });
+
+          return true;
+        } catch {
+          // Couche non autorisée sur ce Map ID : on garde le tracé de secours.
+          return false;
+        }
+      };
+
+      /*
+        Tracé de secours, utilisé tant que la carte n'a pas accès aux limites
+        officielles : contour calculé à partir des communes desservies.
+      */
+      let secours: google.maps.Polygon | null = null;
+      const tracerSecours = () => {
+        if (secours) return;
+        secours = new google.maps.Polygon({
+          paths: zoneInterventionPaths,
+          strokeColor: colors.primary500,
+          strokeOpacity: 0.9,
+          strokeWeight: 2,
+          fillColor: colors.primary400,
+          fillOpacity: 0.22,
+          map,
+        });
+        secours.addListener("click", (e: google.maps.PolyMouseEvent) => {
+          if (!e.latLng) return;
+          infoZone.setContent(contenuInfo);
+          infoZone.setPosition(e.latLng);
+          infoZone.open(map);
+        });
+      };
+
+      let colorie = colorierDepartements();
+
+      // Les capacités sont annoncées de façon asynchrone. Tant qu'elles sont
+      // inconnues on n'attend pas : le contour calculé s'affiche aussitôt, et
+      // cède la place au coloriage officiel dès qu'il devient disponible.
+      const arbitrer = () => {
+        if (colorie) return;
+        colorie = colorierDepartements();
+        if (colorie) {
+          secours?.setMap(null);
+          secours = null;
+        } else {
+          tracerSecours();
+        }
+      };
+
+      map.addListener("mapcapabilities_changed", arbitrer);
+      arbitrer();
 
       setMapLoaded(true);
     };

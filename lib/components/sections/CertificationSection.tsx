@@ -150,7 +150,10 @@ export default function CertificationSection() {
           <div className=" mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Image de certification */}
-              <div ref={imageContainerRef} className="order-2 lg:order-1">
+              <div
+                ref={imageContainerRef}
+                className="order-2 lg:order-1 bg-white"
+              >
                 <div className="relative rounded-2xl p-8 shadow-lg border border-gray-200">
                   <Image
                     src="/certification.png"
@@ -165,11 +168,12 @@ export default function CertificationSection() {
                     <Image
                       src="/certibiocide.png"
                       alt="Logo Certibiocide - professionnel certifié pour l'usage de produits biocides"
-                      width={218}
-                      height={222}
+                      width={500}
+                      height={450}
                       loading="lazy"
-                      className="w-28 h-auto"
+                      className="w-60 h-auto"
                     />
+
                     <p className="text-center text-sm text-gray-600 max-w-xs">
                       <span className="font-semibold text-gray-900">
                         Certibiocide
@@ -230,6 +234,20 @@ export default function CertificationSection() {
                       <CheckCircle className="w-6 h-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">
+                          Certificat Certibiocide
+                        </h4>
+                        <p className="text-gray-600">
+                          Personnel formé et certifié pour l'utilisation
+                          professionnelle des produits biocides, dans le respect
+                          de la réglementation et des bonnes pratiques.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div ref={checkItem2Ref} className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-1">
                           Spécialisation Nettoyage Extérieur
                         </h4>
                         <p className="text-gray-600">
@@ -258,9 +276,10 @@ export default function CertificationSection() {
                     className="mt-8 p-6 bg-primary/5 rounded-xl border border-primary/20"
                   >
                     <p className="text-gray-700 italic">
-                      &quot;La certification garantit notre professionnalisme.
-                      Chaque intervention est réalisée par des opérateurs
-                      qualifiés et conformes aux exigences réglementaires.&quot;
+                      &quot;Nos certifications garantissent notre
+                      professionnalisme. Chaque intervention est réalisée par
+                      des opérateurs qualifiés, conformément aux exigences
+                      réglementaires.&quot;
                     </p>
                   </div>
                 </div>
