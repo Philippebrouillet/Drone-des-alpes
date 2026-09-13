@@ -8,7 +8,7 @@ export enum Services {
 }
 
 /** Date affichée sur les mentions légales et la politique de confidentialité. */
-export const legalLastUpdate = "13 septembre 2026";
+export const legalLastUpdate = "30 décembre 2025";
 
 export const prodUrl = "https://dronedesalpes.fr";
 export const siegeAdress =
