@@ -4,6 +4,7 @@ import { ArrowLeft, Building2, User, Scale, Shield } from "lucide-react";
 import {
   APP_NAME,
   emailContact,
+  legalLastUpdate,
   phoneContact,
   siegeAdress,
 } from "@/lib/constant";
@@ -15,7 +16,6 @@ export const metadata: Metadata = {
 };
 
 export default function MentionsLegales() {
-  const lastUpdate = "30 décembre";
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
@@ -238,7 +238,7 @@ export default function MentionsLegales() {
           {/* Date de mise à jour */}
           <div className="text-center pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              Dernière mise à jour : {lastUpdate} 2025
+              Dernière mise à jour : {legalLastUpdate}
             </p>
           </div>
         </div>

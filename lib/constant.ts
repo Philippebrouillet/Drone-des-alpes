@@ -7,6 +7,9 @@ export enum Services {
   NETTOYAGE_GOUTTIERE = "Nettoyage de Gouttières",
 }
 
+/** Date affichée sur les mentions légales et la politique de confidentialité. */
+export const legalLastUpdate = "13 septembre 2026";
+
 export const prodUrl = "https://dronedesalpes.fr";
 export const siegeAdress =
   "Site économique des Lacs - 320 Rue des Sorbiers, 74300 Thyez";
