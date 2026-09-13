@@ -53,7 +53,7 @@ export default function OpengraphImage() {
             marginBottom: 40,
           }}
         >
-          Toiture · Façade · Panneaux solaires · Gouttières
+          Toiture · Façade · Bâtiment industriel · Gouttières
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div

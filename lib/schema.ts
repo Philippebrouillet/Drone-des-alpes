@@ -36,7 +36,7 @@ export const organizationSchema = {
   "@id": businessId,
   name: APP_NAME,
   description:
-    "Entreprise spécialisée dans le nettoyage par drone : toitures, façades, panneaux solaires et gouttières en Haute-Savoie, Savoie, Ain, Isère et Jura.",
+    "Entreprise spécialisée dans le nettoyage par drone : toitures, façades, bâtiments industriels et gouttières en Haute-Savoie, Savoie, Ain, Isère et Jura.",
   url: prodUrl,
   telephone: phoneContactRaw,
   email: emailContact,
@@ -105,9 +105,9 @@ export const servicesSchema = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Nettoyage de panneaux solaires",
+          name: "Nettoyage de bâtiment industriel",
           description:
-            "Optimisation du rendement énergétique de vos panneaux solaires",
+            "Nettoyage de bardages, silos et structures industrielles par drone",
         },
       },
       {
@@ -169,7 +169,7 @@ export const citySchema = ({
   "@type": "Service",
   name: `Nettoyage par drone à ${cityName}`,
   serviceType: "Nettoyage par drone",
-  description: `Nettoyage de toiture, façade, panneaux solaires et gouttières par drone à ${cityName} (${regionName}). Sans échafaudage, rapide et écologique.`,
+  description: `Nettoyage de toiture, façade, bâtiment industriel et gouttières par drone à ${cityName} (${regionName}). Sans échafaudage, rapide et écologique.`,
   url,
   provider: {
     "@type": "LocalBusiness",
@@ -210,7 +210,7 @@ export const citySchema = ({
     itemListElement: [
       "Nettoyage de toiture",
       "Nettoyage de façade",
-      "Nettoyage de panneaux solaires",
+      "Nettoyage de bâtiment industriel",
       "Nettoyage de gouttières",
     ].map((name) => ({
       "@type": "Offer",

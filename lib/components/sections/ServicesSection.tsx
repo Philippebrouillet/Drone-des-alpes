@@ -6,8 +6,8 @@ import {
   ArrowRightIcon,
   Building2,
   Droplets,
+  Factory,
   HomeIcon,
-  Sun,
 } from "lucide-react";
 import { useEffect } from "react";
 import gsap from "../../customGsap";
@@ -37,11 +37,12 @@ export default function ServicesSection({ mutualServicesData }: ServicesProps) {
         "Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs. Un nettoyage régulier permet de prévenir la dégradation des matériaux et de conserver une isolation optimale tout en valorisant votre bien immobilier.",
     },
     {
-      ...mutualServicesData.solarPannelCleaning,
-      icon: Sun,
-      shortDescription: "Optimisez votre rendement énergétique jusqu'à +20%",
+      ...mutualServicesData.industrialBuildingCleaning,
+      icon: Factory,
+      shortDescription:
+        "Bardages, silos et structures industrielles en toute sécurité",
       description:
-        "Vos panneaux solaires sont un investissement important. La poussière, les feuilles et la pollution peuvent réduire leur rendement jusqu'à 20%. Entretenir régulièrement vos panneaux permet de maximiser votre production d'énergie et d'allonger leur durée de vie.",
+        "Nous intervenons sur de grandes surfaces, en hauteur et dans les zones difficiles d'accès. Le drone limite le recours aux nacelles et aux échafaudages : moins de personnel exposé au travail en hauteur et une immobilisation minimale de vos zones de travail.",
     },
     {
       ...mutualServicesData.gutterCleaning,

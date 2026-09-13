@@ -30,7 +30,7 @@ import { prestationsData } from "@/lib/services/services";
 const prestationsVedettes = [
   "nettoyage-de-toiture",
   "nettoyage-de-facade",
-  "nettoyage-de-panneaux-solaires",
+  "nettoyage-de-batiment-industriel",
   "nettoyage-de-gouttieres",
 ] as const;
 
@@ -66,19 +66,19 @@ export async function generateMetadata({
   return {
     // Le nom de marque est ajouté par le `template` du layout : ne pas le répéter ici.
     title: `Nettoyage par drone à ${cityName} (${cityData.dept})`,
-    description: `Nettoyage par drone à ${cityName} : toiture, façade, panneaux solaires et gouttières. Sans échafaudage, intervention rapide en ${dept.label}. Devis gratuit sous 24h.`,
+    description: `Nettoyage par drone à ${cityName} : toiture, façade, bâtiment industriel et gouttières. Sans échafaudage, intervention rapide en ${dept.label}. Devis gratuit sous 24h.`,
     keywords: [
       `nettoyage drone ${cityName}`,
       `nettoyage toiture ${cityName}`,
       `démoussage toiture ${cityName}`,
       `nettoyage façade ${cityName}`,
-      `nettoyage panneaux solaires ${cityName}`,
+      `nettoyage bâtiment industriel ${cityName}`,
       `nettoyage gouttières ${cityName}`,
       `entreprise nettoyage drone ${dept.label}`,
     ],
     openGraph: {
       title: `Nettoyage par drone à ${cityName} | ${APP_NAME}`,
-      description: `Service professionnel de nettoyage par drone à ${cityName} : toiture, façade, panneaux solaires.`,
+      description: `Service professionnel de nettoyage par drone à ${cityName} : toiture, façade, bâtiment industriel.`,
       type: "website",
       url: `${prodUrl}/villes/${city}`,
     },
@@ -178,7 +178,7 @@ export default async function CityPage({
             </h1>
 
             <p className="mb-10 max-w-2xl text-lg font-light text-gray-200 drop-shadow-md md:text-xl">
-              Toiture, façade, panneaux solaires et gouttières : un nettoyage
+              Toiture, façade, bâtiment industriel et gouttières : un nettoyage
               réalisé depuis le sol, sans échafaudage ni intervention sur le
               toit.
             </p>
@@ -426,7 +426,7 @@ export default async function CityPage({
             Un projet de nettoyage à {cityName} ?
           </h2>
           <p className="mx-auto mb-9 max-w-2xl text-lg text-primary-50">
-            Décrivez-nous votre toiture, votre façade ou vos panneaux : nous
+            Décrivez-nous votre toiture, votre façade ou votre bâtiment : nous
             revenons vers vous sous 24h avec un devis gratuit et détaillé.
           </p>
 

@@ -3,7 +3,7 @@ export const APP_NAME = "Drone des Alpes";
 export enum Services {
   NETTOYAGE_TOITURE = "Nettoyage de Toiture",
   NETTOYAGE_FACADE = "Nettoyage de Façade",
-  NETTOYAGE_PANNEAU_SOLAIRE = "Nettoyage de Panneaux Solaires",
+  NETTOYAGE_BATIMENT_INDUSTRIEL = "Nettoyage de Bâtiment Industriel",
   NETTOYAGE_GOUTTIERE = "Nettoyage de Gouttières",
 }
 

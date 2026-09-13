@@ -18,19 +18,19 @@ import gsap from "@/lib/customGsap";
 export const metadata: Metadata = {
   title: "Nettoyage par drone en Haute-Savoie, Savoie et Isère",
   description:
-    "Nettoyage par drone de toiture, façade, panneaux solaires et gouttières en Haute-Savoie, Savoie, Ain, Isère et Jura. Sans échafaudage, devis gratuit sous 48h.",
+    "Nettoyage par drone de toiture, façade, bâtiment industriel et gouttières en Haute-Savoie, Savoie, Ain, Isère et Jura. Sans échafaudage, devis gratuit sous 48h.",
   keywords: [
     "nettoyage par drone",
     "nettoyage toiture drone",
     "démoussage toiture drone",
     "nettoyage façade drone",
-    "nettoyage panneaux solaires drone",
+    "nettoyage bâtiment industriel drone",
     "nettoyage gouttières",
     "nettoyage drone Haute-Savoie",
     "nettoyage toiture Annecy",
     "nettoyage toiture Annemasse",
     "nettoyage façade Chambéry",
-    "nettoyage panneaux solaires Grenoble",
+    "nettoyage industriel Grenoble",
     "nettoyage toiture Annemasse",
     "entreprise nettoyage drone",
     "nettoyage sans échafaudage",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${APP_NAME} - Expert du nettoyage par drone en Haute-Savoie et Savoie`,
     description:
-      "Nettoyage professionnel de toitures, façades et panneaux solaires par drone. Solution innovante sans échafaudage en Haute-Savoie, Savoie, Ain, Isère et Jura. Devis gratuit.",
+      "Nettoyage professionnel de toitures, façades et bâtiments industriels par drone. Solution innovante sans échafaudage en Haute-Savoie, Savoie, Ain, Isère et Jura. Devis gratuit.",
     type: "website",
     locale: "fr_FR",
     url: prodUrl,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${APP_NAME} - Nettoyage par drone en Haute-Savoie et Savoie`,
     description:
-      "Expert en nettoyage par drone. Toiture, façade, panneaux solaires. Devis gratuit.",
+      "Expert en nettoyage par drone. Toiture, façade, bâtiment industriel. Devis gratuit.",
   },
   alternates: {
     canonical: "/",
@@ -79,10 +79,10 @@ const mutualServicesData = {
     title: Services.NETTOYAGE_FACADE,
     href: formatHrefService(Services.NETTOYAGE_FACADE),
   },
-  solarPannelCleaning: {
-    image: "/nettoyage-panneaux-solaires.jpg",
-    title: Services.NETTOYAGE_PANNEAU_SOLAIRE,
-    href: formatHrefService(Services.NETTOYAGE_PANNEAU_SOLAIRE),
+  industrialBuildingCleaning: {
+    image: "/nettoyage-batiment-industriel.jpg",
+    title: Services.NETTOYAGE_BATIMENT_INDUSTRIEL,
+    href: formatHrefService(Services.NETTOYAGE_BATIMENT_INDUSTRIEL),
   },
   gutterCleaning: {
     image: "/nettoyage-gouttieres.jpg",
@@ -105,10 +105,10 @@ const slides = [
     alt: "Nettoyage de facade par drone",
   },
   {
-    ...mutualServicesData.solarPannelCleaning,
+    ...mutualServicesData.industrialBuildingCleaning,
     subtitle:
-      "Optimisez votre rendement énergétique jusqu'à +20% avec un nettoyage adapté",
-    alt: "Nettoyage de panneaux solaires par drone",
+      "Bardages, silos et structures industrielles nettoyés sans nacelle ni échafaudage",
+    alt: "Nettoyage de bâtiment industriel par drone",
   },
   {
     ...mutualServicesData.gutterCleaning,
