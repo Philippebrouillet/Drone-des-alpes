@@ -10,7 +10,7 @@ import WhyChooseUs from "../lib/components/sections/WhyChooseUs";
 import InterventionZone from "../lib/components/sections/InterventionZone";
 import ContactForm from "../lib/components/sections/ContactForm";
 import { APP_NAME, prodUrl, Services } from "@/lib/constant";
-import { formatHrefService } from "@/lib/services/services";
+import { allComparisons, formatHrefService } from "@/lib/services/services";
 import CertificationSection from "@/lib/components/sections/CertificationSection";
 import FoundersSection from "@/lib/components/sections/FoundersSection";
 import gsap from "@/lib/customGsap";
@@ -128,7 +128,8 @@ export default function Home() {
             heading="Nettoyage professionnel par drone"
           />
           <AboutSection />
-          <BeforeAfterSection />
+          <div className="border-b border-gray-200"></div>
+          <BeforeAfterSection comparisons={allComparisons} />
           <AdvantagesSection />
           <ServicesSection mutualServicesData={mutualServicesData} />
           <OffersSection />

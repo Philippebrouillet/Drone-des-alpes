@@ -14,6 +14,8 @@ import {
   prodUrl,
 } from "@/lib/constant";
 import { breadcrumbSchema, prestationSchema } from "@/lib/schema";
+import BeforeAfterSection from "@/lib/components/sections/BeforeAfterSection";
+import VideoSection from "@/lib/components/sections/VideoSection";
 
 interface PrestationPageProps {
   params: Promise<{ name: string }>;
@@ -171,6 +173,15 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
           </div>
         </div>
       </section>
+
+      {/* Avant / après, si la prestation a des comparaisons */}
+      <BeforeAfterSection
+        comparisons={prestation.comparisons}
+        subtitle={`Faites glisser le curseur pour découvrir le résultat d'une intervention : ${prestation.title.toLowerCase()}`}
+      />
+
+      {/* Vidéo d'intervention, si la prestation en a une */}
+      <VideoSection video={prestation.video} />
 
       {/* Les avantages */}
       <section className="py-16 md:py-20 bg-gray-50  flex justify-center">

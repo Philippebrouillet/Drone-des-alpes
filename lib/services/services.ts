@@ -14,6 +14,26 @@ export const serviceLinks = Object.values(Services).map((service) => ({
   href: formatHrefService(service),
 }));
 
+/** Une comparaison avant/après affichée par le comparateur à curseur. */
+export interface BeforeAfterComparison {
+  caption: string;
+  /** largeur / hauteur des photos : 3 / 4 en portrait, 4 / 3 en paysage. */
+  ratio: number;
+  beforeImage: string;
+  beforeAlt: string;
+  afterImage: string;
+  afterAlt: string;
+}
+
+/** Vidéo d'intervention, affichée sous les comparaisons. */
+export interface PrestationVideo {
+  /** Fichier dans public/. Privilégier le .mp4 (H.264), lu par tous les navigateurs. */
+  src: string;
+  /** Image affichée avant lecture, fortement recommandée. */
+  poster?: string;
+  caption?: string;
+}
+
 export interface PrestationData {
   title: string;
   subtitle: string;
@@ -25,8 +45,18 @@ export interface PrestationData {
     list?: string[];
   }[];
   advantages: string[];
+  /** Comparaisons avant/après propres à la prestation (section masquée si absent). */
+  comparisons?: BeforeAfterComparison[];
+  /** Vidéo de l'intervention (bloc masqué si absent). */
+  video?: PrestationVideo;
 }
 
+// Pour afficher une vidéo sur une prestation, ajouter à son entrée :
+//   video: {
+//     src: "/nettoyage-facade.mp4",      // MP4 H.264 dans public/ (pas de .MOV ni de HEVC)
+//     poster: "/nettoyage-facade-poster.jpg",
+//     caption: "Nettoyage de façade par drone, en conditions réelles",
+//   },
 export const prestationsData: Record<string, PrestationData> = {
   "nettoyage-de-toiture": {
     title: "Nettoyage de toiture",
@@ -63,6 +93,11 @@ export const prestationsData: Record<string, PrestationData> = {
       "Plus précis grâce à la technologie drone",
       "Respectueux de l'environnement",
     ],
+    video: {
+      src: "/nettoyage-toiture.mp4",
+      poster: "/nettoyage-toiture-poster.jpg",
+      caption: "Nettoyage de toiture par drone, en conditions réelles",
+    },
   },
   "nettoyage-de-facade": {
     title: "Nettoyage de façade",
@@ -96,6 +131,16 @@ export const prestationsData: Record<string, PrestationData> = {
       "Coût réduit par rapport aux méthodes traditionnelles",
       "Respect de l'environnement",
       "Finition homogène et durable",
+    ],
+    comparisons: [
+      {
+        caption: "Nettoyage de façade",
+        ratio: 5 / 6,
+        beforeImage: "/avant-facade.jpg",
+        beforeAlt: "Façade envahie par la mousse avant nettoyage",
+        afterImage: "/apres-facade.jpg",
+        afterAlt: "Façade propre après nettoyage par drone",
+      },
     ],
   },
   "nettoyage-de-batiment-industriel": {
@@ -135,6 +180,30 @@ export const prestationsData: Record<string, PrestationData> = {
       "Immobilisation minimale de vos zones de travail",
       "Drone complété par perches télescopiques selon la structure",
     ],
+    comparisons: [
+      {
+        caption: "Nettoyage de silo",
+        ratio: 4 / 3,
+        beforeImage: "/batiment-industriel-before2.JPG",
+        beforeAlt: "Silo encrassée avant nettoyage",
+        afterImage: "/batiment-industriel-after2.jpeg",
+        afterAlt: "Silo propre après nettoyage par drone",
+      },
+      {
+        caption: "Nettoyage de bâtiment industriel",
+        ratio: 12 / 7,
+        beforeImage: "/batiment-industriel-before.jpeg",
+        beforeAlt: "Structure industrielle encrassée avant nettoyage",
+        afterImage: "/batiment-industriel-after.jpeg",
+        afterAlt: "Structure industrielle propre après nettoyage par drone",
+      },
+    ],
+    video: {
+      src: "/nettoyage-batiment-industriel.mp4",
+      poster: "/nettoyage-batiment-industriel-poster.jpg",
+      caption:
+        "Nettoyage de batiment industriel par drone, en conditions réelles",
+    },
   },
   "nettoyage-de-gouttieres": {
     title: "Nettoyage de gouttières",
@@ -178,4 +247,9 @@ export const allPrestationLinks = Object.entries(prestationsData).map(
     name: data.title,
     href: `/prestation/${slug}`,
   }),
+);
+
+/** Toutes les comparaisons avant/après du site, dans l'ordre des prestations. */
+export const allComparisons = Object.values(prestationsData).flatMap(
+  (prestation) => prestation.comparisons ?? [],
 );

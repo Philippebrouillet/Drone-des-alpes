@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react";
 import gsap from "../../customGsap";
-
-const sectionName = "avant-apres";
-const sectionId = "#" + sectionName;
+import type { BeforeAfterComparison } from "../../services/services";
 
 const START_POSITION = 55;
 
@@ -18,28 +16,21 @@ const DRAG_THRESHOLD = 8;
 const MAX_HEIGHT = "80vh";
 const MAX_WIDTH_PX = 820;
 
-// ratio = largeur / hauteur des photos (3 / 4 pour du portrait, 4 / 3 pour du paysage).
-// Les deux photos d'une même comparaison doivent avoir le même cadrage.
-const comparisons = [
-  {
-    caption: "Nettoyage de façade",
-    ratio: 3 / 4,
-    beforeImage: "/avant-facade.jpg",
-    beforeAlt: "Façade envahie par la mousse avant nettoyage",
-    afterImage: "/apres-facade.jpg",
-    afterAlt: "Façade propre après nettoyage par drone",
-  },
-  {
-    caption: "Nettoyage de batiment industriel",
-    ratio: 4 / 3,
-    beforeImage: "/avant-bardage.JPG",
-    beforeAlt: "batiment industriel encrassé avant nettoyage",
-    afterImage: "/apres-bardage.jpeg",
-    afterAlt: "batiment industriel propre après nettoyage par drone",
-  },
-];
+interface BeforeAfterSectionProps {
+  comparisons?: BeforeAfterComparison[];
+  title?: string;
+  subtitle?: string;
+  /** Couleur de fond de la section, pour l'alterner avec les sections voisines. */
+  background?: string;
+}
 
-export default function BeforeAfterSection() {
+export default function BeforeAfterSection({
+  comparisons = [],
+  title = "Avant / Après",
+  subtitle = "Faites glisser le curseur pour découvrir le résultat de nos interventions par drone",
+  background = "bg-white",
+}: BeforeAfterSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
   const pendingTouchRef = useRef<{
@@ -50,14 +41,18 @@ export default function BeforeAfterSection() {
   const [position, setPosition] = useState(START_POSITION);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const hasComparisons = comparisons.length > 0;
   const activeComparison = comparisons[activeIndex];
   const hasMultiple = comparisons.length > 1;
 
-  const goTo = useCallback((index: number) => {
-    const total = comparisons.length;
-    setActiveIndex((index + total) % total);
-    setPosition(START_POSITION);
-  }, []);
+  const goTo = useCallback(
+    (index: number) => {
+      const total = comparisons.length;
+      setActiveIndex((index + total) % total);
+      setPosition(START_POSITION);
+    },
+    [comparisons.length],
+  );
 
   const updateFromClientX = useCallback((clientX: number) => {
     const container = containerRef.current;
@@ -99,7 +94,10 @@ export default function BeforeAfterSection() {
     const deltaY = event.clientY - pending.startY;
 
     // Geste vertical : on laisse la page défiler normalement
-    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > DRAG_THRESHOLD) {
+    if (
+      Math.abs(deltaY) > Math.abs(deltaX) &&
+      Math.abs(deltaY) > DRAG_THRESHOLD
+    ) {
       pendingTouchRef.current = null;
       return;
     }
@@ -140,208 +138,220 @@ export default function BeforeAfterSection() {
   };
 
   useEffect(() => {
-    const headerTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionId,
-        start: "top 80%",
-        once: true,
-      },
-    });
+    const section = sectionRef.current;
+    if (!section) return;
 
-    headerTimeline
-      .fromTo(
-        ".before-after-title",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-      )
-      .fromTo(
-        ".before-after-subtitle",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-        "-=0.25",
-      )
-      .fromTo(
-        ".before-after-slider",
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-        "-=0.2",
-      );
+    // Animations limitées à cette instance : le composant peut être monté
+    // plusieurs fois dans une même page
+    const context = gsap.context(() => {
+      const headerTimeline = gsap.timeline({
+        scrollTrigger: { trigger: section, start: "top 80%", once: true },
+      });
 
-    // Petit aller-retour du curseur pour montrer que la photo est interactive
-    const demo = { value: START_POSITION };
-    const demoTween = gsap.to(demo, {
-      value: 35,
-      duration: 1.1,
-      delay: 0.3,
-      ease: "power2.inOut",
-      yoyo: true,
-      repeat: 1,
-      onUpdate: () => {
-        if (!isDraggingRef.current) setPosition(demo.value);
-      },
-      scrollTrigger: {
-        trigger: ".before-after-slider",
-        start: "top 70%",
-        once: true,
-      },
-    });
+      headerTimeline
+        .fromTo(
+          ".before-after-title",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        )
+        .fromTo(
+          ".before-after-subtitle",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          "-=0.25",
+        )
+        .fromTo(
+          ".before-after-slider",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          "-=0.2",
+        );
 
-    return () => {
-      headerTimeline.kill();
-      demoTween.kill();
-    };
-  }, []);
+      if (!hasComparisons) return;
+
+      // Petit aller-retour du curseur pour montrer que la photo est interactive
+      const demo = { value: START_POSITION };
+      gsap.to(demo, {
+        value: 35,
+        duration: 1.1,
+        delay: 0.3,
+        ease: "power2.inOut",
+        yoyo: true,
+        repeat: 1,
+        onUpdate: () => {
+          if (!isDraggingRef.current) setPosition(demo.value);
+        },
+        scrollTrigger: {
+          trigger: ".before-after-slider",
+          start: "top 70%",
+          once: true,
+        },
+      });
+    }, section);
+
+    return () => context.revert();
+  }, [hasComparisons]);
+
+  // Rien à comparer : la section entière est masquée
+  if (!hasComparisons) return null;
 
   return (
     <section
-      id={sectionName}
-      className="section bg-gray-50 border-b border-gray-200 overflow-x-hidden "
+      ref={sectionRef}
+      id="avant-apres"
+      className={`section ${background} overflow-x-hidden`}
     >
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête de section */}
           <div className="text-center mb-12">
             <h2 className="before-after-title text-4xl md:text-5xl font-bold text-primary mb-4">
-              Avant / Après
+              {title}
             </h2>
             <p className="before-after-subtitle text-lg text-gray-600 max-w-2xl mx-auto">
-              Faites glisser le curseur pour découvrir le résultat de nos
-              interventions par drone
+              {subtitle}
             </p>
           </div>
 
           <div className="before-after-slider">
-            {/* Comparateur */}
-            <div
-              ref={containerRef}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={stopDragging}
-              onPointerCancel={stopDragging}
-              style={{
-                aspectRatio: activeComparison.ratio,
-                maxWidth: `min(${MAX_WIDTH_PX}px, calc(${MAX_HEIGHT} * ${activeComparison.ratio}))`,
-              }}
-              className="relative w-full mx-auto overflow-hidden rounded-2xl shadow-lg select-none touch-pan-y cursor-ew-resize transition-[aspect-ratio,max-width] duration-500"
-            >
-              {comparisons.map((comparison, index) => (
+            {hasComparisons && (
+              <>
+                {/* Comparateur */}
                 <div
-                  key={comparison.beforeImage}
-                  aria-hidden={index !== activeIndex}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === activeIndex ? "opacity-100" : "opacity-0"
-                  }`}
+                  ref={containerRef}
+                  onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={stopDragging}
+                  onPointerCancel={stopDragging}
+                  style={{
+                    aspectRatio: activeComparison.ratio,
+                    maxWidth: `min(${MAX_WIDTH_PX}px, calc(${MAX_HEIGHT} * ${activeComparison.ratio}))`,
+                  }}
+                  className="relative w-full mx-auto overflow-hidden rounded-2xl shadow-lg select-none touch-pan-y cursor-ew-resize transition-[aspect-ratio,max-width] duration-500"
                 >
-                  {/* Image après (fond) */}
-                  <Image
-                    src={comparison.afterImage}
-                    alt={comparison.afterAlt}
-                    fill
-                    sizes="(max-width: 820px) 100vw, 820px"
-                    className="object-cover pointer-events-none"
-                  />
+                  {comparisons.map((comparison, index) => (
+                    <div
+                      key={comparison.beforeImage}
+                      aria-hidden={index !== activeIndex}
+                      className={`absolute inset-0 transition-opacity duration-500 ${
+                        index === activeIndex ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {/* Image après (fond) */}
+                      <Image
+                        src={comparison.afterImage}
+                        alt={comparison.afterAlt}
+                        fill
+                        sizes="(max-width: 820px) 100vw, 820px"
+                        className="object-cover pointer-events-none"
+                      />
 
-                  {/* Image avant (superposée et rognée) */}
+                      {/* Image avant (superposée et rognée) */}
+                      <div
+                        className="absolute inset-0"
+                        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+                      >
+                        <Image
+                          src={comparison.beforeImage}
+                          alt={comparison.beforeAlt}
+                          fill
+                          sizes="(max-width: 820px) 100vw, 820px"
+                          className="object-cover pointer-events-none"
+                        />
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Étiquettes : découpées comme les images, pour qu'une étiquette
+                      disparaisse en même temps que la photo qu'elle désigne */}
                   <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 pointer-events-none"
                     style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
                   >
-                    <Image
-                      src={comparison.beforeImage}
-                      alt={comparison.beforeAlt}
-                      fill
-                      sizes="(max-width: 820px) 100vw, 820px"
-                      className="object-cover pointer-events-none"
-                    />
+                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/80 text-white text-sm font-semibold backdrop-blur-sm">
+                      Avant
+                    </span>
                   </div>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ clipPath: `inset(0 0 0 ${position}%)` }}
+                  >
+                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary/80 text-white text-sm font-semibold backdrop-blur-sm">
+                      Après
+                    </span>
+                  </div>
+
+                  {/* Barre de séparation */}
+                  <div
+                    className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.35)] pointer-events-none"
+                    style={{
+                      left: `${position}%`,
+                      transform: "translateX(-50%)",
+                    }}
+                  />
+
+                  {/* Poignée */}
+                  <button
+                    type="button"
+                    role="slider"
+                    aria-label="Comparer l'avant et l'après"
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={Math.round(position)}
+                    aria-valuetext={`${Math.round(position)}% de l'image avant nettoyage`}
+                    onKeyDown={handleKeyDown}
+                    className="absolute top-1/2 w-12 h-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
+                    style={{ left: `${position}%` }}
+                  >
+                    <MoveHorizontal className="w-6 h-6 text-primary" />
+                  </button>
                 </div>
-              ))}
 
-              {/* Étiquettes : découpées comme les images, pour qu'une étiquette
-                  disparaisse en même temps que la photo qu'elle désigne */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
-              >
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/80 text-white text-sm font-semibold backdrop-blur-sm">
-                  Avant
-                </span>
-              </div>
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ clipPath: `inset(0 0 0 ${position}%)` }}
-              >
-                <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary/80 text-white text-sm font-semibold backdrop-blur-sm">
-                  Après
-                </span>
-              </div>
+                {/* Légende */}
+                <p className="mt-6 text-center text-lg font-semibold text-primary">
+                  {activeComparison.caption}
+                </p>
 
-              {/* Barre de séparation */}
-              <div
-                className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.35)] pointer-events-none"
-                style={{ left: `${position}%`, transform: "translateX(-50%)" }}
-              />
-
-              {/* Poignée */}
-              <button
-                type="button"
-                role="slider"
-                aria-label="Comparer l'avant et l'après"
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={Math.round(position)}
-                aria-valuetext={`${Math.round(position)}% de l'image avant nettoyage`}
-                onKeyDown={handleKeyDown}
-                className="absolute top-1/2 w-12 h-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
-                style={{ left: `${position}%` }}
-              >
-                <MoveHorizontal className="w-6 h-6 text-primary" />
-              </button>
-            </div>
-
-            {/* Légende */}
-            <p className="mt-6 text-center text-lg font-semibold text-primary">
-              {activeComparison.caption}
-            </p>
-
-            {/* Navigation entre les comparaisons */}
-            {hasMultiple && (
-              <div className="mt-4 flex items-center justify-center gap-6">
-                <button
-                  type="button"
-                  onClick={() => goTo(activeIndex - 1)}
-                  aria-label="Comparaison précédente"
-                  className="w-11 h-11 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-
-                <div className="flex items-center gap-2">
-                  {comparisons.map((comparison, index) => (
+                {/* Navigation entre les comparaisons */}
+                {hasMultiple && (
+                  <div className="mt-4 flex items-center justify-center gap-6">
                     <button
-                      key={comparison.beforeImage}
                       type="button"
-                      onClick={() => goTo(index)}
-                      aria-label={`Voir : ${comparison.caption}`}
-                      aria-current={index === activeIndex}
-                      className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60 ${
-                        index === activeIndex
-                          ? "w-8 bg-secondary"
-                          : "w-2.5 bg-gray-300 hover:bg-gray-400"
-                      }`}
-                    />
-                  ))}
-                </div>
+                      onClick={() => goTo(activeIndex - 1)}
+                      aria-label="Comparaison précédente"
+                      className="w-11 h-11 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
+                    >
+                      <ChevronLeft className="w-6 h-6" />
+                    </button>
 
-                <button
-                  type="button"
-                  onClick={() => goTo(activeIndex + 1)}
-                  aria-label="Comparaison suivante"
-                  className="w-11 h-11 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </div>
+                    <div className="flex items-center gap-2">
+                      {comparisons.map((comparison, index) => (
+                        <button
+                          key={comparison.beforeImage}
+                          type="button"
+                          onClick={() => goTo(index)}
+                          aria-label={`Voir : ${comparison.caption}`}
+                          aria-current={index === activeIndex}
+                          className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60 ${
+                            index === activeIndex
+                              ? "w-8 bg-secondary"
+                              : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => goTo(activeIndex + 1)}
+                      aria-label="Comparaison suivante"
+                      className="w-11 h-11 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
+                    >
+                      <ChevronRight className="w-6 h-6" />
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
