@@ -18,6 +18,7 @@ export default function CertificationSection() {
   const checkItem1Ref = useRef<HTMLDivElement>(null);
   const checkItem2Ref = useRef<HTMLDivElement>(null);
   const checkItem3Ref = useRef<HTMLDivElement>(null);
+  const checkItem4Ref = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -109,6 +110,12 @@ export default function CertificationSection() {
       )
       .fromTo(
         checkItem3Ref.current,
+        { opacity: 0, x: 30 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
+        "-=0.3",
+      )
+      .fromTo(
+        checkItem4Ref.current,
         { opacity: 0, x: 30 },
         { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
         "-=0.3",
@@ -244,7 +251,7 @@ export default function CertificationSection() {
                       </div>
                     </div>
 
-                    <div ref={checkItem2Ref} className="flex items-start gap-3">
+                    <div ref={checkItem3Ref} className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">
@@ -257,7 +264,7 @@ export default function CertificationSection() {
                       </div>
                     </div>
 
-                    <div ref={checkItem3Ref} className="flex items-start gap-3">
+                    <div ref={checkItem4Ref} className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">
