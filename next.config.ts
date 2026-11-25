@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
 
+  experimental: {
+    // Mises à jour de Next.js assistées par agent : correctifs de sécurité uniquement
+    agentUpgrade: "security",
+  },
+
   images: {
     formats: ["image/avif", "image/webp"], // Formats modernes pour de meilleures performances
   },
