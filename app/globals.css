@@ -24,11 +24,27 @@
   --secondary-700: #911f33;
   --secondary-800: #611522;
   --secondary-900: #300a11;
-  --font-geist-sans: "Geist Sans", sans-serif;
-  --font-geist-mono: "Geist Mono", monospace;
+  /* Neutres légèrement teintés vers le bleu nuit de la marque (ciel d'altitude) */
+  --ink: #0f1a2e;
+  --ink-2: #4b5565;
+  --ink-3: #6b7487;
+  --surface: #ffffff;
+  --surface-2: #f5f7fa;
+  --surface-3: #eceff4;
+  --line: rgba(15, 26, 46, 0.08);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
+  --font-mono: var(--font-mono-figures), ui-monospace, monospace;
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --ease-out-soft: var(--ease);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-title: var(--title);
@@ -74,7 +90,15 @@ button {
   scroll-margin-top: 90px;
 }
 .section {
-  @apply py-16 md:py-24;
+  @apply py-20 md:py-28;
+}
+
+/* En-tête de section : titre à gauche, sous-titre en retrait */
+.sectionTitle {
+  @apply text-3xl md:text-[40px] font-medium text-primary leading-[1.15] tracking-[-0.02em] text-balance;
+}
+.sectionLead {
+  @apply mt-4 text-base md:text-lg text-ink-2 leading-relaxed max-w-xl;
 }
 @media (max-width: 1080px) {
   .customContainer {

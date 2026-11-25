@@ -2,231 +2,103 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRightIcon,
-  Building2,
-  Droplets,
-  Factory,
-  HomeIcon,
-} from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { useEffect } from "react";
-import gsap from "../../customGsap";
+import { revealOnScroll } from "../../customGsap";
+
+interface ServiceData {
+  image: string;
+  title: string;
+  href: string;
+}
 
 interface ServicesProps {
-  mutualServicesData: any;
+  mutualServicesData: Record<
+    | "roofCleaning"
+    | "facadeCleaning"
+    | "industrialBuildingCleaning"
+    | "gutterCleaning",
+    ServiceData
+  >;
 }
-const sectionName = "services";
-const sectionId = "#" + sectionName;
 
 export default function ServicesSection({ mutualServicesData }: ServicesProps) {
   const services = [
     {
       ...mutualServicesData.roofCleaning,
-      icon: HomeIcon,
-      shortDescription:
-        "Nettoyage de toiture par drone : rapide, économique et écologique",
       description:
-        "Souvent repoussé, le nettoyage de la toiture est pourtant essentiel à la longévité de votre maison. Votre toiture protège votre maison des intempéries. Sans entretien, la mousse et les lichens favorisent les infiltrations d'eau et diminuent les performances énergétiques.",
+        "Sans entretien, la mousse et les lichens favorisent les infiltrations d'eau et diminuent les performances énergétiques de la maison. Le démoussage par drone est rapide, économique et écologique.",
     },
     {
       ...mutualServicesData.facadeCleaning,
-      icon: Building2,
-      shortDescription:
-        "Protégez et sublimez votre maison par la voie des airs",
       description:
-        "Avec le temps, la pollution, les intempéries et les mousses ternissent vos murs extérieurs. Un nettoyage régulier permet de prévenir la dégradation des matériaux et de conserver une isolation optimale tout en valorisant votre bien immobilier.",
+        "La pollution, les intempéries et les mousses ternissent les murs extérieurs. Un nettoyage régulier prévient la dégradation des matériaux et valorise votre bien.",
     },
     {
       ...mutualServicesData.industrialBuildingCleaning,
-      icon: Factory,
-      shortDescription:
-        "Bardages, silos et structures industrielles en toute sécurité",
       description:
-        "Nous intervenons sur de grandes surfaces, en hauteur et dans les zones difficiles d'accès. Le drone limite le recours aux nacelles et aux échafaudages : moins de personnel exposé au travail en hauteur et une immobilisation minimale de vos zones de travail.",
+        "Bardages, silos et grandes surfaces difficiles d'accès. Moins de personnel exposé au travail en hauteur et une immobilisation minimale de vos zones de travail.",
     },
     {
       ...mutualServicesData.gutterCleaning,
-      icon: Droplets,
-      shortDescription: "Prévenez les infiltrations et protégez votre façade",
       description:
-        "Des gouttières encrassées peuvent provoquer des infiltrations et des problèmes d'humidité. Nous intervenons avec un aspirateur professionnel pour éliminer complètement les débris, mousses et feuilles, sans risque pour vous.",
+        "Des gouttières encrassées provoquent infiltrations et humidité. Notre aspirateur professionnel retire débris, mousses et feuilles, sans risque pour vous.",
     },
   ];
+
   useEffect(() => {
-    const headerTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionId,
-        start: "top 80%",
-        once: true,
-      },
-      defaults: { ease: "power3.out" },
-    });
-
-    headerTimeline
-      .fromTo(
-        `${sectionId} h2`,
-        { opacity: 0, y: 40, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.32 },
-      )
-      .fromTo(
-        `${sectionId} .services-subtitle`,
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.26 },
-        "-=0.18",
-      );
-
-    gsap.utils.toArray(".service-card").forEach((card: any) => {
-      const cardTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          once: true,
-        },
-      });
-
-      cardTimeline.fromTo(
-        card,
-        { opacity: 0, y: 50, scale: 0.9, rotateY: -15 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          rotateY: 0,
-          duration: 0.35,
-          ease: "back.out(1.3)",
-        },
-      );
-
-      cardTimeline.fromTo(
-        card.querySelector(".service-image"),
-        { scale: 1.1, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.45, ease: "power2.out" },
-        "-=0.3",
-      );
-
-      cardTimeline.fromTo(
-        card.querySelector(".service-icon"),
-        { scale: 0, rotation: -180, opacity: 0 },
-        {
-          scale: 1,
-          rotation: 0,
-          opacity: 1,
-          duration: 0.38,
-          ease: "back.out(2)",
-        },
-        "-=0.38",
-      );
-
-      cardTimeline.fromTo(
-        card.querySelector(".service-title"),
-        { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.28, ease: "power2.out" },
-        "-=0.3",
-      );
-
-      cardTimeline.fromTo(
-        card.querySelector(".service-short-desc"),
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.28, ease: "power2.out" },
-        "-=0.2",
-      );
-
-      cardTimeline.fromTo(
-        card.querySelector(".service-description"),
-        { y: 15, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.28, ease: "power2.out" },
-        "-=0.2",
-      );
-
-      cardTimeline.fromTo(
-        card.querySelector(".service-button"),
-        { scale: 0.8, opacity: 0, y: 10 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.28, ease: "back.out(1.5)" },
-        "-=0.15",
-      );
-    });
-
+    const tween = revealOnScroll("#services .reveal", "#services");
     return () => {
-      gsap.killTweensOf(".service-card");
-      gsap.killTweensOf(".service-image");
-      gsap.killTweensOf(".service-icon");
-      gsap.killTweensOf(".service-title");
-      gsap.killTweensOf(".service-short-desc");
-      gsap.killTweensOf(".service-description");
-      gsap.killTweensOf(".service-button");
-      gsap.killTweensOf(".services-title");
-      gsap.killTweensOf(".services-subtitle");
+      tween.kill();
     };
   }, []);
 
   return (
-    <section id={sectionName} className="section bg-white overflow-x-hidden">
+    <section id="services" className="section bg-white">
       <div className="flex justify-center">
         <div className="customContainer">
-          {/* Titre de la section */}
-          <div className="text-center mb-16">
-            <h2 className="services-title text-4xl md:text-5xl font-bold text-primary mb-4 reveal">
-              Nos prestations
-            </h2>
-            <p className="services-subtitle text-lg text-gray-600 max-w-2xl mx-auto reveal">
-              Des solutions professionnelles adaptées à tous vos besoins de
-              nettoyage
+          <div className="mb-14">
+            <h2 className="sectionTitle reveal">Nos prestations</h2>
+            <p className="sectionLead reveal">
+              Quatre interventions, pour les particuliers comme pour les
+              professionnels
             </p>
           </div>
 
-          {/* Grille des services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={index}
-                  className="service-card group reveal bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100"
-                >
-                  {/* Image */}
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      sizes="auto"
-                      fill
-                      loading="lazy"
-                      className="service-image object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    {/* Overlay avec icône */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
-                    <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                      <div className="service-icon p-3 bg-white rounded-full border-2 border-primary flex items-center justify-center">
-                        <Icon size={24} className="text-primary" />
-                      </div>
-                      <h3 className="service-title text-2xl font-bold text-white">
-                        {service.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Contenu */}
-                  <div className="p-8">
-                    <p className="service-short-desc text-gray-600 mb-4 font-medium">
-                      {service.shortDescription}
-                    </p>
-                    <p className="service-description text-gray-600 leading-relaxed mb-6 line-clamp-3">
-                      {service.description}
-                    </p>
-
-                    {/* Bouton */}
-                    <Link
-                      href={service.href}
-                      aria-label={`En savoir plus sur ${service.title}`}
-                      className="service-button inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300"
-                    >
-                      En savoir plus
-                      <ArrowRightIcon size={16} />
-                    </Link>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+            {services.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                aria-label={`En savoir plus sur ${service.title}`}
+                className="reveal group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-surface-2">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="lazy"
+                    className="object-cover"
+                  />
                 </div>
-              );
-            })}
+                <h3 className="mt-5 text-xl font-medium text-ink">
+                  {service.title.charAt(0) + service.title.slice(1).toLowerCase()}
+                </h3>
+                <p className="mt-2 text-[15px] text-ink-2 leading-relaxed line-clamp-3">
+                  {service.description}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 text-[15px] font-medium text-primary">
+                  En savoir plus
+                  <ArrowRightIcon
+                    size={16}
+                    strokeWidth={1.75}
+                    className="transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
+                  />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

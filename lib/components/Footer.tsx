@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Colonne 2: Navigation */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">
+            <h3 className="text-white font-medium mb-4">
               Navigation
             </h3>
             <ul className="space-y-3">
@@ -82,7 +82,7 @@ export default function Footer() {
 
           {/* Colonne 3: Prestations */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">
+            <h3 className="text-white font-medium mb-4">
               Nos prestations
             </h3>
             <ul className="space-y-3">
@@ -101,20 +101,20 @@ export default function Footer() {
 
           {/* Colonne 4: Contact */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Contact</h3>
+            <h3 className="text-white font-medium mb-4">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-white/40 mt-0.5 shrink-0" />
                 <div className="text-sm">
                   <p>{siegeAdress}</p>
                   <p>France</p>
-                  <p className="text-gray-400 italic mt-1 whitespace-nowrap">
+                  <p className="text-gray-400 mt-1 whitespace-nowrap">
                     Uniquement sur rendez-vous
                   </p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
-                <Clock className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                <Clock className="w-4 h-4 text-white/40 mt-0.5 shrink-0" />
                 <div className="text-sm">
                   <p className="font-medium text-white mb-1">Horaires</p>
                   <p>Lundi - Samedi : {openHours}</p>
@@ -122,7 +122,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-secondary shrink-0" />
+                <Phone className="w-4 h-4 text-white/40 shrink-0" />
                 <a
                   href={`tel:${phoneContactRaw}`}
                   className="text-sm hover:text-white transition-colors duration-200"
@@ -131,7 +131,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-secondary shrink-0" />
+                <Mail className="w-4 h-4 text-white/40 shrink-0" />
                 <Link
                   href={`mailto:${emailContact}`}
                   className="text-sm hover:text-white transition-colors duration-200"
@@ -145,38 +145,38 @@ export default function Footer() {
             <div className="flex space-x-4 mt-6">
               <a
                 href="https://www.facebook.com/share/1PiDp3AFjo/?mibextid=wwXIfr"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200"
+                className="w-10 h-10 border border-white/10 rounded-[10px] flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 aria-label="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-4 h-4" />
               </a>
               <a
                 href="https://www.instagram.com/dronedesalpes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200"
+                className="w-10 h-10 border border-white/10 rounded-[10px] flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="https://www.linkedin.com/company/drones-des-alpes/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200"
+                className="w-10 h-10 border border-white/10 rounded-[10px] flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
         </div>
 
         {/* Villes desservies : maillage interne vers les pages locales */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <h3 className="text-white font-semibold text-lg mb-4">
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <h3 className="text-white font-medium mb-4">
             Nettoyage par drone près de chez vous
           </h3>
           <ul className="flex flex-wrap gap-x-4 gap-y-2">
@@ -193,7 +193,7 @@ export default function Footer() {
             <li>
               <Link
                 href="/#intervention-zone"
-                className="text-sm font-semibold text-white hover:underline"
+                className="text-sm font-medium text-white hover:underline underline-offset-4"
               >
                 Toutes nos zones d&apos;intervention →
               </Link>
@@ -201,7 +201,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-gray-800 w-full"></div>
+      <div className="border-t border-white/10 w-full"></div>
       {/* Barre du bas */}
 
       <div className="py-6  max-w-5xl w-full 2xl:max-w-7xl md:max-w-5xl md:w-full px-4 ">

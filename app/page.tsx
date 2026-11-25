@@ -125,10 +125,9 @@ export default function Home() {
         <>
           <HeroCarousel
             slides={slides}
-            heading="Nettoyage professionnel par drone"
+            heading="Vos toitures et façades nettoyées par drone"
           />
           <AboutSection />
-          <div className="border-b border-gray-200"></div>
           <BeforeAfterSection comparisons={allComparisons} />
           <AdvantagesSection />
           <ServicesSection mutualServicesData={mutualServicesData} />

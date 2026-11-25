@@ -20,6 +20,10 @@ interface HeroCarouselProps {
   heading: string;
 }
 
+// « Nettoyage de Façade » → « Nettoyage de façade »
+const sentenceCase = (text: string) =>
+  text.charAt(0) + text.slice(1).toLowerCase();
+
 export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -141,49 +145,21 @@ export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
   };
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
-      scrollTrigger: {
-        trigger: "#hero-carousel",
-        start: "top 80%",
-        toggleActions: "play none none none", // play quand visible
-        once: true,
-      },
-    });
-
-    tl.fromTo(
-      "#hero-carousel h1",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.2)" },
+    // Une seule entrée au chargement : fondu et légère montée, sans rebond
+    const tween = gsap.fromTo(
+      "#hero-carousel .reveal",
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: "power3.out" },
     );
-
-    tl.fromTo(
-      [
-        "#hero-carousel p",
-        "#hero-carousel #heroActions",
-        "#hero-carousel button",
-      ],
-      { opacity: 0, y: 15, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.4,
-        stagger: 0.08,
-        ease: "back.out(1.1)",
-      },
-      "-=0.3",
-    );
-
     return () => {
-      tl.kill();
+      tween.kill();
     };
   }, []);
 
   return (
     <section
       id="hero-carousel"
-      className="relative w-full h-screen overflow-hidden select-none  "
+      className="relative w-full h-screen min-h-[600px] overflow-hidden select-none"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -193,7 +169,7 @@ export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
       onMouseLeave={onMouseLeave}
       style={{ cursor: isDragging ? "grabbing" : "grab" }}
     >
-      {/* Images avec transition */}
+      {/* Photos d'interventions, en fondu enchaîné */}
       {slides.map((slide, index) => {
         // Seuls le slide affiché, le précédent et le suivant sont montés :
         // charger les quatre images au premier rendu pénalisait le LCP.
@@ -205,10 +181,8 @@ export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
         return (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === currentSlide
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-110"
+            className={`absolute inset-0 transition-opacity duration-1000 ease-out-soft ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
             <Image
@@ -220,41 +194,40 @@ export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
               priority={index === 0}
               fetchPriority={index === 0 ? "high" : "auto"}
             />
-            {/* Overlay gradient pour meilleure lisibilité */}
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/55 to-black/20" />
+            {/* Voile neutre côté texte, la photo reste lisible à droite */}
+            <div className="absolute inset-0 bg-linear-to-r from-[#0b1220]/85 via-[#0b1220]/55 to-[#0b1220]/10" />
           </div>
         );
       })}
 
-      {/* Contenu central */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center pb-16">
         <div className="customContainer">
           <div className="max-w-3xl">
-            <p className="heroKicker reveal mb-5 flex items-start gap-2 md:gap-3 text-xs md:text-base font-semibold uppercase tracking-widest md:tracking-[0.2em] text-white/85">
-              <span className="block h-px w-5 md:w-8 bg-secondary shrink-0 mt-[0.7em]" />
+            <p className="reveal mb-6 flex items-center gap-3 text-sm md:text-base text-white/80">
+              <span className="block h-px w-6 bg-secondary shrink-0" />
               <span className="block overflow-hidden">
                 <span
-                  className={`block transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                  className={`block transition-[transform,opacity] duration-300 ease-out-soft motion-reduce:transition-none ${
                     isAnimating
-                      ? "-translate-x-8 opacity-0"
-                      : "translate-x-0 opacity-100"
+                      ? "-translate-y-2 opacity-0"
+                      : "translate-y-0 opacity-100"
                   }`}
                 >
-                  {slides[currentSlide].title}
+                  {sentenceCase(slides[currentSlide].title)}
                 </span>
               </span>
             </p>
 
-            <h1 className="reveal text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] drop-shadow-lg">
+            <h1 className="reveal text-[40px] md:text-6xl lg:text-[68px] font-medium text-white leading-[1.04] tracking-[-0.03em] max-w-[14em]">
               {heading}
             </h1>
 
-            <p className="reveal text-lg md:text-xl text-gray-200 mb-10 font-light drop-shadow-md">
+            <p className="reveal mt-6 text-lg md:text-xl text-white/80 leading-relaxed max-w-xl min-h-[3.5em] md:min-h-0">
               <span
-                className={`block transition-all duration-700 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:blur-none ${
+                className={`block transition-[transform,opacity] duration-500 ease-out-soft motion-reduce:transition-none ${
                   isAnimating
-                    ? "translate-y-3 opacity-0 blur-[3px]"
-                    : "translate-y-0 opacity-100 blur-0"
+                    ? "translate-y-2 opacity-0"
+                    : "translate-y-0 opacity-100"
                 }`}
               >
                 {slides[currentSlide].subtitle}
@@ -267,51 +240,46 @@ export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
             */}
             <div
               id="heroActions"
-              className="reveal mb-12 flex flex-col sm:flex-row sm:items-center gap-4"
+              className="reveal mt-10 flex flex-col sm:flex-row sm:items-center gap-3"
             >
               <Link
                 href="/#contact"
-                className="group relative inline-flex items-center justify-center px-8 py-4
-               bg-white text-primary font-semibold text-lg rounded-full overflow-hidden
-               transition-all duration-300 hover:bg-primary-200 hover:text-white
-               hover:scale-105 hover:shadow-2xl"
+                className="inline-flex h-12 items-center justify-center gap-2 px-6 rounded-[10px]
+                bg-white text-primary font-medium transition-colors duration-150 ease-out-soft
+                hover:bg-primary-50 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Demander un devis
-                  <ArrowRightIcon size={16} />
-                </span>
-
-                {/* Effet de hover animé */}
-                <div
-                  className="absolute inset-0 bg-linear-to-r from-primary to-primary-400
-                    transform scale-x-0 group-hover:scale-x-100
-                    transition-transform duration-300 origin-left"
-                />
+                Demander un devis
+                <ArrowRightIcon size={16} strokeWidth={1.75} />
               </Link>
 
               <Link
                 href={slides[currentSlide].href}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4
-               border border-white/50 text-white font-medium text-lg rounded-full
-               transition-colors duration-300 hover:bg-white/10 hover:border-white"
+                className="inline-flex h-12 items-center justify-center px-6 rounded-[10px]
+                border border-white/25 text-white font-medium transition-colors duration-150 ease-out-soft
+                hover:bg-white/10 hover:border-white/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Découvrir la prestation
               </Link>
             </div>
 
             {/* Indicateurs de slides */}
-            <div className="flex gap-3">
-              {slides.map((_, index) => (
+            <div className="reveal mt-12 flex gap-2">
+              {slides.map((slide, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`reveal transition-all duration-300 ${
-                    index === currentSlide
-                      ? "w-12 bg-white"
-                      : "w-12 bg-white/40 hover:bg-white/60"
-                  } h-1 rounded-full`}
-                  aria-label={`Aller à la slide ${index + 1}`}
-                />
+                  className="group py-3"
+                  aria-label={`Afficher : ${slide.title}`}
+                  aria-current={index === currentSlide}
+                >
+                  <span
+                    className={`block h-0.5 w-10 rounded-full transition-colors duration-150 ${
+                      index === currentSlide
+                        ? "bg-white"
+                        : "bg-white/30 group-hover:bg-white/60"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>
@@ -321,26 +289,25 @@ export default function HeroCarousel({ slides, heading }: HeroCarouselProps) {
       {/*
         Bandeau de preuves : trois arguments factuels, repris du contenu du
         site, qui répondent aux objections avant même de faire défiler la page.
-        Retiré sur les mobiles à écran court, où il chevaucherait les indicateurs
-        (sur un laptop bas de plafond, les boutons tiennent sur une ligne : la place suffit).
+        Retiré sur les mobiles à écran court, où il chevaucherait les indicateurs.
       */}
-      <div className="absolute bottom-0 inset-x-0 border-t border-white/15 bg-black/30 backdrop-blur-sm [@media(max-height:740px)_and_(max-width:767px)]:hidden">
+      <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-[#0b1220]/60 [@media(max-height:740px)_and_(max-width:767px)]:hidden">
         <div className="flex justify-center">
-          <div className="customContainer py-3 md:py-4 flex flex-col md:flex-row md:flex-wrap md:items-center gap-y-1.5 gap-x-10">
+          <ul className="customContainer py-4 flex flex-col md:flex-row md:flex-wrap md:items-center gap-y-2 gap-x-10">
             {[
-              "Sans échafaudage ni nacelle",
-              "30 à 50% moins cher qu'un nettoyage traditionnel",
               "Télépilotes certifiés CATS et Certibiocide",
+              "Produits écologiques et biodégradables",
+              "Devis sous 48 h",
             ].map((preuve) => (
-              <p
+              <li
                 key={preuve}
-                className="flex items-center gap-2.5 text-xs md:text-sm text-white/90"
+                className="flex items-center gap-2 text-sm text-white/80"
               >
-                <CheckIcon size={16} className="text-secondary shrink-0" />
+                <CheckIcon size={16} strokeWidth={1.75} className="text-white/50 shrink-0" />
                 {preuve}
-              </p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

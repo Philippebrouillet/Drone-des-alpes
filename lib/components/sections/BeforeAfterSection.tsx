@@ -27,7 +27,7 @@ interface BeforeAfterSectionProps {
 export default function BeforeAfterSection({
   comparisons = [],
   title = "Avant / Après",
-  subtitle = "Faites glisser le curseur pour découvrir le résultat de nos interventions par drone",
+  subtitle = "Faites glisser le curseur sur nos interventions réelles",
   background = "bg-white",
 }: BeforeAfterSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -151,19 +151,19 @@ export default function BeforeAfterSection({
       headerTimeline
         .fromTo(
           ".before-after-title",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
         )
         .fromTo(
           ".before-after-subtitle",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
           "-=0.25",
         )
         .fromTo(
           ".before-after-slider",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
           "-=0.2",
         );
 
@@ -204,13 +204,9 @@ export default function BeforeAfterSection({
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête de section */}
-          <div className="text-center mb-12">
-            <h2 className="before-after-title text-4xl md:text-5xl font-bold text-primary mb-4">
-              {title}
-            </h2>
-            <p className="before-after-subtitle text-lg text-gray-600 max-w-2xl mx-auto">
-              {subtitle}
-            </p>
+          <div className="mb-12 max-w-[820px] mx-auto">
+            <h2 className="before-after-title sectionTitle">{title}</h2>
+            <p className="before-after-subtitle sectionLead">{subtitle}</p>
           </div>
 
           <div className="before-after-slider">
@@ -227,7 +223,7 @@ export default function BeforeAfterSection({
                     aspectRatio: activeComparison.ratio,
                     maxWidth: `min(${MAX_WIDTH_PX}px, calc(${MAX_HEIGHT} * ${activeComparison.ratio}))`,
                   }}
-                  className="relative w-full mx-auto overflow-hidden rounded-2xl shadow-lg select-none touch-pan-y cursor-ew-resize transition-[aspect-ratio,max-width] duration-500"
+                  className="relative w-full mx-auto overflow-hidden rounded-2xl shadow-[0_8px_24px_rgba(15,26,46,0.08)] select-none touch-pan-y cursor-ew-resize transition-[aspect-ratio,max-width] duration-500"
                 >
                   {comparisons.map((comparison, index) => (
                     <div
@@ -268,7 +264,7 @@ export default function BeforeAfterSection({
                     className="absolute inset-0 pointer-events-none"
                     style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
                   >
-                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/80 text-white text-sm font-semibold backdrop-blur-sm">
+                    <span className="absolute top-4 left-4 px-2 py-1 rounded-md bg-[#0b1220]/70 text-white text-xs font-mono">
                       Avant
                     </span>
                   </div>
@@ -276,14 +272,14 @@ export default function BeforeAfterSection({
                     className="absolute inset-0 pointer-events-none"
                     style={{ clipPath: `inset(0 0 0 ${position}%)` }}
                   >
-                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary/80 text-white text-sm font-semibold backdrop-blur-sm">
+                    <span className="absolute top-4 right-4 px-2 py-1 rounded-md bg-white/90 text-ink text-xs font-mono">
                       Après
                     </span>
                   </div>
 
                   {/* Barre de séparation */}
                   <div
-                    className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.35)] pointer-events-none"
+                    className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)] pointer-events-none"
                     style={{
                       left: `${position}%`,
                       transform: "translateX(-50%)",
@@ -300,28 +296,40 @@ export default function BeforeAfterSection({
                     aria-valuenow={Math.round(position)}
                     aria-valuetext={`${Math.round(position)}% de l'image avant nettoyage`}
                     onKeyDown={handleKeyDown}
-                    className="absolute top-1/2 w-12 h-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
+                    className="absolute top-1/2 w-11 h-11 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     style={{ left: `${position}%` }}
                   >
-                    <MoveHorizontal className="w-6 h-6 text-primary" />
+                    <MoveHorizontal size={18} strokeWidth={1.75} className="text-primary" />
                   </button>
                 </div>
 
                 {/* Légende */}
-                <p className="mt-6 text-center text-lg font-semibold text-primary">
-                  {activeComparison.caption}
-                </p>
+                <div
+                  className="mx-auto mt-5 flex items-center justify-between gap-4"
+                  style={{
+                    maxWidth: `min(${MAX_WIDTH_PX}px, calc(${MAX_HEIGHT} * ${activeComparison.ratio}))`,
+                  }}
+                >
+                  <p className="text-ink font-medium">
+                    {activeComparison.caption}
+                  </p>
+                  {hasMultiple && (
+                    <p className="font-mono text-sm text-ink-3 tabular-nums">
+                      {activeIndex + 1} / {comparisons.length}
+                    </p>
+                  )}
+                </div>
 
                 {/* Navigation entre les comparaisons */}
                 {hasMultiple && (
-                  <div className="mt-4 flex items-center justify-center gap-6">
+                  <div className="mt-6 flex items-center justify-center gap-4">
                     <button
                       type="button"
                       onClick={() => goTo(activeIndex - 1)}
                       aria-label="Comparaison précédente"
-                      className="w-11 h-11 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
+                      className="w-10 h-10 rounded-[10px] border border-line text-ink flex items-center justify-center hover:bg-surface-2 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
-                      <ChevronLeft className="w-6 h-6" />
+                      <ChevronLeft size={18} strokeWidth={1.75} />
                     </button>
 
                     <div className="flex items-center gap-2">
@@ -332,10 +340,10 @@ export default function BeforeAfterSection({
                           onClick={() => goTo(index)}
                           aria-label={`Voir : ${comparison.caption}`}
                           aria-current={index === activeIndex}
-                          className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60 ${
+                          className={`h-1.5 rounded-full transition-[width,background-color] duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                             index === activeIndex
-                              ? "w-8 bg-secondary"
-                              : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                              ? "w-6 bg-secondary"
+                              : "w-1.5 bg-surface-3 hover:bg-ink-3"
                           }`}
                         />
                       ))}
@@ -345,9 +353,9 @@ export default function BeforeAfterSection({
                       type="button"
                       onClick={() => goTo(activeIndex + 1)}
                       aria-label="Comparaison suivante"
-                      className="w-11 h-11 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/60"
+                      className="w-10 h-10 rounded-[10px] border border-line text-ink flex items-center justify-center hover:bg-surface-2 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
-                      <ChevronRight className="w-6 h-6" />
+                      <ChevronRight size={18} strokeWidth={1.75} />
                     </button>
                   </div>
                 )}

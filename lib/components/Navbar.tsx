@@ -81,10 +81,10 @@ const Navbar: NextPage<Props> = ({}) => {
     <>
       {/* Header principal */}
       <header
-        className={`fixed w-full max-w-screen top-0 z-50 transition-all duration-300 ${
+        className={`fixed w-full max-w-screen top-0 z-50 border-b transition-colors duration-200 ease-out-soft ${
           isScrolled
-            ? "bg-white shadow-lg text-title"
-            : "bg-transparent text-white"
+            ? "bg-white/95 backdrop-blur border-line text-ink"
+            : "bg-transparent border-transparent text-white"
         }`}
       >
         <div className="flex justify-center items-center">
@@ -94,12 +94,12 @@ const Navbar: NextPage<Props> = ({}) => {
 
             {/* Menu Desktop */}
             <nav className="hidden lg:block">
-              <ul className="flex items-center justify-center uppercase font-semibold text-sm">
+              <ul className="flex items-center justify-center gap-1 font-medium text-[15px]">
                 <li
-                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-opacity duration-150 hover:opacity-70 ${
                     pathname === "/" && !activeSection
-                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
-                      : "border-b-0 border-transparent"
+                      ? `border-b-2 ${isScrolled ? "activeLink" : "border-white"}`
+                      : "border-b-2 border-transparent"
                   }`}
                 >
                   <Link href="/">{APP_NAME}</Link>
@@ -108,20 +108,20 @@ const Navbar: NextPage<Props> = ({}) => {
                 {/* Dropdown Prestations */}
                 <li className="relative">
                   <button
-                    className={`flex gap-2 items-center px-4 py-2 uppercase font-semibold text-sm transition-all duration-150 hover:opacity-80 ${
+                    className={`flex gap-1.5 items-center px-4 py-2 font-medium transition-opacity duration-150 hover:opacity-70 ${
                       pathname.includes("nettoyage")
-                        ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
-                        : "border-b-0 border-transparent"
+                        ? `border-b-2 ${isScrolled ? "activeLink" : "border-white"}`
+                        : "border-b-2 border-transparent"
                     }`}
                     onMouseEnter={() => setIsOpenPrestations(true)}
                     onMouseLeave={() => setIsOpenPrestations(false)}
                   >
-                    Prestations <ChevronDown size={14} />
+                    Prestations <ChevronDown size={16} strokeWidth={1.75} />
                   </button>
 
                   {isOpenPrestations && (
                     <ul
-                      className="absolute left-0 bg-white shadow-lg border border-gray-200   overflow-hidden min-w-[280px] text-sm normal-case font-normal text-title"
+                      className="absolute left-0 top-full p-1 bg-white rounded-xl shadow-[0_8px_24px_rgba(15,26,46,0.08)] border border-line min-w-[280px] text-[15px] font-normal text-ink"
                       onMouseEnter={() => setIsOpenPrestations(true)}
                       onMouseLeave={() => setIsOpenPrestations(false)}
                     >
@@ -129,9 +129,9 @@ const Navbar: NextPage<Props> = ({}) => {
                         <li key={i}>
                           <Link
                             href={prestation.href}
-                            className={`block px-4 py-3.5 hover:bg-primary/4  font-medium hover:text-primary transition-colors whitespace-nowrap ${
+                            className={`block px-3 py-2.5 rounded-lg hover:bg-surface-2 transition-colors whitespace-nowrap ${
                               pathname.includes(prestation.href)
-                                ? "bg-primary/4 text-primary font-semibold"
+                                ? "bg-surface-2 text-primary font-medium"
                                 : ""
                             }`}
                           >
@@ -145,34 +145,34 @@ const Navbar: NextPage<Props> = ({}) => {
 
                 {/* Onglet Zone d'intervention */}
                 <li
-                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-opacity duration-150 hover:opacity-70 ${
                     activeSection === "intervention-zone"
-                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
-                      : "border-b-0 border-transparent"
+                      ? `border-b-2 ${isScrolled ? "activeLink" : "border-white"}`
+                      : "border-b-2 border-transparent"
                   }`}
                 >
                   <Link href="/#intervention-zone">Zone d'intervention</Link>
                 </li>
 
                 <li
-                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-opacity duration-150 hover:opacity-70 ${
                     activeSection === "offres"
-                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
-                      : "border-b-0 border-transparent"
+                      ? `border-b-2 ${isScrolled ? "activeLink" : "border-white"}`
+                      : "border-b-2 border-transparent"
                   }`}
                 >
                   <Link href="/#offres">Nos offres</Link>
                 </li>
 
                 <li
-                  className={`px-4 py-2 transition-all duration-150 hover:opacity-80 ${
+                  className={`px-4 py-2 transition-opacity duration-150 hover:opacity-70 ${
                     activeSection === "contact"
-                      ? `border-b-2  ${isScrolled ? "activeLink" : ""}`
-                      : "border-b-0 border-transparent"
+                      ? `border-b-2 ${isScrolled ? "activeLink" : "border-white"}`
+                      : "border-b-2 border-transparent"
                   }`}
                 >
                   <Link className="flex items-center gap-2" href="/#contact">
-                    <Phone size={14} /> Contact
+                    <Phone size={16} strokeWidth={1.75} /> Contact
                   </Link>
                 </li>
               </ul>
@@ -233,7 +233,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 <Link
                   onClick={() => setIsMobileMenuOpen(false)}
                   href="/"
-                  className={`block px-5 py-3 rounded-lg font-semibold transition-colors ${
+                  className={`block px-5 py-3 rounded-lg font-medium transition-colors ${
                     pathname === "/" && !activeSection
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
@@ -249,7 +249,7 @@ const Navbar: NextPage<Props> = ({}) => {
                   onClick={() =>
                     setIsMobilePrestationsOpen(!isMobilePrestationsOpen)
                   }
-                  className={`w-full flex justify-between items-center px-5 py-3 rounded-lg font-semibold transition-colors ${
+                  className={`w-full flex justify-between items-center px-5 py-3 rounded-lg font-medium transition-colors ${
                     pathname.includes("nettoyage")
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
@@ -296,7 +296,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 <Link
                   href="/#intervention-zone"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-5 py-3 rounded-lg font-semibold transition-colors  ${
+                  className={`block px-5 py-3 rounded-lg font-medium transition-colors  ${
                     activeSection === "intervention-zone"
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
@@ -309,7 +309,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 <Link
                   onClick={() => setIsMobileMenuOpen(false)}
                   href="/#offres"
-                  className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-colors ${
+                  className={`flex items-center gap-2 px-5 py-3 rounded-lg font-medium transition-colors ${
                     activeSection === "offres"
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
@@ -323,7 +323,7 @@ const Navbar: NextPage<Props> = ({}) => {
                 <Link
                   onClick={() => setIsMobileMenuOpen(false)}
                   href="/#contact"
-                  className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-colors ${
+                  className={`flex items-center gap-2 px-5 py-3 rounded-lg font-medium transition-colors ${
                     activeSection === "contact"
                       ? "bg-primary/5 text-primary"
                       : "text-gray-700 hover:bg-gray-100"
@@ -340,9 +340,9 @@ const Navbar: NextPage<Props> = ({}) => {
               <Link
                 href="/#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition-colors shadow-lg"
+                className="block w-full text-center bg-primary text-white px-6 py-3 rounded-[10px] font-medium hover:bg-primary-600 transition-colors"
               >
-                Demander un devis gratuit
+                Demander un devis
               </Link>
             </div>
           </div>

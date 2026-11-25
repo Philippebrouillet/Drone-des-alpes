@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import PageHeader from "@/lib/components/PageHeader";
+import CtaBand from "@/lib/components/CtaBand";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { APP_NAME, prodUrl } from "@/lib/constant";
 
@@ -41,22 +43,22 @@ const faqs = [
   {
     question: "Le nettoyage par drone est-il vraiment efficace ?",
     answer:
-      "Oui, totalement ! Le nettoyage par drone est même plus efficace que les méthodes traditionnelles car le drone peut accéder à toutes les zones, même les plus difficiles. La pulvérisation se fait de manière homogène et précise, sans oublier aucun recoin. De plus, nous utilisons des produits professionnels écologiques et biodégradables spécialement adaptés.",
+      "Oui. Le nettoyage par drone est même plus efficace que les méthodes traditionnelles car le drone peut accéder à toutes les zones, même les plus difficiles. La pulvérisation se fait de manière homogène et précise, sans oublier aucun recoin. De plus, nous utilisons des produits professionnels écologiques et biodégradables spécialement adaptés.",
   },
   {
     question: "Quelle est la durée d'une intervention ?",
     answer:
-      "Une intervention standard (maison individuelle) dure généralement entre 1h et 3h selon la surface et le type de prestation. C'est jusqu'à 5 fois plus rapide qu'un nettoyage traditionnel ! Pour les grandes surfaces ou bâtiments professionnels, nous établissons un planning détaillé lors du devis.",
+      "Une intervention standard (maison individuelle) dure généralement entre 1h et 3h selon la surface et le type de prestation. C'est jusqu'à 5 fois plus rapide qu'un nettoyage traditionnel. Pour les grandes surfaces ou bâtiments professionnels, nous établissons un planning détaillé lors du devis.",
   },
   {
     question: "Le drone peut-il endommager ma toiture ou mes façades ?",
     answer:
-      "Non, absolument pas. Le drone n'entre jamais en contact direct avec les surfaces. Il pulvérise les produits de nettoyage à distance de sécurité. Cette méthode est d'ailleurs plus sûre que le nettoyage traditionnel qui implique de marcher sur le toit, risquant de casser des tuiles ou d'endommager des joints.",
+      "Non. Le drone n'entre jamais en contact direct avec les surfaces. Il pulvérise les produits de nettoyage à distance de sécurité. Cette méthode est d'ailleurs plus sûre que le nettoyage traditionnel qui implique de marcher sur le toit, risquant de casser des tuiles ou d'endommager des joints.",
   },
   {
     question: "Utilisez-vous des produits chimiques dangereux ?",
     answer:
-      "Non ! Nous utilisons exclusivement des produits écologiques, biodégradables et non abrasifs. Ils sont sans danger pour vos biens, votre famille, vos animaux de compagnie et l'environnement. Ces produits professionnels sont conçus spécifiquement pour le nettoyage par pulvérisation et respectent toutes les normes environnementales.",
+      "Non. Nous utilisons exclusivement des produits écologiques, biodégradables et non abrasifs. Ils sont sans danger pour vos biens, votre famille, vos animaux de compagnie et l'environnement. Ces produits professionnels sont conçus spécifiquement pour le nettoyage par pulvérisation et respectent toutes les normes environnementales.",
   },
   {
     question: "À quelle fréquence faut-il nettoyer sa toiture ?",
@@ -66,7 +68,7 @@ const faqs = [
   {
     question: "Proposez-vous des devis gratuits ?",
     answer:
-      "Oui, tous nos devis sont gratuits et sans engagement ! Nous nous engageons à vous répondre dans un délai de 48h maximum. Remplissez simplement notre formulaire de contact ou appelez-nous directement. Nous pourrons vous donner une estimation précise après avoir évalué vos besoins.",
+      "Oui, tous nos devis sont gratuits et sans engagement. Nous nous engageons à vous répondre dans un délai de 48h maximum. Remplissez simplement notre formulaire de contact ou appelez-nous directement. Nous pourrons vous donner une estimation précise après avoir évalué vos besoins.",
   },
   {
     question: "Intervenez-vous sur des bâtiments industriels ?",
@@ -86,7 +88,7 @@ const faqs = [
   {
     question: "Proposez-vous des remises pour les premiers clients ?",
     answer:
-      "Oui ! Actuellement, nous offrons 20% de remise sur toutes nos prestations pour les 20 premiers clients. C'est le moment idéal pour découvrir nos services à prix réduit. Cette offre est limitée dans le temps, alors n'hésitez pas à demander votre devis dès maintenant !",
+      "Oui. Actuellement, nous offrons 20% de remise sur toutes nos prestations pour les 20 premiers clients. C'est le moment idéal pour découvrir nos services à prix réduit. Cette offre est limitée dans le temps, demandez votre devis dès maintenant.",
   },
 ];
 
@@ -110,102 +112,51 @@ export default function FAQPage() {
         }}
       />
 
-      {/* Header */}
-      <section className="bg-primary text-white py-20 pt-50 flex justify-center">
-        <div className="customContainer ">
-          <nav aria-label="Fil d'Ariane" className="mb-8">
-            <ol className="flex flex-wrap items-center gap-2 text-sm text-white/80">
-              <li>
-                <Link href="/" className="hover:text-white hover:underline">
-                  Accueil
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li className="text-white font-medium" aria-current="page">
-                FAQ
-              </li>
-            </ol>
-          </nav>
-          <div className="flex items-center gap-4 mb-4">
-            <HelpCircle className="w-12 h-12" />
-            <h1 className="text-4xl md:text-5xl font-bold">
-              Nettoyage par drone : questions fréquentes
-            </h1>
-          </div>
-          <p className="text-xl text-primary-50">
-            Toutes les réponses sur le nettoyage par drone
-          </p>
-        </div>
-      </section>
-
-      {/* Introduction */}
-      <section className="py-12 bg-gray-50 flex justify-center">
-        <div className="customContainer  text-center">
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Vous avez des questions sur nos services de nettoyage par drone ?
-            Consultez notre FAQ pour trouver rapidement des réponses. Si vous ne
-            trouvez pas ce que vous cherchez,{" "}
+      <PageHeader
+        crumbs={[{ name: "Accueil", href: "/" }, { name: "FAQ" }]}
+        title="Nettoyage par drone : questions fréquentes"
+        lead={
+          <p>
+            Prix, durée, produits, zones d&apos;intervention. Si vous ne
+            trouvez pas votre réponse,{" "}
             <Link
               href="/#contact"
-              className="text-primary font-semibold hover:underline"
+              className="text-white underline underline-offset-4 decoration-white/40 hover:decoration-white"
             >
-              contactez-nous directement
+              contactez-nous
             </Link>
-            .
           </p>
-        </div>
-      </section>
+        }
+      />
 
-      {/* Questions & Réponses */}
-      <section className="py-16 md:py-20 flex justify-center">
-        <div className="customContainer ">
-          <div className="max-w-4xl mx-auto space-y-4">
-            {faqs.map((faq, index) => (
-              <details
-                key={index}
-                className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-primary transition-colors duration-200"
-              >
-                <summary className="flex items-center justify-between p-6 cursor-pointer select-none">
-                  <h3 className="text-lg font-semibold text-gray-900 pr-4">
+      <section className="section flex justify-center">
+        <div className="customContainer">
+          <div className="max-w-3xl divide-y divide-line border-y border-line">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="group">
+                <summary className="flex items-center justify-between gap-6 py-6 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                  <h2 className="text-lg font-medium text-ink group-hover:text-primary transition-colors duration-150">
                     {faq.question}
-                  </h3>
-                  <ChevronDown className="w-5 h-5 text-gray-500 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                  </h2>
+                  <ChevronDown
+                    size={18}
+                    strokeWidth={1.75}
+                    className="text-ink-3 shrink-0 transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                  />
                 </summary>
-                <div className="px-6 pb-6 pt-2">
-                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                </div>
+                <p className="pb-6 -mt-1 text-[17px] text-ink-2 leading-relaxed max-w-[65ch]">
+                  {faq.answer}
+                </p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-primary flex justify-center">
-        <div className="customContainer text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Vous avez d'autres questions ?
-          </h2>
-          <p className="text-xl text-primary-50 mb-8 max-w-2xl mx-auto">
-            Notre équipe est à votre disposition pour répondre à toutes vos
-            interrogations et vous fournir un devis gratuit personnalisé.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/#contact"
-              className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              Demander un devis gratuit
-            </Link>
-            <Link
-              href="/"
-              className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors duration-200"
-            >
-              Retour à l'accueil
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand
+        title="Une question qui n'est pas dans la liste"
+        text="Appelez-nous ou écrivez-nous, nous répondons sous 48 heures dans la mesure du possible"
+      />
     </main>
   );
 }

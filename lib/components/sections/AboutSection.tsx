@@ -1,91 +1,61 @@
 "use client";
 
-import gsap from "../../customGsap";
-import { MapPinCheckIcon } from "lucide-react";
+import { revealOnScroll } from "../../customGsap";
 import { useEffect } from "react";
+
+const departements = [
+  { code: "74", name: "Haute-Savoie" },
+  { code: "73", name: "Savoie" },
+  { code: "01", name: "Ain" },
+  { code: "38", name: "Isère" },
+  { code: "39", name: "Jura" },
+];
 
 export default function AboutSection() {
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#a-propos",
-        start: "top 70%",
-      },
-    });
-
-    // Titre principal
-    tl.fromTo(
-      "#a-propos h2",
-      { opacity: 0, y: 50, scale: 0.98 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: "back.out(1.2)", // léger overshoot pour un effet dynamique
-      }
-    )
-      // Paragraphes
-      .fromTo(
-        "#a-propos p",
-        { opacity: 0, y: 30, scale: 0.98 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.12, // petit décalage entre les paragraphes
-          ease: "power3.out",
-        },
-        "-=0.4" // superposition douce avec le titre
-      );
+    const tween = revealOnScroll("#a-propos .reveal", "#a-propos");
+    return () => {
+      tween.kill();
+    };
   }, []);
+
   return (
     <section id="a-propos" className="section bg-white flex justify-center">
-      <div className="customContainer text-center">
-        {/* Titre principal */}
-        <h2 className="text-4xl reveal md:text-5xl font-bold text-primary mb-8 leading-tight">
-          Une innovation qui redéfinit les codes du nettoyage
+      <div className="customContainer grid gap-10 md:grid-cols-[5fr_7fr] md:gap-16">
+        <h2 className="sectionTitle reveal">
+          Le drone va là où une échelle vous mettrait en danger
         </h2>
 
-        {/* Paragraphes */}
-        <div className="space-y-6 text-lg md:text-xl text-gray-600 leading-relaxed">
-          <p className="reveal">
-            Innovante et performante, la technologie drone redéfinit les codes
-            du nettoyage. Grâce à cet outil révolutionnaire, nous intervenons{" "}
-            <span className="font-semibold text-primary">
-              en toute sécurité
-            </span>{" "}
-            là où l&apos;homme prendrait des risques, tout en préservant les
-            surfaces à nettoyer.
-          </p>
+        <div>
+          <div className="space-y-5 text-lg text-ink-2 leading-relaxed">
+            <p className="reveal">
+              Toitures, façades, bardages, gouttières : le drone atteint les
+              surfaces en hauteur sans que personne ne monte. Nous intervenons
+              en toute sécurité là où l&apos;homme prendrait des risques, tout
+              en préservant les surfaces à nettoyer.
+            </p>
+            <p className="reveal">
+              Que vous soyez particulier ou professionnel, prenez soin de vos
+              bâtiments avec une méthode sans danger, respectueuse des
+              matériaux et des produits écologiques et biodégradables.
+            </p>
+          </div>
 
-          <p className="reveal">
-            Que vous soyez particulier ou professionnel, prenez soin de vos
-            bâtiments avec une méthode{" "}
-            <span className="font-semibold text-primary">sans danger</span>,
-            respectueuse des matériaux et utilisant des{" "}
-            <span className="font-semibold text-primary">
-              produits écologiques et biodégradables
-            </span>
-            .
-          </p>
-        </div>
-
-        {/* Zone géographique */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="reveal text-base md:text-lg text-gray-700">
-            <span className="flex justify-center">
-              <span className="font-semibold text-primary flex items-center text-center  gap-2">
-                <MapPinCheckIcon /> Basés en Haute-Savoie
-              </span>
-            </span>
-            <br />
-            <span className="text-gray-600">
-              Nous intervenons également dans l&apos;Ain, la Savoie,
-              l&apos;Isère et le Jura.
-            </span>
-          </p>
+          <div className="reveal mt-10 pt-6 border-t border-line">
+            <p className="text-sm text-ink-3">
+              Basés en Haute-Savoie, nous intervenons dans cinq départements
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+              {departements.map((d) => (
+                <li key={d.code} className="flex items-center gap-2 text-ink">
+                  <span className="font-mono text-xs text-ink-3 px-1.5 py-0.5 rounded-[4px] border border-line tabular-nums">
+                    {d.code}
+                  </span>
+                  {d.name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

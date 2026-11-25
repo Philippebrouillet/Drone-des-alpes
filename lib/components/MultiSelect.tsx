@@ -83,24 +83,24 @@ export default function MultiSelect({
     <div className={`relative  ${className}`} ref={dropdownRef}>
       {/* Container principal avec les tags et l'input */}
       <div
-        className="w-full pr-10 py-2 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent transition-all duration-200 bg-white min-h-12 cursor-text"
+        className="w-full pr-10 py-2 border border-ink/15 rounded-[10px] focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary transition-[border-color,box-shadow] duration-150 bg-white min-h-11 cursor-text"
         onClick={() => inputRef.current?.focus()}
       >
         <div className="flex justify-between items-center">
-          <Briefcase className=" text-gray-500 w-5 h-5   ml-3 mr-2.5" />
+          <Briefcase className="text-ink-3 w-4 h-4 ml-3 mr-3 shrink-0" />
 
           <div className="flex flex-wrap gap-1.5 items-center  w-full">
             {/* Tags sélectionnés */}
             {value.map((option) => (
               <span
                 key={option}
-                className="inline-flex items-center gap-1 px-2.5 py-1 bg-primary text-white text-sm rounded-md font-medium"
+                className="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-3 text-ink text-sm rounded-md"
               >
                 <span className="max-w-[200px] truncate">{option}</span>
                 <button
                   type="button"
                   onClick={(e) => removeOption(option, e)}
-                  className="ml-1 hover:bg-primary-dark rounded-sm p-0.5 transition-colors"
+                  className="ml-1 hover:bg-ink/10 rounded-sm p-0.5 transition-colors"
                   tabIndex={-1}
                 >
                   <X className="h-3 w-3" />
@@ -125,7 +125,7 @@ export default function MultiSelect({
                   ? "Rechercher..."
                   : ""
               }
-              className="flex-1 min-w-[120px] py-1 outline-none   text-gray-900 placeholder-gray-500"
+              className="flex-1 min-w-[120px] py-1 outline-none   text-ink placeholder:text-ink-3"
             />
           </div>
 
@@ -151,7 +151,7 @@ export default function MultiSelect({
 
       {/* Dropdown avec options */}
       {isOpen && (
-        <div className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-64 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-2 bg-white border border-line rounded-xl p-1 shadow-[0_8px_24px_rgba(15,26,46,0.08)] max-h-64 overflow-y-auto">
           {filteredOptions.length > 0 ? (
             <>
               {/* Options */}
@@ -161,7 +161,7 @@ export default function MultiSelect({
                     key={option}
                     type="button"
                     onClick={() => toggleOption(option)}
-                    className="w-full px-4 pl-10 py-3 text-left hover:bg-blue-50 text-gray-900 transition-colors duration-150 flex items-center group"
+                    className="w-full px-4 pl-10 py-3 text-left rounded-lg hover:bg-surface-2 text-ink transition-colors duration-150 flex items-center group"
                   >
                     <span className="flex-1 text-sm">{option}</span>
                   </button>

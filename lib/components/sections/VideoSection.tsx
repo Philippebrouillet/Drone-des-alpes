@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "../../customGsap";
+import { revealOnScroll } from "../../customGsap";
 import type { PrestationVideo } from "../../services/services";
 
 const MAX_WIDTH_PX = 820;
@@ -25,8 +25,8 @@ interface VideoSectionProps {
 export default function VideoSection({
   video,
   title = "En vidéo",
-  subtitle = "Découvrez une intervention filmée sur le terrain",
-  background = "bg-gray-50",
+  subtitle = "Une intervention filmée sur le terrain",
+  background = "bg-white",
 }: VideoSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -34,33 +34,12 @@ export default function VideoSection({
     const section = sectionRef.current;
     if (!section) return;
 
-    // Animations limitées à cette instance : le composant peut être monté
+    // Animation limitée à cette instance : le composant peut être monté
     // plusieurs fois dans une même page
-    const context = gsap.context(() => {
-      gsap
-        .timeline({
-          scrollTrigger: { trigger: section, start: "top 80%", once: true },
-        })
-        .fromTo(
-          ".video-section-title",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        )
-        .fromTo(
-          ".video-section-subtitle",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-          "-=0.25",
-        )
-        .fromTo(
-          ".video-section-player",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-          "-=0.2",
-        );
-    }, section);
-
-    return () => context.revert();
+    const tween = revealOnScroll(section.querySelectorAll(".reveal"), section);
+    return () => {
+      tween.kill();
+    };
   }, []);
 
   if (!video) return null;
@@ -74,17 +53,13 @@ export default function VideoSection({
       <div className="flex justify-center">
         <div className="customContainer">
           {/* En-tête de section */}
-          <div className="text-center mb-12">
-            <h2 className="video-section-title text-4xl md:text-5xl font-bold text-primary mb-4">
-              {title}
-            </h2>
-            <p className="video-section-subtitle text-lg text-gray-600 max-w-2xl mx-auto">
-              {subtitle}
-            </p>
+          <div className="mb-12 mx-auto" style={{ maxWidth: `${MAX_WIDTH_PX}px` }}>
+            <h2 className="sectionTitle reveal">{title}</h2>
+            <p className="sectionLead reveal">{subtitle}</p>
           </div>
 
           <figure
-            className="video-section-player mx-auto w-full"
+            className="reveal mx-auto w-full"
             style={{ maxWidth: `${MAX_WIDTH_PX}px` }}
           >
             <video
@@ -92,13 +67,13 @@ export default function VideoSection({
               playsInline
               preload="metadata"
               poster={video.poster}
-              className="w-full rounded-2xl shadow-lg bg-black"
+              className="w-full rounded-2xl shadow-[0_8px_24px_rgba(15,26,46,0.08)] bg-black"
             >
               <source src={video.src} type={videoMimeType(video.src)} />
               Votre navigateur ne peut pas lire cette vidéo.
             </video>
             {video.caption && (
-              <figcaption className="mt-4 text-center text-lg font-semibold text-primary">
+              <figcaption className="mt-5 text-ink font-medium">
                 {video.caption}
               </figcaption>
             )}

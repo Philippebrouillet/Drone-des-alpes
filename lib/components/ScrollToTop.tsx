@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, ArrowUpToLine } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function ScrollToTop() {
@@ -36,10 +36,10 @@ export default function ScrollToTop() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 bg-secondary  text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+          className="fixed bottom-6 right-6 z-50 w-11 h-11 flex items-center justify-center bg-white text-ink border border-line rounded-full shadow-[0_8px_24px_rgba(15,26,46,0.08)] transition-colors duration-150 hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           aria-label="Retour en haut"
         >
-          <ArrowUp size={24} />
+          <ArrowUp size={18} strokeWidth={1.75} />
         </button>
       )}
     </>

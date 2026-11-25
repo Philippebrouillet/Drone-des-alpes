@@ -1,4 +1,4 @@
-import { Montserrat } from "next/font/google";
+import { Montserrat, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/lib/components/Navbar";
 import Footer from "@/lib/components/Footer";
@@ -10,8 +10,16 @@ import { APP_NAME, prodUrl } from "@/lib/constant";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["500"],
+  weight: ["400", "500", "600"],
   display: "swap",
+});
+
+// Chiffres et codes (départements, remises, téléphone) : chasse fixe
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-mono-figures",
 });
 
 // Métadonnées globales optimisées pour le SEO
@@ -81,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${montserrat.className}`}>
+    <html lang="fr" className={`${montserrat.className} ${geistMono.variable}`}>
       <head>
         <meta name="apple-mobile-web-app-title" content="Dronedesalpes" />
 

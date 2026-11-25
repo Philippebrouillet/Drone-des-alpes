@@ -1,18 +1,14 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { CheckCircle2, Phone } from "lucide-react";
+import { Check } from "lucide-react";
+import CtaBand from "@/lib/components/CtaBand";
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
   getPrestationByKey,
   prestationsData,
 } from "@/lib/services/services";
-import {
-  APP_NAME,
-  phoneContact,
-  phoneContactRaw,
-  prodUrl,
-} from "@/lib/constant";
+import { APP_NAME, prodUrl } from "@/lib/constant";
 import { breadcrumbSchema, prestationSchema } from "@/lib/schema";
 import BeforeAfterSection from "@/lib/components/sections/BeforeAfterSection";
 import VideoSection from "@/lib/components/sections/VideoSection";
@@ -86,8 +82,8 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[550px] w-full overflow-hidden">
+      {/* Hero : photo de la prestation, texte aligné à gauche comme l'accueil */}
+      <section className="relative h-[60vh] min-h-[520px] w-full overflow-hidden">
         <Image
           src={prestation.image}
           alt={`${prestation.title} - ${APP_NAME}`}
@@ -96,78 +92,80 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#0b1220]/85 via-[#0b1220]/55 to-[#0b1220]/10" />
 
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="customContainer mx-auto px-6 text-center text-white">
+        <div className="absolute inset-0 flex items-end justify-center pb-16 md:pb-20">
+          <div className="customContainer text-white">
             <nav aria-label="Fil d'Ariane" className="mb-6">
-              <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-white/80">
+              <ol className="flex flex-wrap items-center gap-2 text-sm text-white/70">
                 <li>
-                  <Link href="/" className="hover:text-white hover:underline">
+                  <Link href="/" className="hover:text-white transition-colors duration-150">
                     Accueil
                   </Link>
                 </li>
-                <li aria-hidden="true">/</li>
+                <li aria-hidden="true" className="text-white/40">/</li>
                 <li>
                   <Link
                     href="/#services"
-                    className="hover:text-white hover:underline"
+                    className="hover:text-white transition-colors duration-150"
                   >
                     Nos prestations
                   </Link>
                 </li>
-                <li aria-hidden="true">/</li>
-                <li className="text-white font-medium" aria-current="page">
+                <li aria-hidden="true" className="text-white/40">/</li>
+                <li className="text-white" aria-current="page">
                   {prestation.title}
                 </li>
               </ol>
             </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
+            <h1 className="text-[40px] md:text-6xl font-medium leading-[1.05] tracking-[-0.03em] max-w-[14em]">
               {prestation.title}
             </h1>
-            <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto drop-shadow-md">
+            <p className="mt-5 text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
               {prestation.subtitle}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Description principale */}
-      <section className="py-16 md:py-20 bg-gray-50 flex justify-center">
-        <div className="customContainer ">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-lg md:text-xl leading-relaxed text-gray-700">
-              {prestation.description}
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Description et contenu : titre à gauche, texte à droite */}
+      <section className="section flex justify-center">
+        <div className="customContainer">
+          <p className="max-w-3xl text-xl md:text-2xl text-ink leading-relaxed tracking-[-0.01em]">
+            {prestation.description}
+          </p>
 
-      {/* Sections de contenu */}
-      <section className="py-16 md:py-20  flex justify-center">
-        <div className="customContainer ">
-          <div className="max-w-4xl mx-auto space-y-12">
-            {prestation.sections.map((section, index) => (
-              <div key={index} className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-primary">
+          <div className="mt-16 md:mt-20 divide-y divide-line border-y border-line">
+            {prestation.sections.map((section) => (
+              <div
+                key={section.title}
+                className="grid gap-4 md:grid-cols-[5fr_7fr] md:gap-16 py-10"
+              >
+                <h2 className="text-2xl font-medium text-primary leading-snug tracking-[-0.02em] text-balance">
                   {section.title}
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  {section.content}
-                </p>
-                {section.list && (
-                  <ul className="space-y-3 mt-4">
-                    {section.list.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-3 text-gray-700"
-                      >
-                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-                        <span className="text-lg">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <div>
+                  <p className="text-[17px] text-ink-2 leading-relaxed">
+                    {section.content}
+                  </p>
+                  {section.list && (
+                    <ul className="mt-5 space-y-3">
+                      {section.list.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 text-[17px] text-ink-2 leading-relaxed"
+                        >
+                          <Check
+                            size={18}
+                            strokeWidth={1.75}
+                            className="text-primary shrink-0 mt-1"
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -177,65 +175,36 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
       {/* Avant / après, si la prestation a des comparaisons */}
       <BeforeAfterSection
         comparisons={prestation.comparisons}
-        subtitle={`Faites glisser le curseur pour découvrir le résultat d'une intervention : ${prestation.title.toLowerCase()}`}
+        background="bg-surface-2"
+        subtitle="Faites glisser le curseur sur une intervention réelle"
       />
 
       {/* Vidéo d'intervention, si la prestation en a une */}
       <VideoSection video={prestation.video} />
 
       {/* Les avantages */}
-      <section className="py-16 md:py-20 bg-gray-50  flex justify-center">
-        <div className="customContainer ">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-              Les avantages du nettoyage par drone
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {prestation.advantages.map((advantage, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-6 rounded-lg border border-gray-200 hover:border-secondary transition-colors duration-200 shadow-sm hover:shadow-md"
-                >
-                  <div className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
-                    <p className="text-lg text-gray-700 font-medium">
-                      {advantage}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <section className="section bg-surface-2 flex justify-center">
+        <div className="customContainer grid gap-10 md:grid-cols-[5fr_7fr] md:gap-16">
+          <h2 className="sectionTitle">Les avantages du nettoyage par drone</h2>
+          <ul className="divide-y divide-line border-y border-line">
+            {prestation.advantages.map((advantage) => (
+              <li
+                key={advantage}
+                className="flex items-start gap-3 py-4 text-[17px] text-ink"
+              >
+                <Check
+                  size={18}
+                  strokeWidth={1.75}
+                  className="text-primary shrink-0 mt-1"
+                />
+                {advantage}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-linear-to-br bg-primary flex justify-center">
-        <div className="customContainer text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Prêt à commencer ?
-          </h2>
-          <p className="text-xl text-primary-50 mb-8 max-w-2xl mx-auto">
-            Demandez votre devis gratuit dès maintenant et bénéficiez de notre
-            expertise en nettoyage par drone.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/#contact"
-              className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              Demander un devis gratuit
-            </Link>
-            <a
-              href={`tel:${phoneContactRaw}`}
-              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors duration-200"
-            >
-              <Phone className="w-5 h-5" />
-              {phoneContact}
-            </a>
-          </div>
-        </div>
-      </section>
+      <CtaBand />
     </main>
   );
 }

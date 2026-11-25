@@ -1,131 +1,50 @@
 "use client";
 
-import gsap from "../../customGsap";
-import { Users, Gift, Check } from "lucide-react";
+import { revealOnScroll } from "../../customGsap";
 import { useEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const sectionName = "offres";
-const sectionId = `#offres`;
+const paliers = [
+  { label: "2 à 5 maisons", remise: "10 %" },
+  { label: "5 à 10 maisons", remise: "15 %" },
+  { label: "10 maisons et plus", remise: "20 %" },
+];
 
 export default function OffersSection() {
   useEffect(() => {
-    ScrollTrigger.refresh();
-    // Animation pour le titre et sous-titre
-    const headerTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionId,
-        start: "top 80%",
-        once: true,
-      },
-    });
-
-    headerTl
-      .fromTo(
-        `${sectionId} h2`,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      )
-      .fromTo(
-        `${sectionId} p`,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        "-=0.3",
-      );
-
-    // Animation Offre 1 - Depuis la droite
-    gsap.fromTo(
-      `${sectionId} #offer1`,
-      { opacity: 0, x: 100 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: `${sectionId} #offer1`,
-          start: "top 75%",
-          once: true,
-        },
-      },
-    );
+    const tween = revealOnScroll("#offres .reveal", "#offres");
+    return () => {
+      tween.kill();
+    };
   }, []);
 
   return (
-    <section id={sectionName} className="section bg-gray-50 overflow-x-hidden">
+    <section id="offres" className="section bg-surface-2">
       <div className="flex justify-center">
-        <div className="customContainer">
-          {/* En-tête sobre */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Nos offres
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Profitez de nos offres avantageuses conçues pour optimiser votre
-              budget
+        <div className="customContainer grid gap-10 md:grid-cols-[5fr_7fr] md:gap-16 md:items-start">
+          <div>
+            <h2 className="sectionTitle reveal">Nos offres</h2>
+            <p className="sectionLead reveal">
+              Offre groupement : plus vous êtes nombreux, plus vous économisez
             </p>
           </div>
 
-          {/* Liste verticale des offres */}
-          <div className="space-y-8 ">
-            {/* Offre Groupement */}
-            <div
-              id="offer2"
-              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="p-8">
-                <div className="flex items-start gap-6">
-                  <div className="shrink-0">
-                    <div className="w-16 h-16 bg-primary/5 rounded-lg flex items-center justify-center">
-                      <Users className="w-8 h-8 text-primary" />
-                    </div>
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-primary mb-2">
-                      Offre Groupement
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                      Plus vous êtes nombreux, plus vous économisez
-                    </p>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                        <div className="flex items-center gap-2">
-                          <Check className="w-5 h-5 text-primary" />
-                          <span className="text-gray-700">2 à 5 maisons</span>
-                        </div>
-                        <span className="font-bold text-primary">
-                          10% de remise
-                        </span>
-                      </div>
-
-                      <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                        <div className="flex items-center gap-2">
-                          <Check className="w-5 h-5 text-primary" />
-                          <span className="text-gray-700">5 à 10 maisons</span>
-                        </div>
-                        <span className="font-bold text-primary">
-                          15% de remise
-                        </span>
-                      </div>
-
-                      <div className="flex items-center justify-between py-3">
-                        <div className="flex items-center gap-2">
-                          <Check className="w-5 h-5 text-primary" />
-                          <span className="text-gray-700">
-                            10 maisons et plus
-                          </span>
-                        </div>
-                        <span className="font-bold text-primary">
-                          20% de remise
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="reveal rounded-2xl bg-white border border-line p-2">
+            <p className="px-4 pt-3 pb-2 text-sm text-ink-3">
+              Remise selon le nombre de maisons regroupées
+            </p>
+            <ul>
+              {paliers.map((p) => (
+                <li
+                  key={p.label}
+                  className="flex items-center justify-between px-4 py-4 border-t border-line"
+                >
+                  <span className="text-ink">{p.label}</span>
+                  <span className="text-lg font-medium text-primary tabular-nums">
+                    −{p.remise}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft, Building2, User, Scale, Shield } from "lucide-react";
+import PageHeader from "@/lib/components/PageHeader";
+import CtaBand from "@/lib/components/CtaBand";
 import {
   APP_NAME,
   emailContact,
@@ -18,41 +18,25 @@ export const metadata: Metadata = {
 export default function MentionsLegales() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Header */}
-      <section className="bg-primary text-white py-20 pt-45 flex justify-center">
-        <div className="customContainer ">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 mb-8"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span>Retour à l'accueil</span>
-          </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Mentions Légales
-          </h1>
-          <p className="text-xl text-blue-50">
-            Informations légales et réglementaires
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        crumbs={[{ name: "Accueil", href: "/" }, { name: "Mentions légales" }]}
+        title="Mentions légales"
+        lead="Informations légales et réglementaires"
+      />
 
       {/* Contenu */}
       <section className="py-16 md:py-20 flex justify-center">
-        <div className="customContainer  space-y-12">
+        <div className="customContainer space-y-12 [&>*]:max-w-3xl [&_strong]:font-medium [&_strong]:text-ink">
           {/* 1. Éditeur du site */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
-                <Building2 className="w-6 h-6 text-primary" />
-              </div>
+          <div className="border-t border-line pt-10">
+            <div className="mb-5">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-medium text-primary tracking-[-0.02em]">
                   1. Éditeur du site
                 </h2>
               </div>
             </div>
-            <div className="space-y-3 text-gray-700">
+            <div className="space-y-3 text-ink-2 leading-relaxed">
               <p>
                 <strong>Raison sociale :</strong> {APP_NAME}
               </p>
@@ -76,7 +60,7 @@ export default function MentionsLegales() {
                 <strong>Téléphone :</strong>{" "}
                 <a
                   href={`tel:${phoneContact}`}
-                  className="text-primary hover:underline"
+                  className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary"
                 >
                   {phoneContact}
                 </a>
@@ -85,7 +69,7 @@ export default function MentionsLegales() {
                 <strong>Email :</strong>{" "}
                 <a
                   href={`mailto:${emailContact}`}
-                  className="text-primary hover:underline"
+                  className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary"
                 >
                   {emailContact}
                 </a>
@@ -94,18 +78,15 @@ export default function MentionsLegales() {
           </div>
 
           {/* 2. Directeur de publication */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
-                <User className="w-6 h-6 text-primary" />
-              </div>
+          <div className="border-t border-line pt-10">
+            <div className="mb-5">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-medium text-primary tracking-[-0.02em]">
                   2. Directeur de publication
                 </h2>
               </div>
             </div>
-            <div className="space-y-3 text-gray-700">
+            <div className="space-y-3 text-ink-2 leading-relaxed">
               <p>
                 <strong>Nom :</strong> Jules Menguy
               </p>
@@ -116,7 +97,7 @@ export default function MentionsLegales() {
                 <strong>Contact :</strong>{" "}
                 <a
                   href={`mailto:${emailContact}`}
-                  className="text-primary hover:underline"
+                  className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary"
                 >
                   {emailContact}
                 </a>
@@ -125,18 +106,15 @@ export default function MentionsLegales() {
           </div>
 
           {/* 3. Hébergement */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
-                <Shield className="w-6 h-6 text-primary" />
-              </div>
+          <div className="border-t border-line pt-10">
+            <div className="mb-5">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-medium text-primary tracking-[-0.02em]">
                   3. Hébergement du site
                 </h2>
               </div>
             </div>
-            <div className="space-y-3 text-gray-700">
+            <div className="space-y-3 text-ink-2 leading-relaxed">
               <p>
                 <strong>Hébergeur :</strong> Vercel Inc.
               </p>
@@ -150,7 +128,7 @@ export default function MentionsLegales() {
                   href="https://vercel.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline"
+                  className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary"
                 >
                   https://vercel.com/
                 </a>
@@ -159,18 +137,15 @@ export default function MentionsLegales() {
           </div>
 
           {/* 4. Propriété intellectuelle */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center shrink-0">
-                <Scale className="w-6 h-6 text-primary" />
-              </div>
+          <div className="border-t border-line pt-10">
+            <div className="mb-5">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-medium text-primary tracking-[-0.02em]">
                   4. Propriété intellectuelle
                 </h2>
               </div>
             </div>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-ink-2 leading-relaxed">
               <p>
                 L'ensemble de ce site relève de la législation française et
                 internationale sur le droit d'auteur et la propriété
@@ -193,11 +168,11 @@ export default function MentionsLegales() {
           </div>
 
           {/* 5. Responsabilité */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="border-t border-line pt-10">
+            <h2 className="text-2xl font-medium text-primary tracking-[-0.02em] mb-5">
               5. Limitation de responsabilité
             </h2>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-ink-2 leading-relaxed">
               <p>
                 Les informations contenues sur ce site sont aussi précises que
                 possible et le site est périodiquement remis à jour, mais peut
@@ -221,11 +196,11 @@ export default function MentionsLegales() {
           </div>
 
           {/* 6. Droit applicable */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="border-t border-line pt-10">
+            <h2 className="text-2xl font-medium text-primary tracking-[-0.02em] mb-5">
               6. Droit applicable et juridiction compétente
             </h2>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-ink-2 leading-relaxed">
               <p>
                 Les présentes mentions légales sont régies par le droit
                 français. En cas de litige et à défaut d'accord amiable, le
@@ -236,40 +211,18 @@ export default function MentionsLegales() {
           </div>
 
           {/* Date de mise à jour */}
-          <div className="text-center pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-500">
+          <div className="pt-8 border-t border-line">
+            <p className="text-sm text-ink-3">
               Dernière mise à jour : {legalLastUpdate}
             </p>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-primary-50 flex justify-center">
-        <div className="customContainer  text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Une question sur nos services ?
-          </h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Notre équipe est à votre disposition pour répondre à toutes vos
-            interrogations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/#contact"
-              className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-400 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              Nous contacter
-            </Link>
-            <Link
-              href="/"
-              className="inline-block bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-50 transition-colors duration-200"
-            >
-              Retour à l'accueil
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand
+        title="Une question sur nos services"
+        text="Appelez-nous ou écrivez-nous, nous répondons sous 48 heures dans la mesure du possible"
+      />
     </main>
   );
 }
